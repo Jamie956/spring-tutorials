@@ -18,10 +18,27 @@ public class CategoriesController {
 	@RequestMapping("/categories")
 	public ResponseEntity<?> getCategoriesTable() {
 		JsonTableModel result = categoriesService.initCategoriesTableByMid();
-		
 		Gson gson = new Gson();
 		String jsonString = gson.toJson(result);
 		return new ResponseEntity<>(jsonString, HttpStatus.OK);
+	}
+	
+	@RequestMapping("/add")
+	public int addCategoryInfoViaForm() {
+		int count = categoriesService.addCategoryInfo();
+		return count;
+	}
+	
+	@RequestMapping("/edit")
+	public int editCategoryInfoViaForm() {
+		int count =  categoriesService.editCategoryInfo();
+		return count;
+	}
+	
+	@RequestMapping("/remove")
+	public int removeCategoryInfoViaId() {
+		int count =  categoriesService.removeCategoryInfo();
+		return count;
 	}
 	
 }

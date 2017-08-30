@@ -50,5 +50,27 @@ public class CategoriesService {
 		JsonTableModel result = new JsonTableModel(totalItems, items);
 		return result;
 	}
-
+	
+	public int addCategoryInfo() {
+		String _sql = "INSERT INTO t_category (id, name, merchant_id, created_time, updated_time, "
+				+ "alcohol, category_ufo, display_name, hidden) VALUES (?, ?, ?, NOW(), NOW(), ?, ?, ?, ? )";
+		Object[] _val = {"ufo_BvYnHc0xdyk", "papa", "ufo_BvYhCY871Ou", "1", "food", "ef", "0"};
+		int count = jdbcTemplate.update(_sql, _val);
+		return count;
+	}
+	
+	public int editCategoryInfo() {
+		String _sql = "UPDATE t_category set name = ? where id = ?";
+		Object[] _val = {"ktkt", "ufo_BvYnHc0xdyk"};
+		int count = jdbcTemplate.update(_sql, _val);
+		return count;
+	}
+	
+	public int removeCategoryInfo() {
+		String _sql = " UPDATE t_category SET flag = 1 WHERE id = ?";
+		Object[] _val = {"ufo_BvYnHc0xdyk"};
+		int count = jdbcTemplate.update(_sql, _val);
+		return count;
+	}
+	
 }

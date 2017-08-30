@@ -2,7 +2,9 @@ package com.example.demo.repositories;
 
 public class CategoriesRepository {
 	private String id;
+	private String original_id;
 	private String name;
+	private String merchant_id;
 	private String createdTime;
 	private String updatedTime;
 	private String categoryUfo;
@@ -15,6 +17,12 @@ public class CategoriesRepository {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getMerchant_id() {
+		return merchant_id;
+	}
+	public void setMerchant_id(String merchant_id) {
+		this.merchant_id = merchant_id;
 	}
 	public String getName() {
 		return name;
@@ -45,6 +53,12 @@ public class CategoriesRepository {
 	}
 	public void setAlcohol(String alcohol) {
 		this.alcohol = alcohol;
+	}
+	public String getOriginal_id() {
+		return original_id;
+	}
+	public void setOriginal_id(String original_id) {
+		this.original_id = original_id;
 	}
 	public String getScriptValue() {
 		return scriptValue;
