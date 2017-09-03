@@ -8,7 +8,7 @@ app.controller('transactionsController', ['$scope', function($scope){
     },
     
     ajax: {
-      '_url': 'json/transaction.json',
+      '_url': '../json/transaction.json',
       '_method': 'get',
     },
     

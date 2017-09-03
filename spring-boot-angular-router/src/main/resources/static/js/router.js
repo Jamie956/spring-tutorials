@@ -4,7 +4,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 	$stateProvider
 	.state('transactions', {
 		url: '/transactions?tabs',
-		templateUrl: 'transactions.html',
+		templateUrl: '../transactions.html',
 		controller: 'transactionsController'
 	})
 	.state('root', {
