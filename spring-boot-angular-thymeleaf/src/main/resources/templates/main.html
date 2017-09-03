@@ -6,7 +6,7 @@
 		margin-bottom:0px;
 	}
 </style>
-<body ng-app="app">
+<body ng-app="myApp">
 	<header th:include="./fragments/navheader::navbar"></header>
 	<section>
 		<div class="container-fluid">
@@ -21,7 +21,5 @@
 	
 	<footer th:replace="fragments/footer::footerMainFragment"></footer>	
 	<footer th:replace="fragments/footerscript::footerScriptFragment"></footer>
-	
-	<script type="text/javascript" src="../apps/controllers/transactions.controller.js" ></script>
 </body>
 </html>

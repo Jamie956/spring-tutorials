@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ui.router', 'oc.lazyLoad']);
+var myApp = angular.module('myApp', ['ui.router', 'oc.lazyLoad']);
 
-app.run(
+myApp.run(
   ['$rootScope', '$state', '$stateParams',
     function($rootScope, $state, $stateParams) {
 	    $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
@@ -9,7 +9,7 @@ app.run(
   ]
 );
 
-app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider){
+myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider){
 	$stateProvider
   	.state('home', {
   		url: '/',
@@ -19,15 +19,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', funct
   		url: '/transactions?tabs',
   		templateUrl: '/ngviews/transactions.html',
   		controller: 'transactionsController',
+      resolve: {
+        store: function($ocLazyLoad, $rootScope) {
+          $rootScope.loading = true;
+          return $ocLazyLoad.load({
+            name: 'transactions',
+            files: [
+            	'/apps/controllers/transactions.controller.js'
+            ]
+          }).then(function() {
+          });
+        }
+      }
+  		
 //      resolve: {
-//        store: function($ocLazyLoad, $rootScope) {
-//          $rootScope.loading = true;
-//          return $ocLazyLoad.load({
-//            name: 'transactions',
-//            files: [
-//            	'/apps/controllers/transactions.controller.js'
-//            ]
-//          }).then(function() {
+//        load: function($ocLazyLoad) {
+//          return $ocLazyLoad.load ({
+//              name: 'transactions',
+//              files: [
+//              	'/apps/controllers/transactions.controller.js'
+//              ]	
 //          });
 //        }
 //      }

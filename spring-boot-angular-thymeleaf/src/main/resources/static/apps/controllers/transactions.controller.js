@@ -1,4 +1,4 @@
-app.controller('transactionsController', ['$scope', function($scope){
+angular.module('myApp').controller('transactionsController', function($scope, $state) {
 
 	var objTransactions = {
 
@@ -64,4 +64,4 @@ app.controller('transactionsController', ['$scope', function($scope){
 
 		initTransactionsTable();	
 	
-}]);
+});
