@@ -15,6 +15,21 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', fun
   		url: '/',
   		template: '<strong>Oh yeah, You coming home...</strong>'
   	})
+  	.state('categories', {
+  		url: '/categories?tabs',
+  		templateUrl: '/ngviews/categories.html',
+  		controller: 'categoriesController',
+      resolve: {
+        load: function($ocLazyLoad) {
+          return $ocLazyLoad.load ({
+              name: 'categories',
+              files: [
+              	'/apps/controllers/categories.controller.js'
+              ]	
+          });
+        }
+      }
+  	})  	
   	.state('transactions', {
   		url: '/transactions?tabs',
   		templateUrl: '/ngviews/transactions.html',
@@ -31,17 +46,6 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', fun
           });
         }
       }
-  		
-//      resolve: {
-//        load: function($ocLazyLoad) {
-//          return $ocLazyLoad.load ({
-//              name: 'transactions',
-//              files: [
-//              	'/apps/controllers/transactions.controller.js'
-//              ]	
-//          });
-//        }
-//      }
   	})
   	.state('otherwise',{
   		url: "*path",
