@@ -4,11 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class mainController {
+public class MainController {
 	
-//	@RequestMapping("/main")
-//	public String main(){
-//		return "main";
-//	}
-	
+	@RequestMapping("/main")
+	public String main(){
+		return "main";
+	}
 }
