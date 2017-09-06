@@ -9,7 +9,6 @@ angular.module('myApp').controller('formController', function($scope, $state, $h
 		return indexed_array;
 	}
 
-
 	$(".save-Category").click(function() {
 		/**
 		 * ajax
@@ -36,7 +35,7 @@ angular.module('myApp').controller('formController', function($scope, $state, $h
 		//			done : function(e) {
 		//				console.log("DONE");
 		//			}
-		//		});  
+		//		});
 
 		/**
 		 * ajax
