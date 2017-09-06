@@ -47,6 +47,23 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', fun
         }
       }
   	})
+  	.state('form', {
+  		url: '/form?tabs',
+  		templateUrl: '/ngviews/form.html',
+  		controller: 'formController',
+      resolve: {
+        store: function($ocLazyLoad, $rootScope) {
+          $rootScope.loading = true;
+          return $ocLazyLoad.load({
+            name: 'form',
+            files: [
+            	'/apps/controllers/form.controller.js'
+            ]
+          }).then(function() {
+          });
+        }
+      }
+  	})  	
   	.state('otherwise',{
   		url: "*path",
   		template: '<strong>Oh no, you out of this world...</strong'
