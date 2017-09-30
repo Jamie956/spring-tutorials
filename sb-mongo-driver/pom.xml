@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>sb-mongo1</artifactId>
+	<artifactId>sb-mongo-driver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>sb-mongo1</name>
+	<name>sb-mongo-driver</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
