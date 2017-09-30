@@ -7,6 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 	@Id
 	private String _id;
+	@Override
+	public String toString() {
+		return "User [_id=" + _id + ", name=" + name + ", password=" + password + "]";
+	}
 	private String name;
 	private String password;
 	
