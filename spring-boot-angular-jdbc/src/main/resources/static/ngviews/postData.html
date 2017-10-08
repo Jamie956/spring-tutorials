@@ -1,0 +1,26 @@
+<form id="categoryForm">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+	</div>
+	<div class="form-group">
+		<label for="display_name">Display Name</label>
+		<input type="text" class="form-control" id="display_name" name="display_name" placeholder="Display Name">
+	</div>
+	<button class="btn btn-default" ng-click="AddCategory()">Save</button>
+</form>
+
+<!-- 
+<form id="categoryForm" ng-submit="AddCategory()">
+	<div class="form-group">
+		<label for="name">Name</label>
+		<input type="text" class="form-control" id="name" name="name" placeholder="Name" ng-model="category.name" required>
+	</div>
+	<div class="form-group">
+		<label for="display_name">Display Name</label>
+		<input type="text" class="form-control" id="display_name" name="display_name" placeholder="Display Name" 
+		ng-model="category.displayName" required>
+	</div>
+	<input type="submit" value="submit" ng-disable="categoryForm.$invalid"/>
+</form>
+ -->

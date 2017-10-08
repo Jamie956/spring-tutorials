@@ -1,12 +1,12 @@
-angular.module('myApp').controller('categoriesController', function($scope, $state) {
+angular.module('myApp').controller('categoryCtrl', function($scope, $state) {
 
-	var objCategories = {
+	var objCategory = {
     container: {
-      '_id': 'p_categoriesTableContanner',
+      '_id': 'p_categoryTableContanner',
       '_isInit': true,
     },
     ajax: {
-      '_url': '../categories',
+      '_url': '../category',
       '_method': 'get',
     },
     columns: [{
@@ -99,14 +99,14 @@ angular.module('myApp').controller('categoriesController', function($scope, $sta
     }
   }
 
-	function initCategoriesTable() {
-	  var _container = objCategories.container;
-	  var _ajax = objCategories.ajax;
-	  var _columns = objCategories.columns;
-	  var _options = objCategories.options;
-	  var initTransactionsTable = new baseTableView(_container, _ajax, _columns, _options);
+	function initCategoryTable() {
+	  var _container = objCategory.container;
+	  var _ajax = objCategory.ajax;
+	  var _columns = objCategory.columns;
+	  var _options = objCategory.options;
+	  new baseTableView(_container, _ajax, _columns, _options);
 	}
 
-	initCategoriesTable();
+	initCategoryTable();
 	
 });

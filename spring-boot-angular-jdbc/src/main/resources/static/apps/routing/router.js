@@ -15,49 +15,49 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', fun
   		url: '/',
   		template: '<strong>Oh yeah, You coming home...</strong>'
   	})
-  	.state('categories', {
-  		url: '/categories?tabs',
-  		templateUrl: '/ngviews/categories.html',
-  		controller: 'categoriesController',
+  	.state('tab-category', {
+  		url: '/category',
+  		templateUrl: '/ngviews/category.html',
+  		controller: 'categoryCtrl',
       resolve: {
         load: function($ocLazyLoad) {
           return $ocLazyLoad.load ({
-              name: 'categories',
+              name: 'category',
               files: [
-              	'/apps/controllers/categories.controller.js'
+              	'/apps/controllers/category.ctrl.js'
               ]	
           });
         }
       }
-  	})  	
-  	.state('transactions', {
-  		url: '/transactions?tabs',
-  		templateUrl: '/ngviews/transactions.html',
-  		controller: 'transactionsController',
+  	})
+  	.state('tab-transaction', {
+  		url: '/transaction',
+  		templateUrl: '/ngviews/transaction.html',
+  		controller: 'transactionCtrl',
       resolve: {
         store: function($ocLazyLoad, $rootScope) {
           $rootScope.loading = true;
           return $ocLazyLoad.load({
-            name: 'transactions',
+            name: 'transaction',
             files: [
-            	'/apps/controllers/transactions.controller.js'
+            	'/apps/controllers/transaction.ctrl.js'
             ]
           }).then(function() {
           });
         }
       }
   	})
-  	.state('form', {
-  		url: '/form?tabs',
-  		templateUrl: '/ngviews/form.html',
-  		controller: 'formController',
+  	.state('postData', {
+  		url: '/postdata',
+  		templateUrl: '/ngviews/postData.html',
+  		controller: 'postDataCtrl',
       resolve: {
         store: function($ocLazyLoad, $rootScope) {
           $rootScope.loading = true;
           return $ocLazyLoad.load({
-            name: 'form',
+            name: 'postdata',
             files: [
-            	'/apps/controllers/form.controller.js'
+            	'/apps/controllers/postData.ctrl.js'
             ]
           }).then(function() {
           });
@@ -66,7 +66,7 @@ myApp.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', fun
   	})  	
   	.state('otherwise',{
   		url: "*path",
-  		template: '<strong>Oh no, you out of this world...</strong'
+  		template: '<strong>Oh no, you out of this world...</strong>'
   	});
 	$urlRouterProvider.otherwise('/');
 }]);

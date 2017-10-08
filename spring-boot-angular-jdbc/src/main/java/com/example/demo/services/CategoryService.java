@@ -14,7 +14,7 @@ import com.example.demo.repository.Category;
 import com.example.demo.repository.JsonTableModel;
 
 @Repository
-public class CategoriesService {
+public class CategoryService {
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 	
