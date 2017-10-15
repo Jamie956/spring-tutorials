@@ -1,8 +1,5 @@
-package com.example.demo.entity;
+package com.example.demo.domain;
 
-/**
- * Created by Administrator on 2017/8/4 0004.
- */
 public class Product {
     private String id;
     private String name;

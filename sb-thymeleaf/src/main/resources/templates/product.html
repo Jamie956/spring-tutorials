@@ -6,7 +6,7 @@
 		<link rel="stylesheet" th:href="@{css/bootstrap-table.css}"/>
 </head>
 <body>
-	<a th:href="@{css/bootstrap-table.css}">Content路径,默认访问static下的css文件夹</a>
+	<a th:href="@{css/bootstrap-table.css}">get css file</a>
 	
 	<table>
 		<tr>
@@ -14,10 +14,10 @@
 			<th>Name</th>
 			<th>Price</th>
 		</tr>
-		<tr th:each="product : ${products}">
-			<td th:text="${product.id}"></td>
-			<td th:text="${product.name}"></td>
-			<td th:text="${product.price}"></td>
+		<tr th:each="p : ${products}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td th:text="${p.price}"></td>
 		</tr>
 	</table>
 </body>

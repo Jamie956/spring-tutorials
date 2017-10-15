@@ -1,15 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.Product;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.domain.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/8/4 0004.
- */
 @Service
 public class ProductService {
 
