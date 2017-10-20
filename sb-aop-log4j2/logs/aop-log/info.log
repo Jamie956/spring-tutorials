@@ -1,0 +1,47 @@
+[2017-10-21 01:55:04,666][main][INFO][com.example.demo.SbAopLog4j2Application:48] Starting SbAopLog4j2Application on BF-20170516RBXO with PID 11324 (D:\test\sb-aop-log4j2\target\classes started by Administrator in D:\test\sb-aop-log4j2)
+[2017-10-21 01:55:04,672][main][INFO][com.example.demo.SbAopLog4j2Application:593] No active profile set, falling back to default profiles: default
+[2017-10-21 01:55:04,717][main][INFO][org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext:583] Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@145f66e3: startup date [Sat Oct 21 01:55:04 CST 2017]; root of context hierarchy
+[2017-10-21 01:55:04,842][background-preinit][INFO][org.hibernate.validator.internal.util.Version:30] HV000001: Hibernate Validator 5.3.5.Final
+[2017-10-21 01:55:05,971][main][INFO][org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer:89] Tomcat initialized with port(s): 8080 (http)
+[2017-10-21 01:55:05,979][main][INFO][org.apache.catalina.core.StandardService:179] Starting service [Tomcat]
+[2017-10-21 01:55:05,981][main][INFO][org.apache.catalina.core.StandardEngine:179] Starting Servlet Engine: Apache Tomcat/8.5.23
+[2017-10-21 01:55:06,048][localhost-startStop-1][INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:179] Initializing Spring embedded WebApplicationContext
+[2017-10-21 01:55:06,048][localhost-startStop-1][INFO][org.springframework.web.context.ContextLoader:276] Root WebApplicationContext: initialization completed in 1334 ms
+[2017-10-21 01:55:06,177][localhost-startStop-1][INFO][org.springframework.boot.web.servlet.ServletRegistrationBean:190] Mapping servlet: 'dispatcherServlet' to [/]
+[2017-10-21 01:55:06,181][localhost-startStop-1][INFO][org.springframework.boot.web.servlet.FilterRegistrationBean:258] Mapping filter: 'characterEncodingFilter' to: [/*]
+[2017-10-21 01:55:06,182][localhost-startStop-1][INFO][org.springframework.boot.web.servlet.FilterRegistrationBean:258] Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+[2017-10-21 01:55:06,183][localhost-startStop-1][INFO][org.springframework.boot.web.servlet.FilterRegistrationBean:258] Mapping filter: 'httpPutFormContentFilter' to: [/*]
+[2017-10-21 01:55:06,183][localhost-startStop-1][INFO][org.springframework.boot.web.servlet.FilterRegistrationBean:258] Mapping filter: 'requestContextFilter' to: [/*]
+[2017-10-21 01:55:06,535][main][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter:534] Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@145f66e3: startup date [Sat Oct 21 01:55:04 CST 2017]; root of context hierarchy
+[2017-10-21 01:55:06,580][main][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping:543] Mapped "{[/hello],methods=[GET]}" onto public java.lang.String com.example.demo.web.HelloController.hello(java.lang.String)
+[2017-10-21 01:55:06,583][main][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping:543] Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+[2017-10-21 01:55:06,584][main][INFO][org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping:543] Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+[2017-10-21 01:55:06,622][main][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping:362] Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2017-10-21 01:55:06,623][main][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping:362] Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2017-10-21 01:55:06,658][main][INFO][org.springframework.web.servlet.handler.SimpleUrlHandlerMapping:362] Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+[2017-10-21 01:55:06,787][main][INFO][org.springframework.jmx.export.annotation.AnnotationMBeanExporter:431] Registering beans for JMX exposure on startup
+[2017-10-21 01:55:06,800][main][INFO][org.apache.coyote.http11.Http11NioProtocol:179] Initializing ProtocolHandler ["http-nio-8080"]
+[2017-10-21 01:55:06,806][main][INFO][org.apache.coyote.http11.Http11NioProtocol:179] Starting ProtocolHandler ["http-nio-8080"]
+[2017-10-21 01:55:06,816][main][INFO][org.apache.tomcat.util.net.NioSelectorPool:179] Using a shared selector for servlet write/read
+[2017-10-21 01:55:06,830][main][INFO][org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer:201] Tomcat started on port(s): 8080 (http)
+[2017-10-21 01:55:06,834][main][INFO][com.example.demo.SbAopLog4j2Application:57] Started SbAopLog4j2Application in 2.329 seconds (JVM running for 3.345)
+[2017-10-21 01:55:50,716][http-nio-8080-exec-1][INFO][org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:179] Initializing Spring FrameworkServlet 'dispatcherServlet'
+[2017-10-21 01:55:50,716][http-nio-8080-exec-1][INFO][org.springframework.web.servlet.DispatcherServlet:489] FrameworkServlet 'dispatcherServlet': initialization started
+[2017-10-21 01:55:50,734][http-nio-8080-exec-1][INFO][org.springframework.web.servlet.DispatcherServlet:508] FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+[2017-10-21 01:55:50,763][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:38] URL : http://localhost:8080/hello
+[2017-10-21 01:55:50,764][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:39] HTTP_METHOD : GET
+[2017-10-21 01:55:50,764][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:40] IP : 0:0:0:0:0:0:0:1
+[2017-10-21 01:55:50,766][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:41] CLASS_METHOD : com.example.demo.web.HelloController.hello
+[2017-10-21 01:55:50,766][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:42] ARGS : ["bgm"]
+[2017-10-21 01:55:50,770][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:48] RESPONSE : Hello "bgm"
+[2017-10-21 01:55:50,771][http-nio-8080-exec-1][INFO][com.example.demo.aspect.WebLogAspect:49] SPEND TIME : 8
+[2017-10-21 01:56:39,423][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:38] URL : http://localhost:8080/hello
+[2017-10-21 01:56:39,424][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:39] HTTP_METHOD : GET
+[2017-10-21 01:56:39,424][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:40] IP : 0:0:0:0:0:0:0:1
+[2017-10-21 01:56:39,424][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:41] CLASS_METHOD : com.example.demo.web.HelloController.hello
+[2017-10-21 01:56:39,425][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:42] ARGS : ["lalala"]
+[2017-10-21 01:56:39,425][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:48] RESPONSE : Hello "lalala"
+[2017-10-21 01:56:39,426][http-nio-8080-exec-6][INFO][com.example.demo.aspect.WebLogAspect:49] SPEND TIME : 3
+[2017-10-21 01:57:00,813][RMI TCP Connection(2)-127.0.0.1][INFO][org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin:125] Application shutdown requested.
+[2017-10-21 01:57:00,813][RMI TCP Connection(2)-127.0.0.1][INFO][org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext:984] Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@145f66e3: startup date [Sat Oct 21 01:55:04 CST 2017]; root of context hierarchy
+[2017-10-21 01:57:00,817][RMI TCP Connection(2)-127.0.0.1][INFO][org.springframework.jmx.export.annotation.AnnotationMBeanExporter:449] Unregistering JMX-exposed beans on shutdown
