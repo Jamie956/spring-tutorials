@@ -1,0 +1,53 @@
+package com.example.demo;
+
+import java.util.concurrent.Future;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.example.demo.task.AsyncTask;
+import com.example.demo.task.SyncTask;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringApplicationConfiguration(classes = SbAsyncApplication.class)//1.3.2
+@SpringBootTest(classes = SbAsyncApplication.class)
+public class SbAsyncApplicationTests {
+
+	@Autowired
+	private SyncTask syncTask;
+	
+	@Autowired
+	private AsyncTask asyncTask;
+	
+	@Test
+	public void syncTest() throws Exception {
+		syncTask.doTaskOne();
+		syncTask.doTaskTwo();
+		syncTask.doTaskThree();
+	}
+	
+	@Test
+	public void asyncTest() throws Exception {
+		long start = System.currentTimeMillis();
+
+		Future<String> t1 = asyncTask.doTaskOne();
+		Future<String> t2 = asyncTask.doTaskTwo();
+		Future<String> t3 = asyncTask.doTaskThree();
+
+		while(true) {
+			if(t1.isDone() && t2.isDone() && t3.isDone()) {
+				break;
+			}
+			Thread.sleep(1000);
+		}
+
+		long end = System.currentTimeMillis();
+
+		System.out.println("total spend -> " + (end - start) + "ms");
+
+	}
+
+}
