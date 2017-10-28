@@ -15,31 +15,28 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET, value = "")
-    public List<Product> listProducts(){
+    public List<Product> list(){
         return productService.listProducts();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/{id}")
-    public Product getProduct(@PathVariable String id){
+    public Product get(@PathVariable String id){
         return productService.getProduct(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "")
-    public String addProduct(@RequestBody Product product){
+    public void add(@RequestBody Product product){
         productService.addProduct(product);
-        return "successed!";
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public String updateProduct(@RequestBody Product product){
+    public void update(@RequestBody Product product){
         productService.updateProduct(product);
-        return "successed!";
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
-    public String deleteProduct(@PathVariable String id){
+    public void remove(@PathVariable String id){
         productService.deleteProduct(id);
-        return "successed!";
     }
 
 }
