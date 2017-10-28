@@ -1,14 +1,13 @@
 spring:
   application:
-    name: Ribbon-Client
+    name: ribbon-client
     
 server:
-  port: 8085
+  port: 8088
       
-asyoulike:
+servise-hi:
   ribbon:
     eureka:
       enabled: false
-    listOfServers: localhost:8081,localhost:8082,localhost:8083
+    listOfServers: localhost:8082,localhost:8083,localhost:8084
     ServerListRefreshInterval: 1000
-   

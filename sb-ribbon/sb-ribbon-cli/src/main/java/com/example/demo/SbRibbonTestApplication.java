@@ -6,12 +6,12 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 import com.example.demo.config.Configuration;
 
-
 @SpringBootApplication
-@RibbonClient(name = "asyoulike", configuration = Configuration.class)
+@RibbonClient(name = "ribbon-client", configuration = Configuration.class)
 public class SbRibbonTestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SbRibbonTestApplication.class, args);
 	}
+	
 }

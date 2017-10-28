@@ -12,15 +12,21 @@ public class WebController {
 	
 	@LoadBalanced
 	@Bean
-	RestTemplate restTemplate() {
+	private RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-
+	
 	@Autowired
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 
-	@RequestMapping("/hello")
+	@RequestMapping("/")
 	public String hello() {
-		return this.restTemplate.getForObject("http://asyoulike/greeting", String.class);
+		return this.restTemplate.getForObject("http://servise-hi", String.class);
 	}
+	
+	@RequestMapping("/yo")
+	public String yo() {
+		return this.restTemplate.getForObject("http://servise-hi/yo", String.class);
+	}
+	
 }
