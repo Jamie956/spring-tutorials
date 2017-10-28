@@ -2,6 +2,9 @@ spring:
   application:
     name: Ribbon-Client
     
+server:
+  port: 8085
+      
 asyoulike:
   ribbon:
     eureka:
@@ -9,5 +12,3 @@ asyoulike:
     listOfServers: localhost:8081,localhost:8082,localhost:8083
     ServerListRefreshInterval: 1000
    
-server:
-  port: 8085
