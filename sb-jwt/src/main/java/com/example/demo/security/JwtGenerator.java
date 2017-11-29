@@ -11,17 +11,17 @@ import com.example.demo.domain.JwtUser;
 @Component
 public class JwtGenerator {
 
+	private static final String KEY = "myAwesomeKey";
+	
     public String generate(JwtUser jwtUser) {
-
-        Claims claims = Jwts.claims()
-                .setSubject(jwtUser.getUserName());
+        Claims claims = Jwts.claims().setSubject(jwtUser.getUserName());
         claims.put("password", jwtUser.getPassword());
         claims.put("userId", String.valueOf(jwtUser.getId()));
         claims.put("role", jwtUser.getRole());
 
         return Jwts.builder()
                 .setClaims(claims)
-                .signWith(SignatureAlgorithm.HS512, "myAwesomeKey")
+                .signWith(SignatureAlgorithm.HS512, KEY)
                 .compact();
     }
     

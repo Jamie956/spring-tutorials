@@ -37,4 +37,9 @@ public class JwtUser {
     public String getRole() {
         return role;
     }
+
+	@Override
+	public String toString() {
+		return "JwtUser [id=" + id + ", userName=" + userName + ", password=" + password + ", role=" + role + "]";
+	}
 }

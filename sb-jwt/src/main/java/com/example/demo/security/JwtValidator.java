@@ -8,14 +8,14 @@ import com.example.demo.domain.JwtUser;
 
 @Component
 public class JwtValidator {
-    private String secret = "myAwesomeKey";
+    private static final String KEY = "myAwesomeKey";
 
     public JwtUser validate(String token) {
 
         JwtUser jwtUser = null;
         try {
             Claims body = Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(KEY)
                     .parseClaimsJws(token)
                     .getBody();
 
@@ -25,7 +25,7 @@ public class JwtValidator {
             jwtUser.setRole((String) body.get("role"));
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return jwtUser;

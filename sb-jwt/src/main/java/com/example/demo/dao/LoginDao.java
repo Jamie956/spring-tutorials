@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,11 +12,10 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.domain.JwtUser;
 
 @Repository
-public class LoginService {
+public class LoginDao {
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
-	
-	
+
 	private static final RowMapper<JwtUser> itemsMapper = new RowMapper<JwtUser>() {
 		public JwtUser mapRow(ResultSet rs, int rowNum) throws SQLException {
 			JwtUser item = new JwtUser();
@@ -24,18 +23,15 @@ public class LoginService {
 			return item;
 		}
 	};
+
+	public boolean login(JwtUser jwtUser) {
+		String _user_name = jwtUser.getUserName();
+		String _password = jwtUser.getPassword();
+		String _sql = "SELECT email FROM t_merchant WHERE email = '" +_user_name+ "' AND password = '" +_password+ "' ";
+		System.out.println("_sql => "+_sql);
+		List<?> items = jdbcTemplate.query(_sql, itemsMapper);
+		boolean result = ( items.size() > 0 ) ? true : false;
+		return result;
+	}
 	
-	
-	 public JwtUser login(JwtUser jwtUser) {
-			String _sql = "SELECT email FROM t_merchant WHERE email = '" +jwtUser.getUserName()+ "'  ";
-			
-			System.out.println(_sql);
-			
-			List<JwtUser> items = jdbcTemplate.query(_sql, itemsMapper);
-			
-			JwtUser result = null;
-			result = items.get(0); 		        
-		        
-	        return result;
-	    }	
 }
