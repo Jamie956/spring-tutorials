@@ -10,21 +10,15 @@ public class Product {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private Long id;
 	@Column(name = "name")
 	private String name;
 	@Column(name = "price")
-	private String price;
-	public Product() {}
-	public Product(Integer id, String name, String price) {
-		this.id = id;
-		this.name = name;
-		this.price = price;
-	}
-	public Integer getId() {
+	private Integer price;
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -33,11 +27,21 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(Integer price) {
 		this.price = price;
+	}
+	public Product(Long id, String name, Integer price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
