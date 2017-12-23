@@ -1,4 +1,4 @@
-package com.example.demo.domain;
+package com.example.demo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,12 +15,8 @@ public class Product {
 	private String name;
 	@Column(name = "price")
 	private String price;
-	public Product() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public Product() {}
 	public Product(Integer id, String name, String price) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
@@ -43,5 +39,8 @@ public class Product {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
 }
