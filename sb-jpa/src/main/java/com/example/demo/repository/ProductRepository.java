@@ -6,4 +6,6 @@ import com.example.demo.entity.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 	Product findByName(String name);
+	Product findByPrice(Integer price);
+	Product findByNameAndPrice(String name, Integer price);
 }

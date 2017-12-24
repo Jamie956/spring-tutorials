@@ -16,116 +16,122 @@ import com.example.demo.repository.ProductRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootJpaApplicationTests {
+public class ProductDaoTest {
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Test
-	public void all(){
+	public void all() {
 		save();
 		getById();
 		list();
 		update();
 		removeById();
 	}
-	
+
 	@Test
 	public void save() {
 		String name = "apple";
-		Integer price = 999; 
-		Product product = new Product();
-		product.setName(name);
-		product.setPrice(price);
+		Integer price = 999;
+		Product product = new Product(name, price);
 		Product p = productRepository.save(product);
-		
-		System.out.println("p => "+p);
+
+		System.out.println("p => " + p);
 		assertEquals(name, p.getName());
 		assertEquals(price.toString(), p.getPrice().toString());
 	}
-	
+
 	@Test
-	public void saveBatch(){
+	public void saveBatch() {
 		List<Product> ps = new ArrayList<Product>();
-		
+
 		String name1 = "coffee";
-		Integer price1 = 444;
-		Product p1 = new Product();
-		p1.setName(name1);
-		p1.setPrice(price1);
+		Integer price1 = 555;
+		Product p1 = new Product(name1, price1);
 		ps.add(p1);
-		
+
 		String name2 = "dog";
 		Integer price2 = 555;
-		Product p2 = new Product();
-		p2.setName(name2);
-		p2.setPrice(price2);
+		Product p2 = new Product(name2, price2);
 		ps.add(p2);
-		
+
 		productRepository.save(ps);
 	}
-	
+
 	@Test
 	public void isExist() {
 		boolean isExist = productRepository.exists(5L);
-		System.out.println("isExist => "+isExist);
+		System.out.println("isExist => " + isExist);
 	}
-	
+
 	@Test
 	public void getById() {
 		Long id = 1L;
 		Product p = productRepository.findOne(id);
-		
-		System.out.println("p => "+p);
+
+		System.out.println("p => " + p);
 		assertEquals("1", p.getId().toString());
 		assertEquals("apple", p.getName());
 		assertEquals("999", p.getPrice().toString());
 	}
-	
+
 	@Test
 	public void list() {
 		List<Product> ps = productRepository.findAll();
-		System.out.println("ps => "+ps);
+		System.out.println("ps => " + ps);
 	}
-	
+
 	@Test
 	public void listByIds() {
 		List<Long> ids = new ArrayList<Long>();
 		ids.add(5L);
 		ids.add(7L);
-		
+
 		List<Product> ps = productRepository.findAll(ids);
-		System.out.println("ps => "+ps);
+		System.out.println("ps => " + ps);
 	}
-	
+
 	@Test
-	public void count(){
+	public void count() {
 		Long cnt = productRepository.count();
-		System.out.println("cnt => "+cnt);
+		System.out.println("cnt => " + cnt);
 	}
-	
+
 	@Test
 	public void update() {
 		Long id = 1L;
-		Product p =productRepository.findOne(id);
+		Product p = productRepository.findOne(id);
 		p.setPrice(777);
 		productRepository.save(p);
 	}
-	
+
 	@Test
 	public void removeById() {
 		Long id = 1L;
 		productRepository.delete(id);
 	}
-	
+
 	@Test
 	public void removeAll() {
 		productRepository.deleteAll();
 	}
-	
+
 	@Test
 	public void findByName() {
 		Product p = productRepository.findByName("apple");
-		System.out.println("p => "+p);
+		System.out.println("p => " + p);
 	}
-	
+
+	@Test
+	public void findByPrice() {
+		Product p = productRepository.findByPrice(999);
+		System.out.println("p => " + p);
+	}
+
+	@Test
+	public void findByNameAndPrice() {
+		Product p = productRepository.findByNameAndPrice("coffee", 555);
+		System.out.println("p => " + p);
+	}
+
 }
