@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,29 +29,15 @@ public class ProductDaoTest {
 
 	@Test
 	public void save() {
-		String name = "apple";
-		Integer price = 999;
-		Product product = new Product(name, price);
-		Product p = productRepository.save(product);
-
+		Product p = productRepository.save(new Product("apple", 999));
 		System.out.println("p => " + p);
-		assertEquals(name, p.getName());
-		assertEquals(price.toString(), p.getPrice().toString());
 	}
 
 	@Test
 	public void saveBatch() {
 		List<Product> ps = new ArrayList<Product>();
-
-		String name1 = "coffee";
-		Integer price1 = 555;
-		Product p1 = new Product(name1, price1);
-		ps.add(p1);
-
-		String name2 = "dog";
-		Integer price2 = 555;
-		Product p2 = new Product(name2, price2);
-		ps.add(p2);
+		ps.add(new Product("coffee", 555));
+		ps.add(new Product("dog", 555));
 
 		productRepository.save(ps);
 	}
@@ -66,13 +50,8 @@ public class ProductDaoTest {
 
 	@Test
 	public void getById() {
-		Long id = 1L;
-		Product p = productRepository.findOne(id);
-
+		Product p = productRepository.findOne(1L);
 		System.out.println("p => " + p);
-		assertEquals("1", p.getId().toString());
-		assertEquals("apple", p.getName());
-		assertEquals("999", p.getPrice().toString());
 	}
 
 	@Test
@@ -99,16 +78,14 @@ public class ProductDaoTest {
 
 	@Test
 	public void update() {
-		Long id = 1L;
-		Product p = productRepository.findOne(id);
+		Product p = productRepository.findOne(1L);
 		p.setPrice(777);
 		productRepository.save(p);
 	}
 
 	@Test
 	public void removeById() {
-		Long id = 1L;
-		productRepository.delete(id);
+		productRepository.delete(1L);
 	}
 
 	@Test
