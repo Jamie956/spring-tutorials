@@ -1,6 +1,6 @@
 spring:
   application:
-    name: sevice-hi
+    name: music-sevice
     
 server:
   port: 8081
