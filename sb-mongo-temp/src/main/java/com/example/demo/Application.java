@@ -6,9 +6,9 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:/configTest.properties")
-public class SpringBootMongodbApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootMongodbApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
