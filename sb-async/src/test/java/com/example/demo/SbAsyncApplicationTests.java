@@ -12,23 +12,22 @@ import com.example.demo.task.AsyncTask;
 import com.example.demo.task.SyncTask;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(classes = SbAsyncApplication.class)//1.3.2
-@SpringBootTest(classes = SbAsyncApplication.class)
+@SpringBootTest(classes = Application.class)
 public class SbAsyncApplicationTests {
 
 	@Autowired
 	private SyncTask syncTask;
-	
+
 	@Autowired
 	private AsyncTask asyncTask;
-	
+
 	@Test
 	public void syncTest() throws Exception {
 		syncTask.doTaskOne();
 		syncTask.doTaskTwo();
 		syncTask.doTaskThree();
 	}
-	
+
 	@Test
 	public void asyncTest() throws Exception {
 		long start = System.currentTimeMillis();
@@ -37,8 +36,8 @@ public class SbAsyncApplicationTests {
 		Future<String> t2 = asyncTask.doTaskTwo();
 		Future<String> t3 = asyncTask.doTaskThree();
 
-		while(true) {
-			if(t1.isDone() && t2.isDone() && t3.isDone()) {
+		while (true) {
+			if (t1.isDone() && t2.isDone() && t3.isDone()) {
 				break;
 			}
 			Thread.sleep(1000);
