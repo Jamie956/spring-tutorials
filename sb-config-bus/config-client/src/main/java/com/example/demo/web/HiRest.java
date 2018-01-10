@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RefreshScope
-public class HiController {
+public class HiRest {
 	@Value("${foo}")
 	private String foo;
-	
-	@Value("${a}")
-	private String a;
-	
+
+	@Value("${bar}")
+	private String bar;
+
 	@RequestMapping(value = "/")
-	public String get(){
-		return foo +"-"+ a;
+	public String get() {
+		return "foo => " + foo + ";\n" + "bar => " + bar;
 	}
 }
