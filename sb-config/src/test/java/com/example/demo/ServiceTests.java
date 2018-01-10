@@ -3,27 +3,22 @@ package com.example.demo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.service.GetValue;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SbConfigApplicationTests {
-	@Value("${com.jamie.name}")
-    private String name;
-	
+public class ServiceTests {
+
 	@Autowired
-	private Random random;
-	
+	private GetValue getValue;
+
 	@Test
-	public void test1() {
-		System.out.println("name => "+name);
+	public void getName() {
+		String result = getValue.getName();
+		System.out.println("result => " + result);
 	}
-	
-	@Test
-	public void test2() {
-		random.hi();
-	}
-	
+
 }
