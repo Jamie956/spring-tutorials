@@ -14,7 +14,7 @@ import com.example.demo.mapper.UserMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserDaoTest {
+public class UserTest {
 	@Autowired
 	private UserMapper UserMapper;
 	
