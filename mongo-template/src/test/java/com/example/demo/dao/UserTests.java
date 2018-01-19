@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -93,5 +94,17 @@ public class UserTests {
 		Query query = Query.query(Criteria.where("id").is(1));
 		mongoTemplate.remove(query, User.class);
 	}
+	
+	//using date
+	@Test
+	public void insert2() {
+		User u = new User(1L, "puppy", "123456", new Date());
+		mongoTemplate.insert(u);
+	}
 
+	@Test
+	public void findById2() {
+		User u = mongoTemplate.findById(1, User.class);
+		System.out.println("u => " + u);
+	}
 }
