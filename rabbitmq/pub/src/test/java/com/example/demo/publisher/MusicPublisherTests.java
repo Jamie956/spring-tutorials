@@ -19,5 +19,7 @@ public class MusicPublisherTests {
 	public void testpub() {
 		musicPublisher.loadMusic("the sound of silence");
 		musicPublisher.loadMusic("new soul");
+		musicPublisher.loadMusic("tears in heaven");
 	}
+	
 }
