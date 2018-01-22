@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Publisher {
+public class MusicPublisher {
 	
 	@Autowired
 	private AmqpTemplate amqpTemplate;
@@ -14,8 +14,8 @@ public class Publisher {
 	@Value("${rabbitmq.exchange}")
 	private String exchange;
 	
-	public void produceMsg(String msg){
-		amqpTemplate.convertAndSend(exchange, "",msg);
-		System.out.println("Send msg -> " + msg);
+	public void loadMusic(String music){
+		amqpTemplate.convertAndSend(exchange, "",music);
 	}
+	
 }
