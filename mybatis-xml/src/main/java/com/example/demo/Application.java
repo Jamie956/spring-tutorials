@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan("com.example.demo.mapper")
-public class SbMybatisApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SbMybatisApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }

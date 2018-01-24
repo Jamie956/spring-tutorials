@@ -7,20 +7,22 @@
 		<result column="user_sex" property="userSex" javaType="com.example.demo.enums.UserSexEnum"/>
 		<result column="nick_name" property="nickName" jdbcType="VARCHAR" />
 	</resultMap>
-	<sql id="Base_Column_List" >id, user_name, user_sex, nick_name</sql>
-	<insert id="insert" parameterType="com.example.demo.entity.User" >INSERT INTO
-		users
-		(user_name, user_sex, nick_name)
+	<sql id="Base_Column_List" >
+		id, user_name, user_sex, nick_name
+	</sql>
+	<insert id="insert" parameterType="com.example.demo.entity.User" >
+		INSERT INTO users
+			(user_name, user_sex, nick_name)
 		VALUES
-		(#{userName}, #{userSex}, #{nickName})</insert>
+			(#{userName}, #{userSex}, #{nickName})
+	</insert>
 	<select id="getAll" resultMap="BaseResultMap">
 		SELECT
-		<include refid="Base_Column_List" />
+			<include refid="Base_Column_List" />
 		FROM users
 	</select>
 	<select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
-		SELECT
-		<include refid="Base_Column_List" />
+		SELECT <include refid="Base_Column_List" />
 		FROM users
 		WHERE id = #{id}
 	</select>
@@ -30,11 +32,10 @@
 		SET
 			<if test="userName != null">user_name = #{userName},</if>
 			nick_name = #{nickName}
-		WHERE
-			id = #{id}
+		WHERE id = #{id}
 	</update>
-	<delete id="delete" parameterType="java.lang.Long" >DELETE FROM
-		users
-		WHERE
-		id =#{id}</delete>
+	<delete id="delete" parameterType="java.lang.Long" >
+		DELETE FROM users
+		WHERE id =#{id}
+	</delete>
 </mapper>

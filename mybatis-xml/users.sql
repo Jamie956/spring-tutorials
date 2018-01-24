@@ -8,4 +8,3 @@ CREATE TABLE `users` (
   `nick_name` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
