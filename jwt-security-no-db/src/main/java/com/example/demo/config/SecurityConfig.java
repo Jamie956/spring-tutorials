@@ -54,4 +54,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().cacheControl();
     }
     
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http
+//            .authorizeRequests()
+//                .antMatchers("/","/home").permitAll()
+//                .antMatchers("/admin").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                .and()
+//            .formLogin().successHandler(customAuthenticationSuccessHandler)
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//            .logout()
+//                .permitAll();
+//        http.exceptionHandling().accessDeniedPage("/403");
+//    }
+    
 }
