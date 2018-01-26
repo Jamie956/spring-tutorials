@@ -13,7 +13,7 @@ import com.example.demo.task.SyncTask;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
-public class SbAsyncApplicationTests {
+public class ApplicationTests {
 
 	@Autowired
 	private SyncTask syncTask;
