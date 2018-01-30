@@ -19,13 +19,13 @@ public class JpaRedisDaoTest {
 
 	@Autowired
 	private BookRepository bookRepository;
-	
-  @Autowired
-  private RedisTemplate<Long, Book> redisTemplate;
-	
+
+	@Autowired
+	private RedisTemplate<Long, Book> redisTemplate;
+
 	@Test
 	public void save() {
-		Book b = bookRepository.save(new Book("readme",99));
+		Book b = bookRepository.save(new Book("readme", 99));
 		System.out.println(b);
 	}
 
@@ -44,7 +44,7 @@ public class JpaRedisDaoTest {
 			operations.set(key, b, 60, TimeUnit.SECONDS);
 		}
 	}
-	
+
 	@Test
 	public void update() {
 		Book b = bookRepository.findOne(1L);
@@ -53,17 +53,17 @@ public class JpaRedisDaoTest {
 
 		Long key = b.getId();
 		boolean hasKey = redisTemplate.hasKey(key);
-		if(hasKey){
+		if (hasKey) {
 			redisTemplate.delete(key);
 		}
 	}
-	
+
 	@Test
 	public void remove() {
 		Long key = 1L;
 		bookRepository.delete(key);
 		boolean hasKey = redisTemplate.hasKey(key);
-		if(hasKey){
+		if (hasKey) {
 			redisTemplate.delete(key);
 		}
 	}
