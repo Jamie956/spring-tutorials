@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.exception.MyException;
 
-@Controller
-public class HelloController {
+@RestController
+public class ErrorRest {
 
     @RequestMapping("/e1")
     public String e1() throws Exception {
@@ -21,7 +21,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index(ModelMap map) {
-        map.addAttribute("host", "http://123456.com");
+        map.addAttribute("welcome_msg", "Welcome!");
         return "index";
     }
 
