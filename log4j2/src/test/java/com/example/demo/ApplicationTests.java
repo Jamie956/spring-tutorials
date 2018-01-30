@@ -5,16 +5,16 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SbLog4j2Application.class)
-public class SbLog4j2ApplicationTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ApplicationTests {
 
-	private static final Logger logger = LogManager.getLogger(SbLog4j2ApplicationTests.class);
+	private static final Logger logger = LogManager.getLogger(ApplicationTests.class);
 	
 	@Test
-	public void test() throws Exception {
+	public void printLogTest() throws Exception {
 		logger.info("=> info");
 		logger.debug("=> debug");
 		logger.error("=> error");
