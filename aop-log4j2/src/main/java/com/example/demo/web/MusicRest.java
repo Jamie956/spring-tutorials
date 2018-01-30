@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HelloController {
+public class MusicRest {
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     @ResponseBody
-    public String hello(@RequestParam String name) {
-        return "Hello " + name;
+    public String search(@RequestParam String music) {
+        return "Listen " + music;
     }
 
 }
