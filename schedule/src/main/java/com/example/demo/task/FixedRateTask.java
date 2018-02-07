@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class fixedRateTask {
+public class FixedRateTask {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
     //the beginning of the task execution doesn’t wait for the completion of the previous execution

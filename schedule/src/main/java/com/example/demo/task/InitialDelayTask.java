@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
-public class Task2 {
+public class InitialDelayTask {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
 	

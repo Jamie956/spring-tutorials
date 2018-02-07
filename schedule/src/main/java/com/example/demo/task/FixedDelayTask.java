@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-public class fixedDelayTask {
+public class FixedDelayTask {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 	
 	// the previous execution is completed before running again
