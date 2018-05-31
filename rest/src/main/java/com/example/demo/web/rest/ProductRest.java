@@ -25,6 +25,12 @@ public class ProductRest {
 		return new Product(id, "un", "99");
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/get")
+	public Product getById(@RequestParam("id") String id) {
+		System.out.println("id => " + id);
+		return new Product(id, "nasa", "23");
+	}
+	
 	@RequestMapping(method = RequestMethod.POST, value = "")
 	public String save(@RequestBody Product product) {
 		System.out.println("product => " + product);
