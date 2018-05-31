@@ -19,10 +19,10 @@ public class ProductRest {
 		return ps;
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/{id}")
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
 	public Product findById(@PathVariable("id") String id) {
 		System.out.println("id => " + id);
-		return new Product("3", "un", "99");
+		return new Product(id, "un", "99");
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "")
