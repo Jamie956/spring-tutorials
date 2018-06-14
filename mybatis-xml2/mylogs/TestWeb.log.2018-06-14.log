@@ -1,0 +1,54 @@
+2018-06-14 14:09:30.801 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.dao.UserDaoTest], using SpringBootContextLoader
+2018-06-14 14:09:30.812 [main] INFO  o.s.test.context.support.AbstractContextLoader -
+				Could not detect default resource locations for test class [com.example.demo.dao.UserDaoTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-14 14:09:30.813 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils -
+				Could not detect default configuration classes for test class [com.example.demo.dao.UserDaoTest]: UserDaoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-14 14:09:31.109 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Found @SpringBootConfiguration com.example.demo.Application for test class com.example.demo.dao.UserDaoTest
+2018-06-14 14:09:31.136 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-14 14:09:31.199 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2018-06-14 14:09:31.203 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@25a65b77, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2ed0fbae, org.springframework.test.context.support.DirtiesContextTestExecutionListener@212bf671, org.springframework.test.context.transaction.TransactionalTestExecutionListener@14a2f921, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3c87521, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2aece37d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@548a102f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5762806e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@17c386de, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5af97850, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5ef60048]
+2018-06-14 14:09:31.926 [main] INFO  com.example.demo.dao.UserDaoTest -
+				Starting UserDaoTest on jamie with PID 1152 (started by jamie in D:\project\AllSpringBoot\mybatis-xml2)
+2018-06-14 14:09:31.927 [main] INFO  com.example.demo.dao.UserDaoTest -
+				No active profile set, falling back to default profiles: default
+2018-06-14 14:09:32.014 [main] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5ab9e72c: startup date [Thu Jun 14 14:09:32 CST 2018]; root of context hierarchy
+2018-06-14 14:09:34.630 [main] INFO  com.example.demo.dao.UserDaoTest -
+				Started UserDaoTest in 3.198 seconds (JVM running for 4.95)
+2018-06-14 14:09:34.801 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5ab9e72c: startup date [Thu Jun 14 14:09:32 CST 2018]; root of context hierarchy
+2018-06-14 14:12:25.669 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.dao.UserDaoTest], using SpringBootContextLoader
+2018-06-14 14:12:25.680 [main] INFO  o.s.test.context.support.AbstractContextLoader -
+				Could not detect default resource locations for test class [com.example.demo.dao.UserDaoTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-14 14:12:25.681 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils -
+				Could not detect default configuration classes for test class [com.example.demo.dao.UserDaoTest]: UserDaoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-14 14:12:25.902 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Found @SpringBootConfiguration com.example.demo.Application for test class com.example.demo.dao.UserDaoTest
+2018-06-14 14:12:25.921 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-14 14:12:25.946 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2018-06-14 14:12:25.948 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@25a65b77, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2ed0fbae, org.springframework.test.context.support.DirtiesContextTestExecutionListener@212bf671, org.springframework.test.context.transaction.TransactionalTestExecutionListener@14a2f921, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3c87521, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2aece37d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@548a102f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5762806e, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@17c386de, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@5af97850, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5ef60048]
+2018-06-14 14:12:26.609 [main] INFO  com.example.demo.dao.UserDaoTest -
+				Starting UserDaoTest on jamie with PID 1108 (started by jamie in D:\project\AllSpringBoot\mybatis-xml2)
+2018-06-14 14:12:26.611 [main] INFO  com.example.demo.dao.UserDaoTest -
+				No active profile set, falling back to default profiles: default
+2018-06-14 14:12:26.683 [main] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5ab9e72c: startup date [Thu Jun 14 14:12:26 CST 2018]; root of context hierarchy
+2018-06-14 14:12:29.143 [main] INFO  com.example.demo.dao.UserDaoTest -
+				Started UserDaoTest in 3.04 seconds (JVM running for 4.473)
+2018-06-14 14:12:29.985 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				==>  Preparing: select * from category_ 
+2018-06-14 14:12:30.035 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				==> Parameters: 
+2018-06-14 14:12:30.127 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				<==      Total: 3
+2018-06-14 14:12:30.140 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@5ab9e72c: startup date [Thu Jun 14 14:12:26 CST 2018]; root of context hierarchy
