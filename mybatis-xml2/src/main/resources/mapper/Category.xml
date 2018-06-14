@@ -46,7 +46,7 @@
 		select * from category_ where id> #{id} and name like
 		concat('%',#{name},'%')
 	</select>
-	
+
 	<resultMap type="Category" id="categoryBean">
 		<id column="cid" property="id" />
 		<result column="cname" property="name" />
@@ -56,7 +56,7 @@
 			<result column="price" property="price" />
 		</collection>
 	</resultMap>
-	
+
 	<!-- list one to many -->
 	<select id="listCategory2" resultMap="categoryBean">
 		select c.*, p.*, c.id
@@ -66,4 +66,13 @@
 		join
 		product_ p on c.id = p.cid
 	</select>
+	
+	<!-- list by page -->
+	<select id="listCategory3" resultType="Category">
+		select * from category_
+		<if test="start!=null and count!=null">
+			limit #{start},#{count}
+		</if>
+	</select>
+
 </mapper>

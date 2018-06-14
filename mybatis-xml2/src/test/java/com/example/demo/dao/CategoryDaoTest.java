@@ -80,10 +80,18 @@ public class CategoryDaoTest {
 		List<Category> cs = categoryMapper.listCategory2();
 		for(Category c : cs){
 			System.out.println(c);
-			List<Product> ps = c.getProducts();
-			for (Product p : ps) {
-				System.out.println("\t" + p);
-			}
+//			List<Product> ps = c.getProducts();
+//			for (Product p : ps) {
+//				System.out.println("\t" + p);
+//			}
+		}
+	}
+	
+	@Test
+	public void listByPage() {
+		List<Category> cs = categoryMapper.listCategory3(1,2);
+		for(Category c : cs){
+			System.out.println(c);
 		}
 	}
 	

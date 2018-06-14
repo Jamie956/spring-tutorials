@@ -3,6 +3,8 @@ package com.example.demo.mapper;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.example.demo.entity.Category;
 
 
@@ -22,4 +24,6 @@ public interface CategoryMapper {
 	List<Category> listCategoryByIdAndName(Map<String,Object> map);
 	
 	List<Category> listCategory2();
+	
+	public List<Category> listCategory3(@Param("start") int start, @Param("count")int count);
 }
