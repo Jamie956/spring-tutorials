@@ -26,4 +26,6 @@ public interface CategoryMapper {
 	List<Category> listCategory2();
 	
 	public List<Category> listCategory3(@Param("start") int start, @Param("count")int count);
+	
+	List<Category> listCategory4();
 }

@@ -75,4 +75,13 @@
 		</if>
 	</select>
 
+	<!-- property=entityfield; column=DBfield -->
+	<resultMap type="Category" id="rsmap1">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+	</resultMap>
+	<!-- list by result map -->
+	<select id="listCategory4" resultMap="rsmap1">
+		select id, name from category_
+	</select>
 </mapper>
