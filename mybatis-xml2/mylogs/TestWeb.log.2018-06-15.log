@@ -28,3 +28,63 @@
 				<==      Total: 5
 2018-06-15 22:00:56.551 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext -
 				Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@28975c28: startup date [Fri Jun 15 22:00:54 CST 2018]; root of context hierarchy
+2018-06-15 22:44:47.000 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.dao.CategoryDaoTest], using SpringBootContextLoader
+2018-06-15 22:44:47.007 [main] INFO  o.s.test.context.support.AbstractContextLoader -
+				Could not detect default resource locations for test class [com.example.demo.dao.CategoryDaoTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-15 22:44:47.008 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils -
+				Could not detect default configuration classes for test class [com.example.demo.dao.CategoryDaoTest]: CategoryDaoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-15 22:44:47.136 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Found @SpringBootConfiguration com.example.demo.Application for test class com.example.demo.dao.CategoryDaoTest
+2018-06-15 22:44:47.146 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-15 22:44:47.162 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2018-06-15 22:44:47.164 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5af97850, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5ef60048, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1d548a08, org.springframework.test.context.transaction.TransactionalTestExecutionListener@16aa0a0a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@780cb77, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@691a7f8f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@50a7bc6e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@161b062a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@17c1bced, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2d9d4f9d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4034c28c]
+2018-06-15 22:44:47.530 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				Starting CategoryDaoTest on jamie with PID 4660 (started by jamie in D:\project\AllSpringBoot\mybatis-xml2)
+2018-06-15 22:44:47.530 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				No active profile set, falling back to default profiles: default
+2018-06-15 22:44:47.552 [main] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@28975c28: startup date [Fri Jun 15 22:44:47 CST 2018]; root of context hierarchy
+2018-06-15 22:44:48.741 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				Started CategoryDaoTest in 1.451 seconds (JVM running for 4.143)
+2018-06-15 22:44:49.197 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				==>  Preparing: select * from category_ 
+2018-06-15 22:44:49.223 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				==> Parameters: 
+2018-06-15 22:44:49.235 [main] DEBUG c.example.demo.mapper.CategoryMapper.listCategory0 -
+				<==      Total: 5
+2018-06-15 22:44:49.241 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@28975c28: startup date [Fri Jun 15 22:44:47 CST 2018]; root of context hierarchy
+2018-06-15 22:47:14.498 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.dao.CategoryDaoTest], using SpringBootContextLoader
+2018-06-15 22:47:14.506 [main] INFO  o.s.test.context.support.AbstractContextLoader -
+				Could not detect default resource locations for test class [com.example.demo.dao.CategoryDaoTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-06-15 22:47:14.507 [main] INFO  o.s.t.c.support.AnnotationConfigContextLoaderUtils -
+				Could not detect default configuration classes for test class [com.example.demo.dao.CategoryDaoTest]: CategoryDaoTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-06-15 22:47:14.642 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Found @SpringBootConfiguration com.example.demo.Application for test class com.example.demo.dao.CategoryDaoTest
+2018-06-15 22:47:14.651 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-15 22:47:14.667 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Could not instantiate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [javax/servlet/ServletContext]
+2018-06-15 22:47:14.669 [main] INFO  o.s.b.t.context.SpringBootTestContextBootstrapper -
+				Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5af97850, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5ef60048, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1d548a08, org.springframework.test.context.transaction.TransactionalTestExecutionListener@16aa0a0a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@780cb77, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@691a7f8f, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@50a7bc6e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@161b062a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@17c1bced, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2d9d4f9d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4034c28c]
+2018-06-15 22:47:14.985 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				Starting CategoryDaoTest on jamie with PID 9484 (started by jamie in D:\project\AllSpringBoot\mybatis-xml2)
+2018-06-15 22:47:14.986 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				No active profile set, falling back to default profiles: default
+2018-06-15 22:47:15.015 [main] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@28975c28: startup date [Fri Jun 15 22:47:15 CST 2018]; root of context hierarchy
+2018-06-15 22:47:16.233 [main] INFO  com.example.demo.dao.CategoryDaoTest -
+				Started CategoryDaoTest in 1.47 seconds (JVM running for 2.297)
+2018-06-15 22:47:16.777 [main] DEBUG com.example.demo.mapper.CategoryMapper.list -
+				==>  Preparing: select * from category_ 
+2018-06-15 22:47:16.808 [main] DEBUG com.example.demo.mapper.CategoryMapper.list -
+				==> Parameters: 
+2018-06-15 22:47:16.832 [main] DEBUG com.example.demo.mapper.CategoryMapper.list -
+				<==      Total: 5
+2018-06-15 22:47:16.839 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext -
+				Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@28975c28: startup date [Fri Jun 15 22:47:15 CST 2018]; root of context hierarchy

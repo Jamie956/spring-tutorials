@@ -9,7 +9,7 @@ import com.example.demo.entity.Category;
 
 
 public interface CategoryMapper {
-	List<Category> listCategory0();
+	List<Category> list();
 	
 	void addCategory(Category category);
 	

@@ -5,7 +5,7 @@
 
 <mapper namespace="com.example.demo.mapper.CategoryMapper">
 	<!-- simple list -->
-	<select id="listCategory0" resultType="Category">
+	<select id="list" resultType="Category">
 		select * from category_
 	</select>
 
@@ -33,14 +33,14 @@
 		name=#{name} where id=#{id}
 	</update>
 
-	<!-- simple list by name -->
+	<!-- list by name -->
 	<select id="listCategoryByName" parameterType="string"
 		resultType="Category">
 		select * from category_ where name like
 		concat('%',#{0},'%')
 	</select>
 
-	<!-- simple list by id and name -->
+	<!-- list by id and name -->
 	<select id="listCategoryByIdAndName" parameterType="map"
 		resultType="Category">
 		select * from category_ where id> #{id} and name like

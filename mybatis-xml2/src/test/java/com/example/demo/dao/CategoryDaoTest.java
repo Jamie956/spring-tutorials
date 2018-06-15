@@ -22,7 +22,7 @@ public class CategoryDaoTest {
 	
 	@Test
 	public void simpleList() {
-		List<Category> cs =  categoryMapper.listCategory0();
+		List<Category> cs =  categoryMapper.list();
 		for(Category c:cs) {
 			System.out.println(c);
 		}
