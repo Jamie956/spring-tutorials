@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.Product;
 import com.example.demo.mapper.CategoryMapper;
 
 @RunWith(SpringRunner.class)
@@ -22,7 +23,7 @@ public class CategoryDaoTest {
 	
 	@Test
 	public void simpleList() {
-		List<Category> cs =  categoryMapper.list();
+		List<Category> cs =  categoryMapper.findAll();
 		for(Category c:cs) {
 			System.out.println(c);
 		}
@@ -32,32 +33,32 @@ public class CategoryDaoTest {
 	public void simpleInsert() {
 		Category c = new Category();
 		c.setName("new Category");
-		categoryMapper.addCategory(c);
+		categoryMapper.create(c);
 	}
 	
 	@Test
 	public void simpleDelete() {
 		Category c = new Category();
-		c.setId(2);
-		categoryMapper.deleteCategory(c);
+		c.setId(4);
+		categoryMapper.remove(c);
 	}
 	
 	@Test
 	public void simpleFindById() {
-		Category rs = categoryMapper.getCategory(1);
+		Category rs = categoryMapper.findById(1);
 		System.out.println(rs);
 	}
 	
 	@Test
 	public void simpleUpdate() {
-		Category c = categoryMapper.getCategory(4);
-		c.setName("update category");
-		categoryMapper.updateCategory(c);
+		Category c = categoryMapper.findById(1);
+		c.setName("update category2");
+		categoryMapper.update(c);
 	}
 	
 	@Test
 	public void simpleListByName() {
-		List<Category> cs = categoryMapper.listCategoryByName("cat");
+		List<Category> cs = categoryMapper.findByName("cat");
 		for(Category c : cs){
 			System.out.println(c);
 		}
@@ -68,7 +69,7 @@ public class CategoryDaoTest {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", 1);
 		params.put("name", "cat");
-		List<Category> cs = categoryMapper.listCategoryByIdAndName(params);
+		List<Category> cs = categoryMapper.findByIdAndName(params);
 		for(Category c : cs){
 			System.out.println(c);
 		}
@@ -76,27 +77,19 @@ public class CategoryDaoTest {
 	
 	@Test
 	public void listOneToMany() {
-		List<Category> cs = categoryMapper.listCategory2();
+		List<Category> cs = categoryMapper.findJoinProduct();
 		for(Category c : cs){
 			System.out.println(c);
-//			List<Product> ps = c.getProducts();
-//			for (Product p : ps) {
-//				System.out.println("\t" + p);
-//			}
+			List<Product> ps = c.getProducts();
+			for (Product p : ps) {
+				System.out.println("\t" + p);
+			}
 		}
 	}
 	
 	@Test
 	public void listByPage() {
-		List<Category> cs = categoryMapper.listCategory3(1,2);
-		for(Category c : cs){
-			System.out.println(c);
-		}
-	}
-	
-	@Test
-	public void listByResultMap() {
-		List<Category> cs = categoryMapper.listCategory4();
+		List<Category> cs = categoryMapper.findByPage(1,2);
 		for(Category c : cs){
 			System.out.println(c);
 		}

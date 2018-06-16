@@ -5,46 +5,38 @@
 
 <mapper namespace="com.example.demo.mapper.CategoryMapper">
 	<!-- simple list -->
-	<select id="list" resultType="Category">
-		select * from category_
+	<select id="findAll" resultType="Category">
+		select id, name from category_
 	</select>
 
 	<!-- simple insert -->
-	<insert id="addCategory" parameterType="Category">
-		insert into category_ (
-		name ) values (#{name})
+	<insert id="create" parameterType="Category">
+		insert into category_ ( name ) values (#{name})
 	</insert>
 
 	<!-- simple delete -->
-	<delete id="deleteCategory" parameterType="Category">
-		delete from category_
-		where id= #{id}
+	<delete id="remove" parameterType="Category">
+		delete from category_ where id= #{id}
 	</delete>
 
 	<!-- simple find by id -->
-	<select id="getCategory" parameterType="_int" resultType="Category">
-		select
-		* from category_ where id= #{id}
+	<select id="findById" parameterType="_int" resultType="Category">
+		select id, name from category_ where id= #{id}
 	</select>
 
 	<!-- simple update -->
-	<update id="updateCategory" parameterType="Category">
-		update category_ set
-		name=#{name} where id=#{id}
+	<update id="update" parameterType="Category">
+		update category_ set name=#{name} where id=#{id}
 	</update>
 
 	<!-- list by name -->
-	<select id="listCategoryByName" parameterType="string"
-		resultType="Category">
-		select * from category_ where name like
-		concat('%',#{0},'%')
+	<select id="findByName" parameterType="string" resultType="Category">
+		select id, name from category_ where name like concat('%',#{0},'%')
 	</select>
 
 	<!-- list by id and name -->
-	<select id="listCategoryByIdAndName" parameterType="map"
-		resultType="Category">
-		select * from category_ where id> #{id} and name like
-		concat('%',#{name},'%')
+	<select id="findByIdAndName" parameterType="map" resultType="Category">
+		select id, name from category_ where id> #{id} and name like concat('%',#{name},'%')
 	</select>
 
 	<resultMap type="Category" id="categoryBean">
@@ -56,32 +48,20 @@
 			<result column="price" property="price" />
 		</collection>
 	</resultMap>
-
 	<!-- list one to many -->
-	<select id="listCategory2" resultMap="categoryBean">
-		select c.*, p.*, c.id
-		'cid',
-		p.id 'pid', c.name 'cname', p.name 'pname' from
-		category_ c left
-		join
+	<select id="findJoinProduct" resultMap="categoryBean">
+		select c.*, p.*, c.id 'cid', p.id 'pid', c.name 'cname', p.name 'pname' from
+		category_ c 
+		left join
 		product_ p on c.id = p.cid
 	</select>
 	
 	<!-- list by page -->
-	<select id="listCategory3" resultType="Category">
-		select * from category_
+	<select id="findByPage" resultType="Category">
+		select id, name from category_
 		<if test="start!=null and count!=null">
 			limit #{start},#{count}
 		</if>
 	</select>
 
-	<!-- property=entityfield; column=DBfield -->
-	<resultMap type="Category" id="rsmap1">
-		<id property="id" column="id" />
-		<result property="name" column="name" />
-	</resultMap>
-	<!-- list by result map -->
-	<select id="listCategory4" resultMap="rsmap1">
-		select id, name from category_
-	</select>
 </mapper>

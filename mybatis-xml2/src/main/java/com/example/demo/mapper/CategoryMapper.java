@@ -9,23 +9,22 @@ import com.example.demo.entity.Category;
 
 
 public interface CategoryMapper {
-	List<Category> list();
+	List<Category> findAll();
 	
-	void addCategory(Category category);
+	void create(Category category);
 	
-	void deleteCategory(Category category);
+	void remove(Category category);
 	
-	Category getCategory(int id);
+	Category findById(int id);
 	
-	void updateCategory(Category category);
+	void update(Category category);
 	
-	List<Category> listCategoryByName(String name);
+	List<Category> findByName(String name);
 	
-	List<Category> listCategoryByIdAndName(Map<String,Object> map);
+	List<Category> findByIdAndName(Map<String,Object> map);
 	
-	List<Category> listCategory2();
+	List<Category> findJoinProduct();
 	
-	public List<Category> listCategory3(@Param("start") int start, @Param("count")int count);
+	List<Category> findByPage(@Param("start") int start, @Param("count")int count);
 	
-	List<Category> listCategory4();
 }
