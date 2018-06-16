@@ -28,18 +28,15 @@ public class OrderItemDaoTest {
 	
 	@Test
 	public void insertManyToMany(){
-		Order o = orderMapper.getOrder(1);
-		Product p = productMapper.getProduct(6);
-		
-		System.out.println(o);
-		System.out.println(p);
+		Order o = orderMapper.findById(1);
+		Product p = productMapper.findByIdJoinProduct(6);
 		
 		OrderItem oi = new OrderItem();
 		oi.setProduct(p);
 		oi.setOrder(o);
 		oi.setNumber(200);
 		
-		orderItemMapper.addOrderItem(oi);
+		orderItemMapper.create(oi);
 	}
 
 }

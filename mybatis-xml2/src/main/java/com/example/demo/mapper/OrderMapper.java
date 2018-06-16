@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.entity.Order;
 
 public interface OrderMapper {
-	List<Order> listOrder();
-	Order getOrder(int id);
-	void deleteOrder(int id);
+	List<Order> findJoinOrderItemAndProduct();
+	Order findById(int id);
+	void removeWithOrderItem(int id);
 }

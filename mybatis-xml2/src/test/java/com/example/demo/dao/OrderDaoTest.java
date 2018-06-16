@@ -19,10 +19,9 @@ public class OrderDaoTest {
 	@Autowired
 	private OrderMapper orderMapper;
 
-	
 	@Test
 	public void listManyToMany() {
-		List<Order> os = orderMapper.listOrder();
+		List<Order> os = orderMapper.findJoinOrderItemAndProduct();
 		for (Order o : os) {
 			System.out.println(o.getCode());
 			List<OrderItem> ois = o.getOrderItems();
@@ -35,7 +34,16 @@ public class OrderDaoTest {
 
 	@Test
 	public void deleteMulti() {
-		orderMapper.deleteOrder(2);
+		orderMapper.removeWithOrderItem(2);
 	}
 	
+	@Test 
+	public void findById(){
+		Order o = orderMapper.findById(1);
+		System.out.println(o.getCode());
+		List<OrderItem> ois = o.getOrderItems();
+		for(OrderItem oi : ois){
+			System.out.println(oi);
+		}
+	}
 }

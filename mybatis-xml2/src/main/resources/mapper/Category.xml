@@ -4,11 +4,24 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mapper.CategoryMapper">
+	<sql id="Base_Column_List" >
+		id, name
+	</sql>
+
 	<!-- simple list -->
 	<select id="findAll" resultType="Category">
-		select id, name from category_
+		select 
+			<include refid="Base_Column_List" /> 
+		from category_
 	</select>
 
+	<!-- simple find by id -->
+	<select id="findById" parameterType="_int" resultType="Category">
+		select 
+			<include refid="Base_Column_List" />
+		from category_ where id= #{id}
+	</select>
+	
 	<!-- simple insert -->
 	<insert id="create" parameterType="Category">
 		insert into category_ ( name ) values (#{name})
@@ -18,11 +31,6 @@
 	<delete id="remove" parameterType="Category">
 		delete from category_ where id= #{id}
 	</delete>
-
-	<!-- simple find by id -->
-	<select id="findById" parameterType="_int" resultType="Category">
-		select id, name from category_ where id= #{id}
-	</select>
 
 	<!-- simple update -->
 	<update id="update" parameterType="Category">
@@ -41,19 +49,22 @@
 
 	<resultMap type="Category" id="categoryBean">
 		<id column="cid" property="id" />
-		<result column="cname" property="name" />
+		<result column="cname" property="name" jdbcType="VARCHAR" />
 		<collection property="products" ofType="Product">
 			<id column="pid" property="id" />
 			<result column="pname" property="name" />
 			<result column="price" property="price" />
 		</collection>
 	</resultMap>
+	
 	<!-- list one to many -->
 	<select id="findJoinProduct" resultMap="categoryBean">
-		select c.*, p.*, c.id 'cid', p.id 'pid', c.name 'cname', p.name 'pname' from
-		category_ c 
+		select c.*, p.*, 
+			c.id 'cid', c.name 'cname', 
+			p.id 'pid', p.name 'pname'
+		from category_ c 
 		left join
-		product_ p on c.id = p.cid
+			product_ p on c.id = p.cid
 	</select>
 	
 	<!-- list by page -->

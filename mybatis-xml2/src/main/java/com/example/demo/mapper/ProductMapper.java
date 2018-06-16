@@ -1,18 +1,21 @@
 package com.example.demo.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.demo.entity.Product;
 
 public interface ProductMapper {
-	List<Product> listProduct();
-	Product getProduct(int id);
-	List<Product> listProduct2();
-	List<Product> listProduct3();
-	void updateProduct();
-	List<Product> listProduct4();
-	void updateProduct2();
-	List<Product> listProduct5();
-	List<Product> listProduct6();
-	List<Product> listProduct7();
+	List<Product> findJoinProduct();
+	Product findByIdJoinProduct(int id);
+	List<Product> findByIf();
+	List<Product> findByIf(Map<String, Object> params);
+	List<Product> findByWhere();
+	List<Product> findByWhere(Map<String, Object> params);
+	void updateBySet(Product product);
+	List<Product> findByTrimWhere(Map<String, Object> params);
+	void updateByTrimSet(Product product);
+	List<Product> findByWhenOtherwise(Map<String, Object> params);
+	List<Product> findByForeach(List<Integer> ids);
+	List<Product> findByBind(Map<String, String> params);
 }

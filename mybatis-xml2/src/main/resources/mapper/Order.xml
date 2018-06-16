@@ -7,7 +7,6 @@
 	<resultMap type="Order" id="orderBean">
 		<id column="oid" property="id" />
 		<result column="code" property="code" />
-
 		<collection property="orderItems" ofType="OrderItem">
 			<id column="oiid" property="id" />
 			<result column="number" property="number" />
@@ -18,30 +17,35 @@
 			</association>
 		</collection>
 	</resultMap>
-
+	
 	<!-- list many to many -->
-	<select id="listOrder" resultMap="orderBean">
-		select o.*,p.*,oi.*, o.id
-		'oid', p.id 'pid', oi.id 'oiid', p.name 'pname'
+	<select id="findJoinOrderItemAndProduct" resultMap="orderBean">
+		select o.*, p.*, oi.*,
+			o.id 'oid',
+			p.id 'pid', p.name 'pname',
+			oi.id 'oiid'
 		from order_ o
 		left join
-		order_item_ oi on o.id =oi.oid
-		left join product_ p on p.id = oi.pid
+			order_item_ oi on o.id = oi.oid
+		left join
+			product_ p on p.id = oi.pid
 	</select>
 
 	<!-- get by id -->
-	<select id="getOrder" resultMap="orderBean">
-		select o.*,p.*,oi.*, o.id 'oid',
-		p.id 'pid', oi.id 'oiid', p.name 'pname'
+	<select id="findById" resultMap="orderBean">
+		select o.*, p.*, oi.*,
+			o.id 'oid',
+			p.id 'pid', oi.id 'oiid', p.name 'pname'
 		from order_ o
 		left join
-		order_item_ oi on o.id =oi.oid
-		left join product_ p on p.id = oi.pid
+			order_item_ oi on o.id =oi.oid
+		left join 
+			product_ p on p.id = oi.pid
 		where o.id = #{id}
 	</select>
 
 	<!-- delete multi -->
-	<delete id="deleteOrder">
+	<delete id="removeWithOrderItem">
 		delete from order_item_ where oid = #{id};
 		delete from order_ where id= #{id};
 	</delete>
