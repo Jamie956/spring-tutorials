@@ -25,5 +25,9 @@ public class Order {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
- 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", code=" + code + ", orderItems=" + orderItems + "]";
+	}
+
 }

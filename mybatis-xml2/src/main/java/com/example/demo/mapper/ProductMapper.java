@@ -6,7 +6,7 @@ import com.example.demo.entity.Product;
 
 public interface ProductMapper {
 	List<Product> listProduct();
-	Product getProduct();
+	Product getProduct(int id);
 	List<Product> listProduct2();
 	List<Product> listProduct3();
 	void updateProduct();
