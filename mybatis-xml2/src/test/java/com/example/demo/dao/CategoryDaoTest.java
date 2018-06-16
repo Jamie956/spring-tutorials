@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.mapper.CategoryMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,10 +25,14 @@ public class CategoryDaoTest {
 	
 	@Test
 	public void simpleList() {
+		PageHelper.offsetPage(0, 2);
 		List<Category> cs =  categoryMapper.findAll();
 		for(Category c:cs) {
 			System.out.println(c);
 		}
+        PageInfo<Category> pageInfo = new PageInfo<Category>(cs);
+        System.out.println("总数："+pageInfo.getTotal());
+        System.out.println(pageInfo);
 	}
 	
 	@Test
