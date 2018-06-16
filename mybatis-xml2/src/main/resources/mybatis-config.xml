@@ -6,6 +6,7 @@
 		<setting name="lazyLoadingEnabled" value="true" />
 		<!-- 将积极加载改为消息加载即按需加载 -->
 		<setting name="aggressiveLazyLoading" value="false" />
+		<setting name="useGeneratedKeys" value="true"/>
 	</settings>
 
 	<typeAliases>

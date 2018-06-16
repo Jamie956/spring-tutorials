@@ -11,10 +11,10 @@ import com.example.demo.entity.Category;
 @Mapper
 public interface CategoryMapper {
 	List<Category> findAll();
-	void create(Category category);
-	void remove(Category category);
+	int create(Category category);
+	int remove(Category category);
 	Category findById(int id);
-	void update(Category category);
+	int update(Category category);
 	List<Category> findByName(String name);
 	List<Category> findByIdAndName(Map<String,Object> map);
 	List<Category> findJoinProduct();

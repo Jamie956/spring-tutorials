@@ -23,7 +23,12 @@
 	</select>
 	
 	<!-- simple insert -->
-	<insert id="create" parameterType="Category">
+	<insert id="create" parameterType="Category" useGeneratedKeys="true" keyProperty="id">
+		<!-- 
+		<selectKey resultType="java.lang.Short" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+    	-->
 		insert into category_ ( name ) values (#{name})
 	</insert>
 

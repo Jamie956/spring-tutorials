@@ -39,14 +39,17 @@ public class CategoryDaoTest {
 	public void simpleInsert() {
 		Category c = new Category();
 		c.setName("new Category");
-		categoryMapper.create(c);
+		int rs = categoryMapper.create(c);
+		System.out.println(rs);
+		System.out.println(c.getId());
 	}
 	
 	@Test
 	public void simpleDelete() {
 		Category c = new Category();
 		c.setId(4);
-		categoryMapper.remove(c);
+		int rs = categoryMapper.remove(c);
+		System.out.println(rs);
 	}
 	
 	@Test
@@ -59,7 +62,8 @@ public class CategoryDaoTest {
 	public void simpleUpdate() {
 		Category c = categoryMapper.findById(1);
 		c.setName("update category2");
-		categoryMapper.update(c);
+		int rs = categoryMapper.update(c);
+		System.out.println(rs);
 	}
 	
 	@Test
