@@ -1,1 +1,3 @@
-hi spring boot 
+## hi spring boot 
+
+[admin](/admin/README.md). 
