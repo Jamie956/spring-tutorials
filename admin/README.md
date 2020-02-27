@@ -1,4 +1,4 @@
-# What admin: Watch client health, GC, Memory, JVM ...
+**What admin: Watch client health, GC, Memory, JVM ...**
 
 ## admin server
 dependency:
