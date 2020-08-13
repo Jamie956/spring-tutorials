@@ -1,5 +1,6 @@
-package com.example;
+package com.jamie.aop;
 
+import com.jamie.entity.Product;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,9 +13,9 @@ import java.util.List;
 
 @Aspect
 @Component
-public class ParamAspect {
+public class MyAspect {
 
-    @Pointcut("execution(public * com.example..*.*(..))")
+    @Pointcut("execution(public * com.jamie..*.*(..))")
     public void paramPointCut() {
     }
 

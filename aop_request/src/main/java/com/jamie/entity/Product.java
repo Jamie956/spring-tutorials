@@ -1,4 +1,4 @@
-package com.example;
+package com.jamie.entity;
 
 public class Product {
     private String id;
