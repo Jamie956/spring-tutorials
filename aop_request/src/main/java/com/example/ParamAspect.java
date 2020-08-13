@@ -19,7 +19,7 @@ public class ParamAspect {
     }
 
     @Around("paramPointCut()")
-    public Object ReplaceUserId(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object balabala(ProceedingJoinPoint joinPoint) throws Throwable {
 
         MethodSignature msg = (MethodSignature) joinPoint.getSignature();
         List<String> paramNameList = Arrays.asList(msg.getParameterNames());
@@ -27,7 +27,7 @@ public class ParamAspect {
         Object[] args = joinPoint.getArgs();
 
         Product product = (Product) args[0];
-        product.setName("update");
+        product.setName("Martin");
         return joinPoint.proceed(args);
     }
 }

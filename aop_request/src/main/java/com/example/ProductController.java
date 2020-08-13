@@ -8,20 +8,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    /**
-     * localhost:8080/product/get
-     *
-     * {
-     *     "id":"1",
-     *     "name": "jamie",
-     *     "price": 1
-     * }
-     * @param product
-     * @return
+    /*
+      url: localhost:8085/product/get
+
+      body:
+      {
+          "id":"1",
+          "name": "jamie",
+          "price": 1
+      }
      */
     @GetMapping("get")
-    public String get(@RequestBody Product product) {
-        System.out.println("product => " + product);
-        return "ok";
+    public Product get(@RequestBody Product product) {
+        return product;
     }
 }
