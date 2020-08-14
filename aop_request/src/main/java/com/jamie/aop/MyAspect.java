@@ -29,7 +29,12 @@ public class MyAspect {
 
         Product product = (Product) args[0];
         product.setName("Martin");
-        return joinPoint.proceed(args);
+
+        Object result = joinPoint.proceed(args);
+
+        System.out.println("after");
+
+        return result;
     }
 }
 
