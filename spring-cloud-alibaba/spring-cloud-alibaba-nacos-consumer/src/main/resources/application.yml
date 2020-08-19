@@ -1,13 +1,13 @@
 spring:
   application:
-    name: nacos-provider
+    name: nacos-consumer
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
 
 server:
-  port: 8083
+  port: 9091
 
 management:
   endpoints:
