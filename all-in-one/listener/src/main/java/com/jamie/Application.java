@@ -11,8 +11,8 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public StartupListener startupListener() {
-        return new StartupListener();
-    }
+//    @Bean
+//    public StartupListener startupListener() {
+//        return new StartupListener();
+//    }
 }
