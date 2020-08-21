@@ -22,12 +22,10 @@ public class MyFilter implements Filter {
 
         HttpServletRequest HRrequest = (HttpServletRequest) request;
 
-
         // 当前过滤器处理完了交给下一个过滤器处理
         chain.doFilter(request, response);
 
         System.out.println("dofilter after");
-
     }
 
     @Override
