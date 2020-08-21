@@ -16,6 +16,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //对来自/** 全路径请求进行拦截
+        // addPathPatterns 用于添加拦截的规则，excludePathPatterns 用于排除拦截的规则
 //        registry.addInterceptor(myInterceptor).addPathPatterns("/**");
         registry.addInterceptor(new MyInterceptor());
     }
