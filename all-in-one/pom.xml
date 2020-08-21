@@ -10,6 +10,8 @@
 
     <modules>
         <module>listener</module>
+        <module>filter</module>
+        <module>interceptor</module>
     </modules>
 
     <properties>
