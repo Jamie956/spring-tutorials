@@ -1,11 +1,13 @@
 spring:
   application:
-    name: eureka-client
+    name: music-sevice
 
 server:
-  port: 8082
+  port: 8081
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+
