@@ -27,13 +27,22 @@ public class MyAspect {
 
     @Around("paramPointCut()")
     public Object balabala(ProceedingJoinPoint joinPoint) throws Throwable {
-
-        //获取参数名字
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+
+        //获取参数名
         String[] paramList = signature.getParameterNames();
+        //获取参数值
+        Object[] args = joinPoint.getArgs();
+
+        //获取类名
+        String clazzName = signature.getDeclaringType().getName();
+        String clazzName2 = signature.getDeclaringType().getSimpleName();
+        //获取方法名
+        String methodName = signature.getName();
 
         //获取类注解 RequestMapping
         Annotation clazzAnnotation = joinPoint.getTarget().getClass().getAnnotation(RequestMapping.class);
+        Annotation clazzAnnotation2 = signature.getDeclaringType().getAnnotation(RequestMapping.class);
         //获取方法注解 GetMapping
         Annotation methodAnnotation = signature.getMethod().getAnnotation(GetMapping.class);
 
@@ -41,10 +50,8 @@ public class MyAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String requestURI = request.getRequestURI();
 
-        //获取参数的值
-        Object[] args = joinPoint.getArgs();
 
-        //修改参数的值
+        //修改参数值
         Product product = (Product) args[0];
         product.setName("Martin");
 

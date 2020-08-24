@@ -17,7 +17,7 @@ public class ProductController {
       }
      */
     @GetMapping("/get")
-    public Product get(@RequestBody Product product) {
+    public Product getMethod(@RequestBody Product product) {
         return product;
     }
 }

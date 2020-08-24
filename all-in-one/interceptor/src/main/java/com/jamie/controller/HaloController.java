@@ -14,9 +14,8 @@ public class HaloController {
     }
 
     /*
-      url: localhost:8085/hi/get
+      localhost:8085/hi/get
 
-      body:
       {
           "id":"1",
           "name": "jamie",
