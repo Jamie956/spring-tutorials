@@ -17,6 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <springboot.version>2.2.1.RELEASE</springboot.version>
+        <lombok.version>1.18.10</lombok.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -39,7 +40,13 @@
                 <artifactId>spring-boot-starter-aop</artifactId>
                 <version>${springboot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>
