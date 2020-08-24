@@ -21,6 +21,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.javadoc.skip>true</maven.javadoc.skip>
+
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-pool2.version>2.7.0</commons-pool2.version>
+        <commons-io.version>1.3.2</commons-io.version>
     </properties>
 
     <dependencyManagement>
@@ -45,6 +49,29 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+
+            <!-- apache.commons -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.68</version>
+            </dependency>
+
         </dependencies>
 
     </dependencyManagement>

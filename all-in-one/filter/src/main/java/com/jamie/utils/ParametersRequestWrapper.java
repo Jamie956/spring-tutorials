@@ -4,10 +4,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.*;
 
-public class ParametersWrapper extends HttpServletRequestWrapper {
+public class ParametersRequestWrapper extends HttpServletRequestWrapper {
     private final Map<String, String> customHeaders;
 
-    public ParametersWrapper(HttpServletRequest request) {
+    public ParametersRequestWrapper(HttpServletRequest request) {
         super(request);
         this.customHeaders = new HashMap<>();
     }

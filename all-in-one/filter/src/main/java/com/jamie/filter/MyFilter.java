@@ -14,14 +14,17 @@ import java.io.IOException;
 public class MyFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         //修改header
-//        ModifyParametersWrapper mParametersWrapper = new ModifyParametersWrapper(request);
-//        mParametersWrapper.putHeader("token","123456");
-//        filterChain.doFilter(mParametersWrapper, response);
+//        ParametersRequestWrapper requestWrapper = new ParametersRequestWrapper(request);
+//        requestWrapper.putHeader("token","123456");
+//        filterChain.doFilter(requestWrapper, response);
 
         //修改参数
-        HttpServletRequest wrapper = new BodyRequestWrapper(request);//定义一个新的request（名称是wrapper），
-        filterChain.doFilter(wrapper, response);//将修改过的request（wrapper）放回
+//        HttpServletRequest requestWrapper = new BodyRequestWrapper(request);
+//        filterChain.doFilter(requestWrapper, response);
+
+        //修改body
+        BodyRequestWrapper requestWrapper = new BodyRequestWrapper((HttpServletRequest) request);
+        filterChain.doFilter(requestWrapper, response);
     }
 }

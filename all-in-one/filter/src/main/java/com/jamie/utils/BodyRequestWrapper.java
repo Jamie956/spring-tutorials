@@ -1,55 +1,56 @@
 package com.jamie.utils;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BodyRequestWrapper extends HttpServletRequestWrapper {
-    private final String body;
 
     public BodyRequestWrapper(HttpServletRequest request) {
         super(request);
-        StringBuilder stringBuilder = new StringBuilder();
-        BufferedReader bufferedReader = null;
-        InputStream inputStream = null;
-        try {
-            inputStream = request.getInputStream();
-            if (inputStream != null) {
-                bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                char[] charBuffer = new char[128];
-                int bytesRead = -1;
-                while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
-                    stringBuilder.append(charBuffer, 0, bytesRead);
-                }
-            } else {
-                stringBuilder.append("");
-            }
-        } catch (IOException ex) {
-
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (bufferedReader != null) {
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        body = stringBuilder.toString();
     }
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(body.getBytes());
+
+        //非json类型，直接返回
+        if (!super.getHeader(HttpHeaders.CONTENT_TYPE).equalsIgnoreCase(MediaType.APPLICATION_JSON_VALUE)) {
+            return super.getInputStream();
+        }
+        //从输入流中取出body串, 如果为空，直接返回
+        String reqBodyStr = IOUtils.toString(super.getInputStream(), "utf-8");
+        if (StringUtils.isEmpty(reqBodyStr)) {
+            return super.getInputStream();
+        }
+        //reqBodyStr转为Map对象
+        Map<String, Object> paramMap = new ObjectMapper().readValue(reqBodyStr, new TypeReference<HashMap<String, Object>>() {
+        });
+
+        //修改参数
+        for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
+            entry.setValue("2222");
+        }
+
+        //重新构造一个输入流对象
+        byte[] bytes = JSON.toJSONString(paramMap).getBytes("utf-8");
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+
+
         ServletInputStream servletInputStream = new ServletInputStream() {
             @Override
             public boolean isFinished() {
@@ -67,7 +68,7 @@ public class BodyRequestWrapper extends HttpServletRequestWrapper {
 
             @Override
             public int read() throws IOException {
-                return byteArrayInputStream.read();
+                return bis.read();
             }
         };
         return servletInputStream;
@@ -75,11 +76,6 @@ public class BodyRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public BufferedReader getReader() throws IOException {
-        return new BufferedReader(new InputStreamReader(this.getInputStream()));
+        return new BufferedReader(new InputStreamReader(getInputStream()));
     }
-
-    public String getBody() {
-        return this.body;
-    }
-
 }
