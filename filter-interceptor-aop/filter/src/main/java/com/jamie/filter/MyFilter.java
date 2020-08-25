@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-//@Order(100)//括号中的数字越大，在多个过滤器的执行顺序越靠前
 public class MyFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -19,12 +18,8 @@ public class MyFilter extends OncePerRequestFilter {
 //        requestWrapper.putHeader("token","123456");
 //        filterChain.doFilter(requestWrapper, response);
 
-        //修改参数
-//        HttpServletRequest requestWrapper = new BodyRequestWrapper(request);
-//        filterChain.doFilter(requestWrapper, response);
-
         //修改body
-        BodyRequestWrapper requestWrapper = new BodyRequestWrapper((HttpServletRequest) request);
+        BodyRequestWrapper requestWrapper = new BodyRequestWrapper((HttpServletRequest) request, "500");
         filterChain.doFilter(requestWrapper, response);
     }
 }

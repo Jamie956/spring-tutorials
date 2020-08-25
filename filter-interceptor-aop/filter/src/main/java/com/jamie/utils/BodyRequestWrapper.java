@@ -20,9 +20,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BodyRequestWrapper extends HttpServletRequestWrapper {
+    private final String dataPermission;
 
-    public BodyRequestWrapper(HttpServletRequest request) {
+    public BodyRequestWrapper(HttpServletRequest request, String dataPermission) {
         super(request);
+        this.dataPermission = dataPermission;
     }
 
     @Override
@@ -43,7 +45,7 @@ public class BodyRequestWrapper extends HttpServletRequestWrapper {
 
         //修改参数
         for (Map.Entry<String, Object> entry : paramMap.entrySet()) {
-            entry.setValue("2222");
+            entry.setValue(dataPermission);
         }
 
         //重新构造一个输入流对象
