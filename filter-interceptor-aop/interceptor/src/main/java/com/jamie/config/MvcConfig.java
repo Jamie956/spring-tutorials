@@ -9,7 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // addPathPatterns 用于添加拦截的规则，excludePathPatterns 用于排除拦截的规则
+        // addPathPatterns 添加拦截规则
+        // excludePathPatterns 排除拦截规则
         registry.addInterceptor(new MyInterceptor()).addPathPatterns("/**").excludePathPatterns("/login");
     }
 }
