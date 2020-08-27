@@ -1,21 +1,13 @@
 package com.jamie.interceptor;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.util.StreamUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ReadListener;
-import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 import java.lang.annotation.Annotation;
 import java.util.Map;
 
@@ -31,10 +23,6 @@ public class MyInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         // 获取请求path variable参数
         Map<String, String[]> ParameterMap = request.getParameterMap();
-
-
-        // 获取RequestBody参数
-//        HttpBodyContentRequestWrapper requestWrapper = new HttpBodyContentRequestWrapper(request);
 
         //获取类注解
         Annotation clazzAnnotation = ((HandlerMethod) handler).getMethod().getDeclaringClass().getAnnotation(RequestMapping.class);
@@ -60,58 +48,4 @@ public class MyInterceptor implements HandlerInterceptor {
         System.out.println("afterCompletion");
     }
 
-    private static class HttpBodyContentRequestWrapper extends HttpServletRequestWrapper {
-        private byte[] requestBody = null;
-
-        public JSONObject getRequestBody() throws UnsupportedEncodingException {
-            return JSON.parseObject((new String(requestBody, "UTF-8")));
-        }
-
-        public void setRequestBody(JSONObject jsonObject) throws UnsupportedEncodingException {
-            this.requestBody = jsonObject.toJSONString().getBytes("UTF-8");
-        }
-
-        public HttpBodyContentRequestWrapper(HttpServletRequest request) {
-            super(request);
-            try {
-                requestBody = StreamUtils.copyToByteArray(request.getInputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public ServletInputStream getInputStream() {
-            if (requestBody == null) {
-                requestBody = new byte[0];
-            }
-            final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(requestBody);
-
-            return new ServletInputStream() {
-                @Override
-                public int read() throws IOException {
-                    return byteArrayInputStream.read();
-                }
-
-                @Override
-                public boolean isFinished() {
-                    return false;
-                }
-
-                @Override
-                public boolean isReady() {
-                    return false;
-                }
-
-                @Override
-                public void setReadListener(ReadListener listener) {
-
-                }
-            };
-        }
-        @Override
-        public BufferedReader getReader() throws IOException {
-            return new BufferedReader(new InputStreamReader(getInputStream()));
-        }
-    }
 }
