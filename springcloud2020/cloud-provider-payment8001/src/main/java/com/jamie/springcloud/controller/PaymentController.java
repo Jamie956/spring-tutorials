@@ -1,6 +1,6 @@
 package com.jamie.springcloud.controller;
 
-import com.jamie.springcloud.dao.CommonResult;
+import com.jamie.springcloud.entities.CommonResult;
 import com.jamie.springcloud.entities.Payment;
 import com.jamie.springcloud.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +30,7 @@ public class PaymentController {
     }
 
     //http://localhost:8001/payment/1
-    @GetMapping("/payment/{id}")
+    @GetMapping("/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
