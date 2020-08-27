@@ -2,7 +2,6 @@ package com.jamie.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-@Component
 public class MyFilter extends OncePerRequestFilter {
 
     @Override
@@ -23,7 +21,7 @@ public class MyFilter extends OncePerRequestFilter {
         JSONObject json = requestWrapper.getRequestBody();
 
         //更改body，将json 转成 body byte[]
-        requestWrapper.setRequestBody(JSON.parseObject("{'id':2,'greet':'hihi'}"));
+        requestWrapper.setRequestBody(JSON.parseObject("{'id':2,'greet':'update'}"));
 
         filterChain.doFilter(requestWrapper, response);
     }
@@ -77,6 +75,7 @@ public class MyFilter extends OncePerRequestFilter {
                 }
             };
         }
+
         @Override
         public BufferedReader getReader() throws IOException {
             return new BufferedReader(new InputStreamReader(getInputStream()));
