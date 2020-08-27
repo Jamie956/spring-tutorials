@@ -1,7 +1,7 @@
 package com.jamie.springcloud.controller;
 
-import com.jamie.springcloud.entites.CommonResult;
-import com.jamie.springcloud.entites.Payment;
+import com.jamie.springcloud.entities.CommonResult;
+import com.jamie.springcloud.entities.Payment;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 

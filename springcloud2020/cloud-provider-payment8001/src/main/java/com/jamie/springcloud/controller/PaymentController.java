@@ -20,7 +20,7 @@ public class PaymentController {
     }    
      */
     @PostMapping("/payment/create")
-    public CommonResult create(@RequestBody Payment payment) {
+    public CommonResult<Payment> create(@RequestBody Payment payment) {
         int ret = paymentService.create(payment);
         if (ret > 0) {
             return new CommonResult(200, "success", ret);
@@ -31,7 +31,7 @@ public class PaymentController {
 
     //http://localhost:8001/payment/1
     @GetMapping("/payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
             return new CommonResult(200, "success", payment);
