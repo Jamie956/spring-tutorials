@@ -29,7 +29,7 @@ public class PaymentController {
         }
     }
 
-    //http://localhost:8001/payment/1
+    //http://localhost:8001/payment/get/1
     @GetMapping("/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);

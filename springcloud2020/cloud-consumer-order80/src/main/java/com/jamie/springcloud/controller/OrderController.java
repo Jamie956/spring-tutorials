@@ -9,7 +9,10 @@ import javax.annotation.Resource;
 
 @RestController
 public class OrderController {
-    private static final String PAYMENT_URL = "http://localhost:8001";
+//    private static final String PAYMENT_URL = "http://localhost:8001";
+
+    public static final String PAYMENT_URL = "http://cloud-payment-service";
+
     //默认按照名称进行装配，名称可以通过name属性进行指定，如果没有指定name属性，当注解写在字段上时，默认取字段名进行安装名称查找
     @Resource
     private RestTemplate restTemplate;
