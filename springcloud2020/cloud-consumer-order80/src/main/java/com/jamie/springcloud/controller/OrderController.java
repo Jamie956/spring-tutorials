@@ -17,19 +17,11 @@ public class OrderController {
     @Resource
     private RestTemplate restTemplate;
 
-    /*
-    post
-    http://localhost/consumer/payment/create
-    {
-        "serial": 25
-    }
-     */
     @PostMapping("/consumer/payment/create")
     public CommonResult<Payment> create(@RequestBody Payment payment) {
         return restTemplate.postForObject(PAYMENT_URL + "/payment/create", payment, CommonResult.class);
     }
 
-    //http://localhost/consumer/payment/get/1
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> get(@PathVariable("id") Long id) {
         return restTemplate.getForObject(PAYMENT_URL + "/payment/get/" + id, CommonResult.class);

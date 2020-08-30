@@ -16,17 +16,15 @@ public class PaymentController {
     @Value("${server.port}")
     private String serverPort;
 
-
     @PostMapping("/payment/create")
     public CommonResult<Payment> create(@RequestBody Payment payment) {
         int ret = paymentService.create(payment);
         if (ret > 0) {
-            return new CommonResult(200, "success port: " + serverPort, ret);
+            return new CommonResult(200, "success, port: " + serverPort, ret);
         } else {
             return new CommonResult(404, "failed", null);
         }
     }
-
 
     @GetMapping("/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
