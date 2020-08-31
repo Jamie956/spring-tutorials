@@ -14,6 +14,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  *     "id": 2,
  *     "serial": "shake"
  * }
+ *
+ * http://localhost:8001/payment/discovery
+ * get
  */
 @SpringBootApplication
 @EnableEurekaClient

@@ -4,14 +4,21 @@ import com.jamie.springcloud.entities.CommonResult;
 import com.jamie.springcloud.entities.Payment;
 import com.jamie.springcloud.service.PaymentService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 public class PaymentController {
     @Resource
     private PaymentService paymentService;
+
+    @Resource
+    private DiscoveryClient discoveryClient;
+
 
     @Value("${server.port}")
     private String serverPort;
@@ -36,5 +43,14 @@ public class PaymentController {
         } else {
             return new CommonResult(404, "failed", null);
         }
+    }
+
+    @GetMapping("/payment/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+
+        return this.discoveryClient;
     }
 }
