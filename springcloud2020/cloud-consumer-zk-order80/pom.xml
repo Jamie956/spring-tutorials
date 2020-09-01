@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-provider-payment8084</artifactId>
+    <artifactId>cloud-consumer-zk-order80</artifactId>
 
     <dependencies>
         <!-- SpringBoot整合Web组件 -->
@@ -17,17 +17,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- 引入自己定义的api通用包，可以使用Payment支付Entity -->
-        <dependency>
-            <groupId>com.jamie.springcloud</groupId>
-            <artifactId>cloud-api-commons</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- SpringBoot整合zookeeper客户端 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
-            <!--先排除自带的zookeeper3.5.3-->
+            <!--先排除自带的zookeeper-->
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.zookeeper</groupId>
@@ -47,5 +41,6 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
+
 
 </project>
