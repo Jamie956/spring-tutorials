@@ -2,15 +2,12 @@ package com.jamie.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-/**
- * localhost:8004/payment/zk
- */
 @SpringBootApplication
-@EnableDiscoveryClient
-public class PaymentMain8004 {
+@EnableFeignClients
+public class FeignOrderMain80 {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentMain8004.class, args);
+        SpringApplication.run(FeignOrderMain80.class, args);
     }
 }
