@@ -10,15 +10,27 @@
     <packaging>pom</packaging>
 
     <modules>
+        <!-- 服务提供者 -->
         <module>cloud-provider-payment8001</module>
-        <module>cloud-consumer-order80</module>
-        <module>cloud-api-commons</module>
-        <module>cloud-eureka-server7001</module>
-        <module>cloud-eureka-server7002</module>
+        <!-- 服务提供者 集群 -->
         <module>cloud-provider-payment8002</module>
+        <!-- 服务消费者 -->
+        <module>cloud-consumer-order80</module>
+        <!-- 公共依赖包 -->
+        <module>cloud-api-commons</module>
+        <!-- eureka -->
+        <module>cloud-eureka-server7001</module>
+        <!-- eureka 集群 -->
+        <module>cloud-eureka-server7002</module>
+        <!-- 注册到zookeeper并提供服务 -->
         <module>cloud-provider-zk-payment8084</module>
+        <!-- zk的服务消费者 -->
         <module>cloud-consumer-zk-order80</module>
+        <!-- feign客户端消费者 -->
         <module>cloud-consumer-feign-order80</module>
+        <!-- hystrix熔断 的服务提供 -->
+        <module>cloud-provider-hystrix-payment8001</module>
+        <module>cloud-consumer-hystrix-order80</module>
     </modules>
 
     <properties>
