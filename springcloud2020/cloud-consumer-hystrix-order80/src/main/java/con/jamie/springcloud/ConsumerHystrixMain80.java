@@ -16,6 +16,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * http://localhost/consumer/payment/hystrix/exception/1
  * 服务提供者发生异常
  * http://localhost/consumer/payment/hystrix/pexception/1
+ * 使用全局错误提示
+ * http://localhost/consumer/payment/hystrix/global/1
  */
 @SpringBootApplication
 @EnableFeignClients
