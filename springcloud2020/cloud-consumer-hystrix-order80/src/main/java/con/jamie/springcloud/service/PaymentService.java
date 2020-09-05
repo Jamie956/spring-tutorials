@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Component
-@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+//@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+//在服务调用接口实现降级统一处理
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT" ,fallback = PaymentFallbackService.class)
 public interface PaymentService {
     @GetMapping("/payment/hystrix/ok/{id}")
     String providerOK(@PathVariable("id") Integer id);
