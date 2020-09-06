@@ -6,6 +6,13 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * http://localhost:9527/payment/get/1
+ *
+ * 自定义路由
+ * http://localhost:9527/guonei
+ *
+ * 通过注册中心的服务名访问
+ * http://localhost:9527/payment/get/1
+ *
  */
 @SpringBootApplication
 @EnableEurekaClient

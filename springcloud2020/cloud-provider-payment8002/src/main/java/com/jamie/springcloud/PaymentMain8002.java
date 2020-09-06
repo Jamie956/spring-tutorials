@@ -5,11 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
+ * 自测
  * http://localhost:8002/payment/get/1
- * get
  *
  * http://localhost:8002/payment/create
- * post
  * {
  *     "id": 2,
  *     "serial": "shake"
