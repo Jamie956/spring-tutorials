@@ -31,6 +31,7 @@
         <!-- hystrix熔断 的服务提供 -->
         <module>cloud-provider-hystrix-payment8001</module>
         <module>cloud-consumer-hystrix-order80</module>
+        <module>cloud-gateway9527</module>
     </modules>
 
     <properties>
