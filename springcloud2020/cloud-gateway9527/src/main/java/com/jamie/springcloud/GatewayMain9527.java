@@ -13,6 +13,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * 通过注册中心的服务名访问
  * http://localhost:9527/payment/get/1
  *
+ * curl http://localhost:9527/payment/get/1 -cookies "username=jamie"
+ * curl http://localhost:9527/payment/get/1 -cookies "username=jamie956"
+ * curl http://localhost:9527/payment/get/1 -H "X-Request-Id:123"
+ * curl http://localhost:9527/payment/get/1 -H "X-Request-Id:-123"
  */
 @SpringBootApplication
 @EnableEurekaClient
