@@ -16,6 +16,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * http://localhost:8001/payment/hystrix/timeout/1
  * 模拟发生异常
  * http://localhost:8001/payment/hystrix/exception/1
+ * 熔断（多次异常失败时，再正确调用会暂时失败，过会才会恢复正常）
+ * http://localhost:8001/payment/circuit/1
+ *
  *
  */
 @SpringBootApplication

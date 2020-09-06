@@ -31,4 +31,9 @@ public class PaymentController {
     public String providerException(@PathVariable("id") Integer id) {
         return paymentService.providerException(id);
     }
+
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
+        return paymentService.paymentCircuitBreaker(id);
+    }
 }
