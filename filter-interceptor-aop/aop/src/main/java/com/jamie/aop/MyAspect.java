@@ -22,10 +22,17 @@ import java.lang.annotation.Annotation;
 public class MyAspect {
 
     @Pointcut("execution(public * com.jamie..*.*(..))")
-    public void paramPointCut() {
-    }
+    public void pc1() {}
 
-    @Around("paramPointCut()")
+    //排除切点
+    @Pointcut("execution(public * com.jamie.controller.*.*(..)) && !execution(public * com.jamie.controller.*.set*(..))" )
+    public void pc2() {}
+
+    //..代表相隔多个
+    @Pointcut("execution(public * com.jamie..*(..))" )
+    public void pc3() {}
+
+    @Around("pc3()")
     public Object balabala(ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 

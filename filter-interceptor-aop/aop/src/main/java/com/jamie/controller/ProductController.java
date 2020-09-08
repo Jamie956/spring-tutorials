@@ -20,4 +20,26 @@ public class ProductController {
     public Product getMethod(@RequestBody Product product) {
         return product;
     }
+
+
+    @GetMapping("/get1")
+    public Product getMethod1(@RequestBody Product product) {
+        return product;
+    }
+
+
+    @GetMapping("/get2")
+    public Product getMethod2(@RequestBody Product product) {
+        return product;
+    }
+
+    @GetMapping("/get3")
+    public Product getMethod3(@RequestBody Product product) {
+        return product;
+    }
+
+    @GetMapping("/set")
+    public Product setMethod(@RequestBody Product product) {
+        return product;
+    }
 }
