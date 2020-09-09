@@ -28,10 +28,14 @@
         <module>cloud-consumer-zk-order80</module>
         <!-- feign客户端消费者 -->
         <module>cloud-consumer-feign-order80</module>
-        <!-- hystrix熔断 的服务提供 -->
+        <!-- 服务提供者熔断 -->
         <module>cloud-provider-hystrix8001</module>
+        <!-- 消费者端熔断 -->
         <module>cloud-consumer-hystrix80</module>
+        <!-- SpringCloud 网关-->
         <module>cloud-gateway9527</module>
+        <module>cloud-alibaba-provider9001</module>
+        <module>cloud-alibaba-provider9002</module>
     </modules>
 
     <properties>
@@ -65,6 +69,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Spring Cloud Alibaba -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
