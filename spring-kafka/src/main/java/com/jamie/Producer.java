@@ -39,10 +39,31 @@ public class Producer {
 
             @Override
             public void onSuccess(SendResult<String, Object> result) {
-                System.out.println("发送消息成功：" + result.getRecordMetadata().topic() + "       " + result.getRecordMetadata().partition() + "      " + result.getRecordMetadata().offset());
+                System.out.println("发送消息成功：     topic:" + result.getRecordMetadata().topic() + "       partition:" + result.getRecordMetadata().partition() + "      offset:" + result.getRecordMetadata().offset());
             }
         });
     }
 
+    public void send4() {
+        // 声明事务：后面报错消息不会发出去
+//        kafkaTemplate.executeInTransaction(operations -> {
+//            operations.send("test_topic","test executeInTransaction");
+//            throw new RuntimeException("fail");
+//        });
 
+        // 不声明事务：后面报错但前面消息已经发送成功了
+        kafkaTemplate.send("test_topic","test executeInTransaction");
+        throw new RuntimeException("fail");
+    }
+
+    public void send5() {
+        kafkaTemplate.send("test_topic", "this is test_topic!");
+        kafkaTemplate.send("test_topic2", "this is test_topic2!");
+    }
+
+    public void send6() {
+        for (int i = 0; i < 10; i++) {
+            kafkaTemplate.send("test_topic", String.valueOf(i));
+        }
+    }
 }

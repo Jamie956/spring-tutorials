@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-public class Greet {
+public class KController {
     @Resource
     private KafkaTemplate<String, Object> kafkaTemplate;
 
@@ -22,6 +22,6 @@ public class Greet {
 
     @RequestMapping("/send")
     public void send() {
-        producer.send3();
+        producer.send6();
     }
 }
