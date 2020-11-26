@@ -22,6 +22,6 @@ public class Greet {
 
     @RequestMapping("/send")
     public void send() {
-        producer.send();
+        producer.send3();
     }
 }
