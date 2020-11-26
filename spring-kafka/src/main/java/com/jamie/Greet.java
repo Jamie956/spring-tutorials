@@ -1,5 +1,6 @@
 package com.jamie;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,9 @@ public class Greet {
     @Resource
     private KafkaTemplate<String, Object> kafkaTemplate;
 
+    @Autowired
+    private Producer producer;
+
     @RequestMapping("/")
     public String hi() {
         return "hihi";
@@ -18,6 +22,6 @@ public class Greet {
 
     @RequestMapping("/send")
     public void send() {
-        kafkaTemplate.send("test_topic", "this is content!");
+        producer.send();
     }
 }
