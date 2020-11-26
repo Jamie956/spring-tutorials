@@ -18,6 +18,6 @@ public class Greet {
 
     @RequestMapping("/send")
     public void send() {
-        kafkaTemplate.send("test_topic", "this is content");
+        kafkaTemplate.send("test_topic", "this is content!");
     }
 }
