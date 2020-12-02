@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 public class ProductRest {
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "")
 	public List<Product> findAll() {
 		List<Product> ps = new ArrayList<Product>();
