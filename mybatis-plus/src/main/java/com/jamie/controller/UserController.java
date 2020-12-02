@@ -13,6 +13,7 @@ public class UserController {
     @Resource
     private UserMapper userMapper;
 
+
     //http://localhost:8088/user
     @GetMapping(value = "")
     public void list() {
