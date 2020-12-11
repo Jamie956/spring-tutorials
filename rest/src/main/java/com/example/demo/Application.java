@@ -14,7 +14,11 @@ public class Application {
 
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(Application.class, args);
+		testResource();
+	}
 
+	//测试 从jar读取资源
+	public static void testResource() throws IOException {
 		Resource resource = new ClassPathResource("/templates/aa.txt");
 		InputStream in = resource.getInputStream();
 		byte[] b = new byte[1024];
@@ -24,11 +28,5 @@ public class Application {
 			builder.append(new String(b, 0, len));
 		}
 		System.out.println("==================="+builder.toString());
-
-
-
-//		ClassPathResource resource = new ClassPathResource("/templates");
-//		File file = new File(resource.getPath());
-//		System.out.println("==================="+file.toString());
 	}
 }
