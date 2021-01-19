@@ -7,6 +7,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 public class HomeController {
+	//隐藏接口
 	@ApiIgnore
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {

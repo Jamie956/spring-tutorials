@@ -13,8 +13,9 @@ import com.example.demo.domain.User;
 @RequestMapping(value = "/user")
 public class UserRest {
 
-	@ApiOperation(value = "Find All User", notes = "U can Find Everything.")
-	@RequestMapping(value = { "" }, method = RequestMethod.GET)
+	@ApiOperation(value = "右边显示的内容", notes = "展开的实现说明")
+//	@RequestMapping(value = { "" }, method = RequestMethod.GET)
+	@GetMapping("")
 	public List<User> findAll() {
 		List<User> us = new ArrayList<User>();
 		us.add(new User("tomcat", "123456"));
@@ -23,7 +24,7 @@ public class UserRest {
 	}
 
 	@ApiOperation(value = "Save a User", notes = "Well, The Person will born!")
-	@ApiImplicitParam(name = "user", value = "Just post a user", required = true, dataType = "User")
+	@ApiImplicitParam(name = "参数名", value = "参数描述", required = true, dataType = "User")
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public String save(@RequestBody User user) {
 		System.out.println("user => " + user);
