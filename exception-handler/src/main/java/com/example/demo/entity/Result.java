@@ -4,32 +4,31 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 @Data
-public class Result<T> {
-
+public class Result {
     private Integer code;
     private String message;
-    private T data;
+    private Object data;
 
-    public Result<T> ok() {
-        this.setCode(HttpStatus.OK.value());
-        this.setMessage("成功");
-        return this;
+    public static Result ok() {
+        return new Result().code(HttpStatus.OK.value());
     }
 
-    public Result<T> error() {
-        this.setCode(HttpStatus.BAD_REQUEST.value());
-        this.setMessage("失败");
-        return this;
+    public static Result error() {
+        return new Result().code(HttpStatus.BAD_REQUEST.value());
     }
 
-    public Result<T> message(String message) {
+    public Result message(String message) {
         this.setMessage(message);
         return this;
     }
 
-    public Result<T> code(Integer code) {
+    public Result code(Integer code) {
         this.setCode(code);
         return this;
     }
 
+    public Result data(Object data) {
+        this.setData(data);
+        return this;
+    }
 }

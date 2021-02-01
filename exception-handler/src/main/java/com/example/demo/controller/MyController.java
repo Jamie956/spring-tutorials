@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 public class MyController {
 
@@ -26,12 +31,39 @@ public class MyController {
      * @return
      */
     @GetMapping("/t1")
-    public Result<?> t1(@RequestParam Integer num) {
+    public Result t1(@RequestParam Integer num) {
         if (num == null) {
             throw new CustomException(400, "num不能为空");
         }
         int i = 10 / num;
-        return new Result<>().ok();
+        return Result.ok().message("成功");
     }
 
+    /**
+     * 测试返回集合
+     * http://localhost:8080/t2
+     * @return
+     */
+    @GetMapping("t2")
+    public Result t2() {
+        List<String> list = new ArrayList<>();
+        list.add("java");
+        list.add("spring");
+
+        return Result.ok().data(list);
+    }
+
+    /**
+     * 测试返回map
+     * http://localhost:8080/t3
+     * @return
+     */
+    @GetMapping("t3")
+    public Result t3() {
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "tim");
+        map.put("age", "6");
+
+        return Result.ok().data(map);
+    }
 }

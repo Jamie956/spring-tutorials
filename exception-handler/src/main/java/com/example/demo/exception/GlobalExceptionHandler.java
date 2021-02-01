@@ -21,9 +21,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @return 响应结果
      */
     @ExceptionHandler(CustomException.class)
-    public Result<?> customExceptionHandler(HttpServletRequest request, CustomException e, HttpServletResponse response) {
+    public Result customExceptionHandler(HttpServletRequest request, CustomException e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
-        return new Result<>().code(e.getCode()).message(e.getMessage());
+        return Result.ok().code(e.getCode()).message(e.getMessage());
     }
 
     /**
@@ -35,9 +35,9 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
      * @return 响应结果
      */
     @ExceptionHandler(RuntimeException.class)
-    public Result<?> runtimeExceptionHandler(HttpServletRequest request, RuntimeException e, HttpServletResponse response) {
+    public Result runtimeExceptionHandler(HttpServletRequest request, RuntimeException e, HttpServletResponse response) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
-        return new Result<>().code(HttpStatus.BAD_REQUEST.value()).message(e.getMessage());
+        return Result.error().message(e.getMessage());
     }
 
 }
