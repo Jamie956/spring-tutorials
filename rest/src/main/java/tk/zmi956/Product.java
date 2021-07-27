@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package tk.zmi956;
 
 public class Product {
     private String id;

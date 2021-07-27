@@ -1,17 +1,15 @@
-package com.example.demo.web.rest;
+package tk.zmi956;
 
 import org.springframework.web.bind.annotation.*;
-
-import com.example.demo.entity.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class ProductRest {
+public class ProductController {
 
-	@RequestMapping(method = RequestMethod.GET, value = "")
+	@GetMapping("")
 	public List<Product> findAll() {
 		List<Product> ps = new ArrayList<Product>();
 		ps.add(new Product("1", "cpu", "99"));
@@ -19,33 +17,48 @@ public class ProductRest {
 		return ps;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	/**
+	 * localhost:8856/product/1
+	 */
+	@GetMapping("/{id}")
 	public Product findById(@PathVariable("id") String id) {
-		System.out.println("id => " + id);
+		System.out.println("findById => " + id);
 		return new Product(id, "un", "99");
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/get")
+	/**
+	 * /product/get?id=1
+	 */
+	@GetMapping("/get")
 	public Product getById(@RequestParam("id") String id) {
-		System.out.println("id => " + id);
+		System.out.println("getById => " + id);
 		return new Product(id, "nasa", "23");
 	}
-	
-	@RequestMapping(method = RequestMethod.POST, value = "")
+
+	/**
+	 * /product
+	 */
+	@PostMapping("")
 	public String save(@RequestBody Product product) {
-		System.out.println("product => " + product);
+		System.out.println("save => " + product);
 		return "ok";
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+	/**
+	 * /product/1
+	 */
+	@PutMapping("/{id}")
 	public String update(@RequestBody Product product) {
-		System.out.println("product => " + product);
+		System.out.println("update => " + product);
 		return "ok";
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
+	/**
+	 * /product/1
+	 */
+	@DeleteMapping("/{id}")
 	public String remove(@PathVariable("id") String id) {
-		System.out.println("id => " + id);
+		System.out.println("remove => " + id);
 		return "ok";
 	}
 }
