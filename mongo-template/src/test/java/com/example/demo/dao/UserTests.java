@@ -42,26 +42,26 @@ public class UserTests {
 		User u = mongoTemplate.findById(1, User.class);
 		System.out.println("u => " + u);
 	}
-	
+
 	@Test
 	public void find() {
 		Query query = Query.query(Criteria.where("password").is("123456"));
 		List<User> us = mongoTemplate.find(query, User.class);
 		System.out.println("us => " + us);
 	}
-	
+
 	@Test
 	public void findAll() {
 		List<User> us = mongoTemplate.findAll(User.class);
 		System.out.println("us => " + us);
 	}
-	
+
 	@Test
 	public void saveOrUpdate() {
 		User u = new User(2L, "tomcat", "123456");
 		mongoTemplate.save(u);
 	}
-	
+
 	@Test
 	public void gundan() {
 		for (Long i = 3L; i < 10; i++) {
@@ -69,19 +69,19 @@ public class UserTests {
 			mongoTemplate.insert(u);
 		}
 	}
-	
+
 	@Test
 	public void customAggregation() {
 		Aggregation aggregation = Aggregation.newAggregation(
 				Aggregation.match(Criteria.where("name").is("puppy")),
-				Aggregation.project("id", "name"), 
+				Aggregation.project("id", "name"),
 				Aggregation.limit(3)
 				);
 		AggregationResults<User> aggRes = mongoTemplate.aggregate(aggregation, "user", User.class);
 		List<User> us = aggRes.getMappedResults();
 		System.out.println("us => " + us);
 	}
-	
+
 	@Test
 	public void update() {
 		Query query = Query.query(Criteria.where("id").is(1));
@@ -94,7 +94,7 @@ public class UserTests {
 		Query query = Query.query(Criteria.where("id").is(1));
 		mongoTemplate.remove(query, User.class);
 	}
-	
+
 	//using date
 	@Test
 	public void insert2() {

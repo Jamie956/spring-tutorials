@@ -8,23 +8,21 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+/**
+ * 全局过滤器
+ */
 @Component
-public class MyLogGateWayFilter implements GlobalFilter, Ordered {
-
+public class GateWayFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-
-        String uname = exchange.getRequest().getQueryParams().getFirst("uname");
-
-        if (uname == null) {
-            System.out.println("uname 不能为空！！！！");
+        String name = exchange.getRequest().getQueryParams().getFirst("name");
+        if ("tim".equals(name)) {
+            System.out.println("?name=tim，全局过滤器拦截");
             exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
             return exchange.getResponse().setComplete();
         }
-
         return chain.filter(exchange);
     }
-
     @Override
     public int getOrder() {
         return 0;

@@ -5,21 +5,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
- * http://localhost:9527/payment/get/1
- *
- * 自定义路由
+ * 代码配置路由
  * http://localhost:9527/guonei
  *
- * 通过注册中心的服务名访问
+ * 访问注册中心的服务
  * http://localhost:9527/payment/get/1
+ * http://localhost:9527/payment/discovery
  *
- * curl http://localhost:9527/payment/get/1 -cookies "username=jamie"
- * curl http://localhost:9527/payment/get/1 -cookies "username=jamie956"
- * curl http://localhost:9527/payment/get/1 -H "X-Request-Id:123"
- * curl http://localhost:9527/payment/get/1 -H "X-Request-Id:-123"
- *
- * 过滤器测试
- * http://localhost:9527/payment/get/1?uname=xxx
+ * 全局过滤器拦截
+ * http://localhost:9527/payment/get/1?name=tim
  */
 @SpringBootApplication
 @EnableEurekaClient
