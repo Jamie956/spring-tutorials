@@ -20,6 +20,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  *
  * 使用 StripPrefix
  * http://localhost:9527/prefix/payment/get/1
+ *
+ * 模拟登录
+ * http://localhost:9527/auth/login
  */
 @SpringBootApplication
 @EnableEurekaClient
