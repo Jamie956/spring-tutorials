@@ -14,6 +14,12 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  *
  * 全局过滤器拦截
  * http://localhost:9527/payment/get/1?name=tim
+ *
+ * 使用 PrefixPath
+ * http://localhost:9527/get/1
+ *
+ * 使用 StripPrefix
+ * http://localhost:9527/prefix/payment/get/1
  */
 @SpringBootApplication
 @EnableEurekaClient
