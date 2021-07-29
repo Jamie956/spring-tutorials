@@ -1,5 +1,7 @@
 package com.jamie.springcloud.util;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.time.Instant;
@@ -26,8 +28,27 @@ public class JwtUtil {
                 .compact();
     }
 
+    /**
+     * 解析JWT
+     */
+    public static Claims getClaimsFromToken(String token){
+        Claims claims = null;
+        try{
+            claims = Jwts.parser()
+                    .setSigningKey( SECRET )
+                    .parseClaimsJws( token )
+                    .getBody();
+        } catch (ExpiredJwtException e){
+            System.out.println("token已过期：{}" + token);
+        }
+        return claims;
+    }
+
     public static void main(String[] args) {
         String token = generateToken(1L, "tim");
         System.out.println(token);
+        Claims claims = getClaimsFromToken(token.substring(7));
+        System.out.println(claims.getId());
+        System.out.println(claims.getSubject());
     }
 }
