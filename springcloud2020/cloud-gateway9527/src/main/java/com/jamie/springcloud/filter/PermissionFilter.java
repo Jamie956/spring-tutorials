@@ -24,7 +24,7 @@ public class PermissionFilter implements GlobalFilter, Ordered {
         String token = exchange.getRequest().getQueryParams().getFirst("token");
         if (token == null) {
             System.out.println("鉴权失败");
-            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             return exchange.getResponse().setComplete();
         }
         Claims claims = JwtUtil.getClaimsFromToken(token.substring(7));
@@ -32,7 +32,7 @@ public class PermissionFilter implements GlobalFilter, Ordered {
         ServerHttpRequest request = exchange.getRequest();
         String url = request.getURI().getPath();
         if (!"tom".equals(userName) || !USER_PERMISSION.contains(url)) {
-            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
             System.out.println("鉴权失败");
             return exchange.getResponse().setComplete();
         }
