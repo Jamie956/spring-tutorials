@@ -8,6 +8,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * 代码配置路由
  * http://localhost:9527/guonei
  *
+ * token 校验
+ * http://localhost:9527/guonei?token=yJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b20iLCJpc3MiOiJkZGQxMjMiLCJleHAiOjE2MjgwMDY2OTYsImlhdCI6MTYyNzk3Nzg5NiwianRpIjoiMSJ9.gp96Lz4UPE3r5lrIOhMeH5XYTuNbbpaeA5TNAluIQXxoUskMULFIP93GyA6ipSffcE1RGbBACTD-U7JSm2Lp3g
+ *
  * 访问注册中心的服务
  * http://localhost:9527/payment/get/1
  * http://localhost:9527/payment/discovery

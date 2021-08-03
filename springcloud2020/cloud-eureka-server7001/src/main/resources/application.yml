@@ -3,14 +3,17 @@ server:
 
 eureka:
   instance:
-    hostname: eureka7001.com #eureka服务端的实例名称
+    #eureka服务端的实例名称
+    hostname: eureka7001.com
   client:
-    register-with-eureka: false     #false表示不向注册中心注册自己。
-    fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    #是否向注册中心注册
+    register-with-eureka: false
+    #注册中心用false
+    fetch-registry: false
     service-url:
       #集群指向其它eureka
 #      defaultZone: http://eureka7002.com:7002/eureka/
-#      单机, 需要设置host 127.0.0.1     eureka7001.com
+#      单机, 需要配置host 127.0.0.1     eureka7001.com
       defaultZone: http://eureka7001.com:7001/eureka/
 #      单机
 #      defaultZone: http://localhost:7001/eureka/

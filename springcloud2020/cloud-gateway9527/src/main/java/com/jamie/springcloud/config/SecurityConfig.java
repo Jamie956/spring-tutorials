@@ -16,14 +16,16 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
                 //自定义登录页面
-                .formLogin().and().exceptionHandling()
+//                .formLogin().and()
+                .exceptionHandling()
                 //关闭csrf 防护
                 .and().csrf().disable()
                 //认证配置
                 .authorizeExchange()
-                //指定URL 直接访问，无需验证
-                .pathMatchers("/payment/**").permitAll()
-                //其他请求 需要身份验证
+                //指定URL无需验证
+//                .pathMatchers("/payment/**").permitAll()
+                .pathMatchers("/**").permitAll()
+                //其他请求需要验证
 //                .anyRequest().authenticated()
                 .and().build();
     }

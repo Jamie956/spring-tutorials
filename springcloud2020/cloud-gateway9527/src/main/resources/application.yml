@@ -16,10 +16,10 @@ spring:
         #uri.lb           是一个动态路由协议，路由跳转地址，使用微服务服务名 spring.application.name 或者使用 uri: http://localhost:8001
         #predicates.Path  路径匹配才进行路由，匹配 /payment/get/** 和 /payment/discovery/**
       #==============/gateway/payment/get/** -> /cloud-payment-service/payment/get/**==============
-#        - id: cloud-payment-service
-#          uri: lb://cloud-payment-service
-#          predicates:
-#          - Path=/payment/get/**,/payment/discovery/**
+        - id: cloud-payment-service
+          uri: lb://cloud-payment-service
+          predicates:
+          - Path=/payment/get/**,/payment/discovery/**
       #==============/gateway/guonei -> /news.baidu.com/guonei==============
 #        - id: baidu_route
 #          uri: http://news.baidu.com/guonei
@@ -40,14 +40,14 @@ spring:
 #          filters:
 #            - StripPrefix= 1
         #==============仅转发，/gateway/** -> /cloud-payment-service/**==============
-        - id: cloud-payment-service
-          uri: lb://cloud-payment-service
-          predicates:
-            - Path=/**
+#        - id: cloud-payment-service
+#          uri: lb://cloud-payment-service
+#          predicates:
+#            - Path=/**
 eureka:
   instance:
     hostname: cloud-gateway-service
-  client: #服务提供者provider注册进eureka服务列表内
+  client:
     service-url:
       register-with-eureka: true
       fetch-registry: true

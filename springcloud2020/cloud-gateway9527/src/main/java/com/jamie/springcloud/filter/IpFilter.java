@@ -1,5 +1,6 @@
 package com.jamie.springcloud.filter;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -11,13 +12,14 @@ import reactor.core.publisher.Mono;
 import java.net.InetSocketAddress;
 
 @Component
+@Slf4j
 public class IpFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        System.out.println("进入 IpFilter");
+        log.debug("进入 IpFilter");
         ServerHttpRequest request = exchange.getRequest();
         InetSocketAddress remoteAddress = request.getRemoteAddress();
-        System.out.println("ip:" + remoteAddress.getHostName());
+        log.debug("ip: {}", remoteAddress.getHostName());
         return chain.filter(exchange);
     }
 
