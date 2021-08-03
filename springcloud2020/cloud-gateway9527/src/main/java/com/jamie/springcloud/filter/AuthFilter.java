@@ -24,12 +24,12 @@ import java.util.List;
 
 @Slf4j
 @Component
-public class PermissionFilter implements GlobalFilter, Ordered {
+public class AuthFilter implements GlobalFilter, Ordered {
     private static final List<String> IGNORE_LOGIN_PATTERN = Arrays.asList("/guonei", "/payment", "/payment/**");
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        log.debug("进入 PermissionFilter");
+        log.debug("进入 AuthFilter");
 
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpResponse response = exchange.getResponse();
@@ -42,45 +42,28 @@ public class PermissionFilter implements GlobalFilter, Ordered {
         for (String pattern : IGNORE_LOGIN_PATTERN) {
             if (matcher.match(pattern, url)) {
                 log.info("{} 与 {} 匹配", pattern, url);
+                return chain.filter(exchange);
             } else {
                 log.info("{} 与 {} 不匹配", pattern, url);
             }
         }
 
-        //获取token
+        //获取参数token
         String token = exchange.getRequest().getQueryParams().getFirst("token");
 
         //token 不存在
         if (token == null) {
-            log.info("参数缺少 token, 鉴权失败!");
-            //自定义返回结果
-            JSONObject message = new JSONObject();
-            message.put("status", -1);
-            message.put("data", "参数缺少 token 鉴权失败");
-            byte[] bits = message.toJSONString().getBytes(StandardCharsets.UTF_8);
-            DataBuffer buffer = response.bufferFactory().wrap(bits);
-            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            //指定编码，否则在浏览器中会中文乱码
-            response.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
-            return response.writeWith(Mono.just(buffer));
+            DataBuffer buff = result(response, "参数缺少token");
+            return response.writeWith(Mono.just(buff));
         }
 
         Claims claims = null;
         try {
             claims = JwtUtil.getClaimsFromToken(token);
         } catch (Exception e) {
-            log.info("签名异常");
             e.printStackTrace();
-
-            JSONObject message = new JSONObject();
-            message.put("status", -1);
-            message.put("data", "签名异常");
-            byte[] bits = message.toJSONString().getBytes(StandardCharsets.UTF_8);
-            DataBuffer buffer = response.bufferFactory().wrap(bits);
-            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            //指定编码，否则在浏览器中会中文乱码
-            response.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
-            return response.writeWith(Mono.just(buffer));
+            DataBuffer buff = result(response, "签名异常");
+            return response.writeWith(Mono.just(buff));
         }
         String userName = claims.getSubject();
 
@@ -91,5 +74,23 @@ public class PermissionFilter implements GlobalFilter, Ordered {
     @Override
     public int getOrder() {
         return 4;
+    }
+
+    /**
+     * 自定义返回结果
+     * @param response
+     * @param error
+     * @return
+     */
+    private DataBuffer result(ServerHttpResponse response, String error) {
+        JSONObject message = new JSONObject();
+        message.put("status", -1);
+        message.put("data", error);
+        byte[] bits = message.toJSONString().getBytes(StandardCharsets.UTF_8);
+        DataBuffer buffer = response.bufferFactory().wrap(bits);
+        response.setStatusCode(HttpStatus.UNAUTHORIZED);
+        //指定编码，否则在浏览器中会中文乱码
+        response.getHeaders().add("Content-Type", "text/plain;charset=UTF-8");
+        return  buffer;
     }
 }

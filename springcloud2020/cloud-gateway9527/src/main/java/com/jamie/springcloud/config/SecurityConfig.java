@@ -15,11 +15,8 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         return http
-                //自定义登录页面
-//                .formLogin().and()
-                .exceptionHandling()
                 //关闭csrf 防护
-                .and().csrf().disable()
+                .csrf().disable()
                 //认证配置
                 .authorizeExchange()
                 //指定URL无需验证
