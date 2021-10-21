@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo;
 
 import java.util.Date;
 import java.util.List;
@@ -15,11 +15,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.entity.User;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserTests {
+public class MongoTemplateAPITest {
 
 	@Autowired
 	private MongoTemplate mongoTemplate;
@@ -27,7 +25,8 @@ public class UserTests {
 	@Test
 	public void insert() {
 		User u = new User(1L, "puppy", "123456");
-		mongoTemplate.insert(u);
+		User ret = mongoTemplate.insert(u);
+		System.out.println(ret);
 	}
 
 	@Test

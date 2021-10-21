@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example.demo;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import java.io.InputStream;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class GFTest {
+public class GridFsTemplateTest {
     @Resource
     private GridFsTemplate gridFsTemplate;
 
