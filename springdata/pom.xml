@@ -12,6 +12,7 @@
         <module>mongo-template</module>
         <module>mybatisplus</module>
         <module>hive</module>
+        <module>elastic</module>
     </modules>
 
     <parent>
