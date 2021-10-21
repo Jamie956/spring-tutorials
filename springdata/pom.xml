@@ -13,6 +13,7 @@
         <module>mybatisplus</module>
         <module>hive</module>
         <module>elastic</module>
+        <module>redis</module>
     </modules>
 
     <parent>
