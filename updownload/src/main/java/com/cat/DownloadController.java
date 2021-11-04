@@ -1,4 +1,4 @@
-package com.jamie;
+package com.cat;
 
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;

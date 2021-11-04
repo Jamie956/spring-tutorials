@@ -1,4 +1,4 @@
-package com.jamie;
+package com.cat;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
