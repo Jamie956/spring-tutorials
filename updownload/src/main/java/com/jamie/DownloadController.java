@@ -1,16 +1,10 @@
 package com.jamie;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ContentDisposition;
-import org.apache.commons.io.IOUtils;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -18,35 +12,36 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.stream.Collectors;
 
 @RestController
-public class DownloadDemo {
+public class DownloadController {
 
-//    @GetMapping("/download")
-//    public ResponseEntity<StreamingResponseBody> download() {
-//        StreamingResponseBody body = outputStream -> {
-////            log.info("写出文件流");
-////            //异步写
-////            try (XSSFWorkbook excel = excelService.createExcel("SOA-qps统计", null)) {
-////                excel.write(outputStream);
-////            }
-//        };
-//
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        ContentDisposition build = ContentDisposition.attachment().filename("data.xlsx").build();
-//
-//        httpHeaders.setContentDisposition(build);
-//        httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-//
-//        return new ResponseEntity<>(body, httpHeaders, HttpStatus.OK);
-//    }
+    /**
+     * http://localhost:8844/dd
+     * spring http 下载
+     */
+    @GetMapping("/dd")
+    @ResponseBody
+    public ResponseEntity<Object> downloadFile() throws FileNotFoundException, InterruptedException {
+        String fileName = "README.txt";
+
+        File file = new File("src/main/resources/" + fileName);
+        InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", String.format("attachment;filename=\"%s", fileName));
+        headers.add("Cache-Control", "no-cache,no-store,must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
+
+        Thread.sleep(3000);
+
+        return ResponseEntity.ok().headers(headers).contentLength(file.length()).contentType(MediaType.parseMediaType("application/txt")).body(resource);
+    }
 
     /**
      * servlet 输出流将文件传递到浏览器
@@ -91,8 +86,7 @@ public class DownloadDemo {
         response.setContentType("application/" + fileSuffix);
         response.addHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes(StandardCharsets.UTF_8), "ISO8859-1"));
 
-        try (FileInputStream inputStream = new FileInputStream(file);
-             ServletOutputStream outputStream = response.getOutputStream()) {
+        try (FileInputStream inputStream = new FileInputStream(file); ServletOutputStream outputStream = response.getOutputStream()) {
 
             int readLength;
             byte[] buffer = new byte[1024];
@@ -159,7 +153,8 @@ public class DownloadDemo {
 
     /**
      * 将输入流中的数据循环写入到响应输出流中，而不是一次性读取到内存
-     *
+     * http://localhost:8844/d4
+     * <p>
      * Response Header:
      * ContentType             application/octet-stream
      * Content-Disposition     attachment;filename=README.txt
@@ -187,6 +182,7 @@ public class DownloadDemo {
 
     /**
      * 网络文件下载
+     * http://localhost:8844/d5
      */
     @RequestMapping("/d5")
     public void downloadNet(HttpServletResponse response) throws IOException {
@@ -194,7 +190,8 @@ public class DownloadDemo {
         URL url = new URL(netAddress);
         URLConnection conn = url.openConnection();
         InputStream inputStream = conn.getInputStream();
-
+        //attachment 下载文件；inline 在线浏览
+        response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode("baidu.html", "UTF-8"));
         ServletOutputStream outputStream = response.getOutputStream();
         byte[] buffer = new byte[1024];
 
@@ -202,40 +199,6 @@ public class DownloadDemo {
         while ((readLength = inputStream.read(buffer)) != -1) {
             outputStream.write(buffer, 0, readLength);
         }
-    }
-
-    /**
-     * todo
-     * @param netAddress
-     * @param filename
-     * @param isOnLine
-     * @param response
-     * @功能描述 网络文件获取到服务器后，经服务器处理后响应给前端
-     */
-    @RequestMapping("/netDownLoadNet")
-    public void netDownLoadNet(String netAddress, String filename, boolean isOnLine, HttpServletResponse response) throws Exception {
-
-        URL url = new URL(netAddress);
-        URLConnection conn = url.openConnection();
-        InputStream inputStream = conn.getInputStream();
-
-        response.reset();
-        response.setContentType(conn.getContentType());
-        if (isOnLine) {
-            // 在线打开方式 文件名应该编码成UTF-8
-            response.setHeader("Content-Disposition", "inline; filename=" + URLEncoder.encode(filename, "UTF-8"));
-        } else {
-            //纯下载方式 文件名应该编码成UTF-8
-            response.setHeader("Content-Disposition", "attachment; filename=" + URLEncoder.encode(filename, "UTF-8"));
-        }
-
-        byte[] buffer = new byte[1024];
-        int len;
-        OutputStream outputStream = response.getOutputStream();
-        while ((len = inputStream.read(buffer)) > 0) {
-            outputStream.write(buffer, 0, len);
-        }
-        inputStream.close();
     }
 
 }
