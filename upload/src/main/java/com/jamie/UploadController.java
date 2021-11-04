@@ -1,4 +1,4 @@
-package com.jamie.controller;
+package com.jamie;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
