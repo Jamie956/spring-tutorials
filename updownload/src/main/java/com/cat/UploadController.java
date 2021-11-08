@@ -1,11 +1,20 @@
 package com.cat;
 
+import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zjm
@@ -78,6 +87,49 @@ public class UploadController {
             String s = byteArrayOutputStream.toString();
             System.out.println(s);
         } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * 上传excel 输入流 -> workbook
+     */
+    @PostMapping("u3")
+    public ResponseEntity<?> uploadExcel(@RequestParam("file") MultipartFile file) {
+        try (XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream())) {
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            List<String> headers = new ArrayList<>();
+            for (Row row : sheet) {
+                if (headers.isEmpty()) {
+                    for (Cell cell : row) {
+                        String header = cell.getStringCellValue();
+                        if (StringUtils.isNotBlank(header)) {
+                            if (headers.contains(header)) {
+                                throw new RuntimeException("存在重复表头");
+                            }
+                            headers.add(header);
+                        }
+                    }
+                    continue;
+                }
+                JSONObject json = new JSONObject();
+                for (int i = 0; i < headers.size(); i++) {
+                    String key = headers.get(i);
+                    Cell cell = row.getCell(i);
+                    if (cell != null) {
+                        CellType cellType = cell.getCellType();
+                        if (cellType.equals(CellType.NUMERIC)) {
+                            json.put(key, cell.getNumericCellValue());
+                        }
+                        if (cellType.equals(CellType.STRING)) {
+                            json.put(key, cell.getRichStringCellValue().toString());
+                        }
+                    }
+                }
+                System.out.println(json.toJSONString());
+            }
+        } catch (IOException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(HttpStatus.OK);
