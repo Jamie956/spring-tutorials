@@ -1,3 +1,8 @@
 #multipart.maxFileSize = 3Mb
+
 server:
   port: 8844
+spring:
+  http:
+    multipart:
+      max-file-size: 3Mb

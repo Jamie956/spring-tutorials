@@ -5,44 +5,78 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.nio.file.Paths;
+import java.io.*;
 
+/**
+ * @author zjm
+ */
 @RestController
 public class UploadController {
-    /*
-    PostMan测试
-    Method: POST
-    URL: localhost:8080/upload
-    key:file, type:file, value: select file
+    /**
+     * 上传文件输入流 -> 文件缓存输出流
+     * curl --location --request POST 'localhost:8844/u1' \
+     * --header 'Content-Type: multipart/form-data' \
+     * --form 'file=@"/C:/Users/tgwzz/Desktop/tu.xlsx"'
      */
-    @PostMapping("upload")
-    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile uploadfile, HttpServletRequest request) {
-        try {
+    @PostMapping("u1")
+    public ResponseEntity<?> uploadStoreAsFile(@RequestParam("file") MultipartFile file) {
+        String storePath = "src/main/resources/";
+        //获取文件名
+        String fileName = file.getOriginalFilename();
+        File storeFile = new File(storePath + fileName);
+
+        try (
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(file.getInputStream());
+                FileOutputStream fileOutputStream = new FileOutputStream(storeFile);
+                BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)
+        ) {
             //创建文件夹
-            String targetPath = request.getContextPath() + "upload";
-            File folder = new File(targetPath);
-            if (!folder.exists()) {
-                folder.mkdirs();
+            if (!storeFile.exists()) {
+                boolean createStoreDirSuccess = storeFile.mkdirs();
+                if (!createStoreDirSuccess) {
+                    throw new RuntimeException("创建文件夹失败");
+                }
             }
 
-            //获取文件名
-            String filename = uploadfile.getOriginalFilename();
-            //完整路径
-            File targetFilePath = new File(Paths.get(targetPath, filename).toString());
+            byte[] buffer = new byte[1024];
+            int readLength;
+            while (true) {
+                readLength = bufferedInputStream.read(buffer);
+                if (readLength != -1) {
+                    bufferedOutputStream.write(buffer, 0, readLength);
+                } else {
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
-            //input
-            byte[] uploadfileBytes = uploadfile.getBytes();
+    /**
+     * 上传文件输入流 -> 内存数组输出流
+     */
+    @PostMapping("u2")
+    public ResponseEntity<?> uploadAsStream(@RequestParam("file") MultipartFile file) {
+        try (InputStream inputStream = file.getInputStream();
+             BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()
+        ) {
+            byte[] buffer = new byte[1024];
+            int readLength;
 
-            //output
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(targetFilePath));
-            stream.write(uploadfileBytes);
-            stream.close();
+            while (true) {
+                readLength = bufferedInputStream.read(buffer);
+                if (readLength != -1) {
+                    byteArrayOutputStream.write(buffer, 0, readLength);
+                } else {
+                    break;
+                }
+            }
 
-			System.out.println("upload file: " + targetFilePath);
+            String s = byteArrayOutputStream.toString();
+            System.out.println(s);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
