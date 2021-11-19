@@ -1,4 +1,4 @@
-package com.com.jamie;
+package com.cat;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 import org.junit.Test;

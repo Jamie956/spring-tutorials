@@ -1,4 +1,4 @@
-package com.com.jamie;
+package com.cat;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

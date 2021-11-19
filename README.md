@@ -10,3 +10,5 @@ hi spring cloud
 
 
 
+- springdata module: 连接各个数据源，elasticsearch, hive, mongo, mysql, redis...
+- 
