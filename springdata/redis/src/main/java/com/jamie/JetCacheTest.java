@@ -52,10 +52,9 @@ public class JetCacheTest {
 
     @Test
     public void methodCache() {
-        methodCacheTest.get("1");
+        String s = methodCacheTest.get("1");
+        System.out.println("s="+s);
     }
-
-
 
 }
 
