@@ -37,7 +37,7 @@ public class GoodsSearch {
      * 按商品=title 聚合
      */
     public void tmCommentMongoToExcelByKeyword(String keyword) throws IOException {
-        String[] headers = {"goods_name", "rateDate", "price", "commentSum", "location", "shop_name", "title", "detail_url"};
+        String[] headers = {"goods_name", "rateDate", "price", "commentSum", "location", "shop_name", "title", "detail_url", "keyword"};
 
         Query query = Query.query(Criteria.where("rateDate").gte("2021-01-01 00:00:00").lt("2022-01-01 00:00:00")
                 .and("goods_name").regex(keyword).and("location").regex("广东"));
@@ -52,6 +52,7 @@ public class GoodsSearch {
             //同一个商品只取第一条
             TmallComment firstTmallCommentInGroup = value.get(0);
             firstTmallCommentInGroup.setCommentSum(value.size());
+            firstTmallCommentInGroup.setKeyword(keyword);
             JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(firstTmallCommentInGroup));
             jsonArray.add(jsonObject);
         });
@@ -65,7 +66,7 @@ public class GoodsSearch {
      * 按商品=goods_name 聚合
      */
     public void jdCommentMongoToExcelByKeyword(String keyword) throws IOException {
-        String[] headers = {"platform", "goods_type", "goods_name", "price", "commentSum", "shop", "ship_address", "created"};
+        String[] headers = {"platform", "goods_type", "goods_name", "price", "commentSum", "shop", "ship_address", "created", "keyword"};
 
         Query query = Query.query(Criteria.where("created").gte("2021-01-01 00:00:00").lt("2022-01-01 00:00:00")
                 .and("goods_type").regex(keyword).and("ship_address").regex("广东"));
@@ -80,6 +81,8 @@ public class GoodsSearch {
             //同一个商品只取第一条
             JdComment firstJdCommentInGroup = value.get(0);
             firstJdCommentInGroup.setCommentSum(value.size());
+            firstJdCommentInGroup.setKeyword(keyword);
+
             JSONObject jsonObject = JSON.parseObject(JSON.toJSONString(firstJdCommentInGroup));
             jsonArray.add(jsonObject);
         });
@@ -98,7 +101,9 @@ public class GoodsSearch {
 
     @Test
     public void exportTest() throws IOException {
-        String[] keywords = {"燃气","文件夹","文件架","订书机","修正笔","修正带","橡皮","修正液","笔","文具","电动自行车"};
+//        String[] keywords = {"燃气","文件夹","文件架","订书机","修正笔","修正带","橡皮","修正液","笔","文具","电动自行车"};
+        String[] keywords = {"压力锅"};
+
         exportToExcelByKeywords(keywords);
     }
 

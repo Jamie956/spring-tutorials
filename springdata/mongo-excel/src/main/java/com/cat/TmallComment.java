@@ -19,4 +19,5 @@ public class TmallComment {
     private String title;
     private String detail_url;
     private Integer commentSum;
+    private String keyword;
 }

@@ -18,4 +18,5 @@ public class JdComment {
     private String ship_address;
     private String price;
     private Integer commentSum;
+    private String keyword;
 }
