@@ -14,9 +14,12 @@ import java.util.Set;
 
 public class JsonExcelConvert {
     /**
-     * json array 转 execel
+     * json array 转 excel
+     * @param jsonArray json array 数据
+     * @param destPath 存储路径
+     * @param headers 按指定名字和顺序生成 excel 头部
      */
-    public static void json2Excel(JSONArray jsonArray, String destPath) throws IOException {
+    public static void json2Excel(JSONArray jsonArray, String destPath, String[] headers) throws IOException {
         if (jsonArray.size() == 0) {
             return;
         }
@@ -30,7 +33,7 @@ public class JsonExcelConvert {
             Sheet sheet = wb.createSheet("sheet0");
             Row row = sheet.createRow(rowNum++);
             //标题
-            Set<String> keys = list.get(0).keySet();
+            String[] keys = headers == null ? list.get(0).keySet().toArray(new String[]{}) : headers;
             for (String key : keys) {
                 row.createCell(column++).setCellValue(key);
             }
@@ -45,6 +48,10 @@ public class JsonExcelConvert {
             }
             wb.write(out);
         }
+    }
+
+    public static void json2Excel(JSONArray jsonArray, String destPath) throws IOException {
+        json2Excel(jsonArray, destPath, null);
     }
 
     /**
