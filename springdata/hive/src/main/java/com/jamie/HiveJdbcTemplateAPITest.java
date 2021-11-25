@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class HiveTest {
+public class HiveJdbcTemplateAPITest {
     @Autowired
     private JdbcTemplate hiveJdbcTemplate;
 

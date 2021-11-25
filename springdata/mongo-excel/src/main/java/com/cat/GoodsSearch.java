@@ -101,8 +101,8 @@ public class GoodsSearch {
         for (String keyword : keywords) {
             JSONArray jdKeywordData = jdCommentQueryByKeyword(keyword, year);
             jdAllData.addAll(jdKeywordData);
-            System.out.println(String.format("京东 关键字[%s] 开始写入excel", keyword));
-            String fileName = String.format("D:\\京东%s年商品数据-%s.xlsx", year, keyword);
+//            System.out.println(String.format("京东 关键字[%s] 开始写入excel", keyword));
+//            String fileName = String.format("D:\\京东%s年商品数据-%s.xlsx", year, keyword);
 //            JsonExcelConvert.json2Excel(jdKeywordData, fileName, JD_HEADERS);
         }
         System.out.println("京东全部关键字数据 开始写入excel");
@@ -115,8 +115,8 @@ public class GoodsSearch {
         for (String keyword : keywords) {
             JSONArray tamllKeywordData = tmallCommentQueryByKeyword(keyword, year);
             tmallAllData.addAll(tamllKeywordData);
-            System.out.println(String.format("天猫 关键字[%s] 开始写入excel", keyword));
-            String fileName = String.format("D:\\天猫%s年商品数据-%s.xlsx", year, keyword);
+//            System.out.println(String.format("天猫 关键字[%s] 开始写入excel", keyword));
+//            String fileName = String.format("D:\\天猫%s年商品数据-%s.xlsx", year, keyword);
 //            JsonExcelConvert.json2Excel(tamllKeywordData, fileName, TMALL_HEADERS);
         }
         System.out.println("天猫全部关键字数据 开始写入excel");
@@ -128,7 +128,7 @@ public class GoodsSearch {
     public void exportTest() throws IOException {
 //        String[] keywords = {"燃气","文件夹","文件架","订书机","修正笔","修正带","橡皮","修正液","笔","文具","电动自行车"};
         String[] keywords = {"压力锅","电饭煲","电饭锅","电火锅","电烤箱","电陶炉","电水壶","电热水壶","养生壶","饮水机","电磁炉","微波炉","榨汁机","豆浆机","破壁料理机","破壁机","绞肉机","洗碗机","净水器","净水机","电炊具","电风扇","油烟机","换气扇","排气扇","电[\u4e00-\u9fa5].*热水器","吸顶灯","吊灯","筒灯","壁灯","落地灯","台灯","床单","床罩","被套","棉被","枕头","枕套","毛巾被","厚[\u4e00-\u9fa5].*毯子","空调被","睡袋","儿童服装","童装","婴幼儿服装","婴儿服装","插头","插座","开关","电线电缆","玩具","儿童[\u4e00-\u9fa5].*车","婴儿[\u4e00-\u9fa5].*车","童车","^(?!.*?厚).*毯子.*$"};
-        int year = 2021;
+        int year = 2020;
         tmallCommentToExcel(keywords, year);
         jdCommentToExcel(keywords, year);
     }
