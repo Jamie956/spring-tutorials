@@ -1,4 +1,4 @@
-package tk.zmi956;
+package com.cat;
 
 public class Product {
     private String id;
