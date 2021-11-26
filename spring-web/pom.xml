@@ -4,11 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cat</groupId>
-	<artifactId>rest</artifactId>
+	<artifactId>spring-web-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>servlet-filter</module>
 		<module>restful</module>
+		<module>filter</module>
+		<module>interceptor</module>
 	</modules>
     <packaging>pom</packaging>
 
@@ -18,7 +20,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.6.RELEASE</version>
+<!--		<version>1.5.6.RELEASE</version>-->
+		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -38,6 +41,12 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.68</version>
 		</dependency>
 	</dependencies>
 
