@@ -6,7 +6,11 @@
 	<groupId>com.cat</groupId>
 	<artifactId>rest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>servlet-filter</module>
+		<module>restful</module>
+	</modules>
+    <packaging>pom</packaging>
 
 	<name>spring-web</name>
 	<description>Demo project for Spring Boot</description>

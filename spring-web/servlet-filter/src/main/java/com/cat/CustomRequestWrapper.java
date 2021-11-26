@@ -1,4 +1,4 @@
-package com.cat.web.filter;
+package com.cat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

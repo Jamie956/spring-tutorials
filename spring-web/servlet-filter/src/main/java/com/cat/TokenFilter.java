@@ -1,4 +1,4 @@
-package com.cat.web.filter;
+package com.cat;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.cat.restful;
+package com.cat;
 
 import org.springframework.web.bind.annotation.*;
 
