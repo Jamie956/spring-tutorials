@@ -1,4 +1,4 @@
-package com.cat;
+package com.cat.restful;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +18,7 @@ public class ProductController {
 	}
 
 	/**
-	 * localhost:8856/product/1
+	 * http://localhost:8856/product/1
 	 */
 	@GetMapping("/{id}")
 	public Product findById(@PathVariable("id") String id) {
