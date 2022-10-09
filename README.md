@@ -1,4 +1,4 @@
-- aop
+- aop: spring aspectj implement AOP
 - async
 - async-executor
 - db-access
