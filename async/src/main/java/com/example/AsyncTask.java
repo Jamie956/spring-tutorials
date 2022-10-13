@@ -1,13 +1,15 @@
-package com.example.demo.task;
+package com.example;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 import java.util.concurrent.Future;
 
 @Component
+@EnableAsync
 public class AsyncTask {
 	public static Random random = new Random();
 

@@ -1,5 +1,5 @@
 - aop: spring aspectj implement AOP
-- async
+- async: spring schedule async task
 - async-executor
 - db-access
 - jackson
