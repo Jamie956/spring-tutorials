@@ -1,6 +1,8 @@
 - aop: spring aspectj implement AOP
 - async: spring schedule async task
-- db-access
+- db-access：待拆开
+- druid: sql admin platform
+- jdbc-template: spring jdbc template
 - jackson
 - log
 - micro-oauth2
