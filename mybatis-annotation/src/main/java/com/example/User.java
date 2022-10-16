@@ -1,24 +1,22 @@
-package com.example.demo.entity;
-
-import com.example.demo.enums.UserSexEnum;
+package com.example;
 
 public class User {
 	private Long id;
 	private String userName;
-	private UserSexEnum userSex;
+	private UserSex userSex;
 	private String nickName;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(Long id, String userName, UserSexEnum userSex, String nickName) {
+	public User(Long id, String userName, UserSex userSex, String nickName) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.userSex = userSex;
 		this.nickName = nickName;
 	}
-	public User(String userName, UserSexEnum userSex, String nickName) {
+	public User(String userName, UserSex userSex, String nickName) {
 		super();
 		this.userName = userName;
 		this.userSex = userSex;
@@ -36,10 +34,10 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public UserSexEnum getUserSex() {
+	public UserSex getUserSex() {
 		return userSex;
 	}
-	public void setUserSex(UserSexEnum userSex) {
+	public void setUserSex(UserSex userSex) {
 		this.userSex = userSex;
 	}
 	public String getNickName() {

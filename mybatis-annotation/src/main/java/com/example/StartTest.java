@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package com.example;
 
 import java.util.List;
 
@@ -8,25 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.entity.User;
-import com.example.demo.enums.UserSexEnum;
-import com.example.demo.mapper.test2.User2Mapper;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserDaoTest2 {
+public class StartTest {
 	@Autowired
-	private User2Mapper userMapper;
+	private UserMapper UserMapper;
 	
 	@Test
 	public void save() {
-		userMapper.insert(new User("tomcat", UserSexEnum.MAN, "mimi"));
-		userMapper.insert(new User("fish", UserSexEnum.WOMAN, "coco"));
+		UserMapper.insert(new User("AA", UserSex.MAN, "aa"));
+		UserMapper.insert(new User("BB", UserSex.WOMAN, "bb"));
 	}
 	
 	@Test
 	public void findAll() {
-		List<User> us = userMapper.getAll();
+		List<User> us = UserMapper.getAll();
 		for(User u : us){
 			System.out.println("u => "+u);
 		}
@@ -34,22 +30,21 @@ public class UserDaoTest2 {
 	
 	@Test
 	public void findById() {
-		User u = userMapper.getOne(2L);
+		User u = UserMapper.getOne(2L);
 		System.out.println("u => "+u);
 	}
 	
 	@Test
 	public void update() {
-		User u = userMapper.getOne(2L);
+		User u = UserMapper.getOne(2L);
 		u.setUserName("deer");
-		u.setUserSex(UserSexEnum.WOMAN);
+		u.setUserSex(UserSex.WOMAN);
 		u.setNickName("niconico");
-		userMapper.update(u);
+		UserMapper.update(u);
 	}
 	
 	@Test
 	public void removeById() {
-		userMapper.delete(1L);
+		UserMapper.delete(1L);
 	}
-	
 }
