@@ -13,9 +13,10 @@
         <module>admin-client</module>
         <module>eureka-server</module>
         <module>eureka-client</module>
-        <module>feign-eureka</module>
-        <module>feign-service</module>
-        <module>feign-client</module>
+        <module>feign-provider</module>
+        <module>feign-consumer</module>
+        <module>hystrix-provider</module>
+        <module>hystrix-consumer</module>
     </modules>
 
     <parent>
