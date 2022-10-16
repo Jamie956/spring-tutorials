@@ -3,6 +3,8 @@
 - db-access：待拆开
 - druid: sql admin platform
 - jdbc-template: spring jdbc template
+- jdbc-template-hikari: construct template by hikari
+- jpa: spring jpa data access
 - jackson
 - log
 - micro-oauth2
