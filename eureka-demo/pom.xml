@@ -13,6 +13,9 @@
         <module>admin-client</module>
         <module>eureka-server</module>
         <module>eureka-client</module>
+        <module>feign-eureka</module>
+        <module>feign-service</module>
+        <module>feign-client</module>
     </modules>
 
     <parent>

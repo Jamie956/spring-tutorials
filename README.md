@@ -6,6 +6,7 @@
 - jpa: spring jpa data access
 - mybatis-annotation
 - mybatis-xml2: spring boot + mybatis xml
+- eureka: 
 - jackson
 - log
 - micro-oauth2
