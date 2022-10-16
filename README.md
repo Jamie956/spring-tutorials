@@ -1,10 +1,11 @@
 - aop: spring aspectj implement AOP
 - async: spring schedule async task
-- db-access：待拆开
 - druid: sql admin platform
 - jdbc-template: spring jdbc template
 - jdbc-template-hikari: construct template by hikari
 - jpa: spring jpa data access
+- mybatis-annotation
+- mybatis-xml2: spring boot + mybatis xml
 - jackson
 - log
 - micro-oauth2
