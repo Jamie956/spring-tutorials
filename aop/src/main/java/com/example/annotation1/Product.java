@@ -1,4 +1,4 @@
-package com.jamie;
+package com.example.annotation1;
 
 public class Product {
     private String name;

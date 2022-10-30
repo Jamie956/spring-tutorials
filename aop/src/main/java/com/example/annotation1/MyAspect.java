@@ -1,4 +1,4 @@
-package com.jamie;
+package com.example.annotation1;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -7,21 +7,19 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
-
 @Aspect
 @Component
 public class MyAspect {
 
-    @Pointcut("execution(public * com.jamie..*.*(..))")
+    @Pointcut("execution(public * com.example.annotation1..*.*(..))")
     public void pc1() {}
 
     //排除切点
-    @Pointcut("execution(public * com.jamie..*.*(..)) && !execution(public * com.jamie..*.bar*(..))" )
+    @Pointcut("execution(public * com.example.annotation1..*.*(..)) && !execution(public * com.example.annotation1..*.bar*(..))" )
     public void pc2() {}
 
     //..代表相隔多个
-    @Pointcut("execution(public * com.jamie..*(..))" )
+    @Pointcut("execution(public * com.example.annotation1..*(..))" )
     public void pc3() {}
 
     @Around("pc2()")
