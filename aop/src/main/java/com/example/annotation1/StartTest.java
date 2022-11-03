@@ -16,21 +16,12 @@ public class StartTest {
         cxt.scan("com.example.annotation1");
         cxt.refresh();
 
-//        String[] names = cxt.getBeanDefinitionNames();
-
         X x = cxt.getBean(X.class);
-        Product product = new Product();
-// *
         /**
          * intercept method foo() -> intercept:691, CglibAopProxy$DynamicAdvisedInterceptor
          * CglibAopProxy$DynamicAdvisedInterceptor
          */
-        x.foo(product);
-        x.bar(product);
-
-        System.out.println(product);
-
+        x.foo();
         cxt.close();
-
     }
 }
