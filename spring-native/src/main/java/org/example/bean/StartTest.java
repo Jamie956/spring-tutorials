@@ -7,74 +7,79 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.function.Supplier;
 
-/**
- * 定义Bean的方式：
- * XML
- * Bean 注解
- * Component 注解
- * BeanDefinition: 实例化 bean definition，bean definition 注册到容器
- * FactoryBean：实例化 bean definition 设置 factory bean，bean definition 注册到容器
- * supplier：context 注册 bean，直接提供 bean 实例对象
- */
 public class StartTest {
-	@Test
-	public void beanDefinitionDefinedBeanTest() {
-		//实例化 bean definition，设置 bean class
-		GenericBeanDefinition bd = new GenericBeanDefinition();
-		bd.setBeanClass(X.class);
+    @Test
+    public void registerBeanDefinitionTest() {
+        //create bean definition
+        GenericBeanDefinition bd = new GenericBeanDefinition();
+        bd.setBeanClass(X.class);
 
-		//实例化 context，注册 bean definition，refresh 初始化容器
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.registerBeanDefinition("x123", bd);
-		context.refresh();
+        //create container(new factory bean)
+        GenericApplicationContext context = new GenericApplicationContext();
+        String beanName = "randomName";
+        //register bean definition custom define, actually put into bean definition map
+        context.registerBeanDefinition(beanName, bd);
+        //initial container bean
+        context.refresh();
 
-		//单例池获取 bean
-		System.out.println(context.getBean(X.class));
-	}
+        //get from Cache of singleton objects
+        System.out.println(context.getBean(X.class));
+        System.out.println(context.getBean(beanName));
+    }
 
-	@Test
-	public void factoryBeanDefinedDeanTest() {
-		//实例化 bean definition，设置 bean class 为 FactoryBean 实现类
-		GenericBeanDefinition bd = new GenericBeanDefinition();
-		bd.setBeanClass(MyFactoryBean.class);
+    @Test
+    public void registerFactoryBeanTest() {
+        //create bean definition
+        GenericBeanDefinition bd = new GenericBeanDefinition();
+        //set bean class type, special type of factory bean
+        bd.setBeanClass(MyFactoryBean.class);
 
-		//实例化 context，注册 bean definition，refresh 初始化容器
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.registerBeanDefinition("customBd", bd);
-		context.refresh();
+		//new container (bean factory)
+        GenericApplicationContext context = new GenericApplicationContext();
+        String beanName = "randomName";
+        //put into bean definition map
+        context.registerBeanDefinition(beanName, bd);
+        context.refresh();
 
-		//name=&+name 才能获取 factory bean，如果不加 &，获取的是 factory bean getObject 返回的对象
-		System.out.println(context.getBean("&customBd", MyFactoryBean.class));
-		System.out.println(context.getBean("customBd", X.class));
-	}
+		//return real bean factory when BeanFactory.FACTORY_BEAN_PREFIX &
+        System.out.println(context.getBean("&" + beanName, MyFactoryBean.class));
+        //doGetObjectFromFactoryBean: get bean from custom defined bean factory
+        System.out.println(context.getBean(beanName, X.class));
+    }
 
-	@Test
-	public void supplierDefinedBeanTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		//注册 bean 时，supplier 提供实例
-		Supplier<X> supplier = X::new;
-		context.registerBean(X.class, supplier);
-		context.refresh();
+    @Test
+    public void supplierBeanDefinitionTest() {
+		GenericApplicationContext context = new GenericApplicationContext();
+        Supplier<X> supplier = X::new;
+        //instanceSupplier: set abstract bean definition property
+        context.registerBean(X.class, supplier);
+        //refresh() will do supplier get object and create bean instance and put into container
+		//createBeanInstance
+        context.refresh();
 
-		System.out.println(context.getBean(X.class));
-	}
+        System.out.println(context.getBean(X.class));
+    }
 
-	@Test
-	public void beanDefinitionTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.register(X.class);
+    @Test
+    public void updateBeanDefinitionTest() {
+		GenericApplicationContext context = new GenericApplicationContext();
+		context.registerBean(X.class);
 
-		//从context 容器的 factory bean 获取 bean definition，修改 bean definition 的 bean class name (全类名)
-		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
-		BeanDefinition bd = beanFactory.getBeanDefinition("x");
+		//get bean definition from factory bean from context, and update bean definition class name
+        DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
+
+		String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
+
+		BeanDefinition bd = beanFactory.getBeanDefinition("org.example.bean.X");
 		bd.setBeanClassName("org.example.bean.Z");
 
-		context.refresh();
+        context.refresh();
 
-		System.out.println(context.getBean(Z.class));
-	}
+        System.out.println(context.getBean(Z.class));
+    }
 
 }
