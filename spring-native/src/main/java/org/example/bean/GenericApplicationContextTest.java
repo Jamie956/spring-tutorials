@@ -11,7 +11,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.function.Supplier;
 
-public class StartTest {
+public class GenericApplicationContextTest {
     @Test
     public void registerBeanDefinitionTest() {
         //create bean definition
@@ -70,7 +70,7 @@ public class StartTest {
 		context.registerBean(X.class);
 
 		//get bean definition from factory bean from context, and update bean definition class name
-        DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
+		DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
 
 		String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
 
