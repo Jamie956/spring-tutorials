@@ -2,12 +2,14 @@ package org.example.construct;
 
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 public class StartTest {
 	@Test
 	public void beanDefinitionTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		context.register(X.class, Y.class);
+		GenericApplicationContext context = new GenericApplicationContext();
+		context.registerBean(X.class);
+		context.registerBean(Y.class);
 		context.refresh();
 		String[] beans = context.getBeanDefinitionNames();
 	}

@@ -1,6 +1,8 @@
 package org.example.circular;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.support.GenericApplicationContext;
 
 /**
  * 循环依赖：spring bean 之间互相注入
@@ -14,6 +16,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class Main {
 	public static void main(String[] args) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("circular.xml");
+		GenericApplicationContext context = new GenericApplicationContext();
+		context.registerBean(A.class);
+		context.registerBean(B.class);
+
+		DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
+
+		AbstractBeanDefinition beanDefinitionA = (AbstractBeanDefinition) beanFactory.getBeanDefinition("org.example.circular.A");
+		beanDefinitionA.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+
+		AbstractBeanDefinition beanDefinitionB = (AbstractBeanDefinition) beanFactory.getBeanDefinition("org.example.circular.B");
+		beanDefinitionB.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+		context.refresh();
 	}
 }

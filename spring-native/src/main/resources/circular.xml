@@ -4,9 +4,9 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd"
 	   default-autowire="byType">
-	<bean id="a" class="com.cat.circular.A">
+	<bean id="a" class="org.example.circular.A">
 	</bean>
 
-	<bean id="b" class="com.cat.circular.B">
+	<bean id="b" class="org.example.circular.B">
 	</bean>
 </beans>
