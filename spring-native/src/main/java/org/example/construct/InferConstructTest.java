@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-public class StartTest {
+public class InferConstructTest {
 	@Test
 	public void beanDefinitionTest() {
 		GenericApplicationContext context = new GenericApplicationContext();
