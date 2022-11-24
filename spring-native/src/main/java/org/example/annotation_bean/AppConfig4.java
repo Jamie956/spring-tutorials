@@ -4,8 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@ComponentScan("com.cat.annotation_bean")
-@Configuration
+@ComponentScan("org.example.annotation_bean")
+//@Configuration
 public class AppConfig4 {
 
 	@Bean

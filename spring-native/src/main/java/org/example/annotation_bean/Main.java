@@ -4,13 +4,12 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
-	/**
-	 * 测试 	@Bean(autowire = Autowire.BY_TYPE)
-	 */
+
+
 	@Test
-	public void t1() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		System.out.println(context.getBean(X.class).getY());
+	public void annotationDependencyInjectTest() {
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig1.class);
+		System.out.println(context.getBean(X1.class).getY1());
 	}
 
 	/**
@@ -19,11 +18,13 @@ public class Main {
 	@Test
 	public void t2() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig2.class);
-		System.out.println(context.getBean(Z.class).getY());
+
+		String[] beanDefinitionNames = context.getBeanDefinitionNames();
+		System.out.println(context.getBean(Z.class).getY2());
 	}
 
 	/**
-	 * 测试 自定义bean注解
+	 * prototype scope
 	 */
 	@Test
 	public void t3() {

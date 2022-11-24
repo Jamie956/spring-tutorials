@@ -2,16 +2,16 @@ package org.example.annotation_bean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class Z {
-	@Autowired
-	private Y2 y123;
+public class X1 {
+	private Y1 y1;
 
-	public void setY2(Y2 y) {
+	@Autowired
+	public void setY1(Y1 y1) {
 		System.out.println("set");
-		this.y123 = y;
+		this.y1 = y1;
 	}
 
-	public Y2 getY2() {
-		return y123;
+	public Y1 getY1() {
+		return y1;
 	}
 }

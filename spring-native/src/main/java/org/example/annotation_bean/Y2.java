@@ -1,4 +1,4 @@
 package org.example.annotation_bean;
 
-public class Y {
+public class Y2 {
 }
