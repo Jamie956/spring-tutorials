@@ -3,7 +3,7 @@ package org.example.annotation_scan;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class Main {
+public class ComponentScanTest {
 	/**
 	 *  scan custom define annotation
 	 */
@@ -27,18 +27,10 @@ public class Main {
 	 */
 	@Test
 	public void scanExcludeTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig2.class);
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.register(AppConfig2.class);
+		context.refresh();
 		System.out.println(context.getBean(Y.class));
 	}
 
-	/**
-	 * 索引扫描
-	 * 测试配置文件 spring.components 使注解路径失效
-	 */
-	@Test
-	public void t2() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig3.class);
-		System.out.println(context.getBean(G.class));
-		System.out.println(context.getBean(C.class));
-	}
 }
