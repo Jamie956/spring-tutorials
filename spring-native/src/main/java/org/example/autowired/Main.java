@@ -1,5 +1,6 @@
 package org.example.autowired;
 
+import junit.framework.TestCase;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -10,14 +11,19 @@ public class Main {
 	 */
 	@Test
 	public void t1() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-//		for (String e : context.getBeanDefinitionNames()) {
-//			//创建了3个X bean
-//			System.out.println(e);
-//		}
+		//registerAnnotationConfigProcessors(..): register internal bean definition
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		String[] beanDefinitionNames1 = context.getBeanDefinitionNames();
+		//register candidate beans
+		context.scan("org.example.autowired");
+		String[] beanDefinitionNames2 = context.getBeanDefinitionNames();
+		context.refresh();
+		String[] beanDefinitionNames3 = context.getBeanDefinitionNames();
 
-		System.out.println(context.getBean("x"));
-		System.out.println(context.getBean("x1"));
-		System.out.println(context.getBean("x2"));
+		TestCase.assertNotNull(context.getBean("x"));
+		TestCase.assertNotNull(context.getBean("x1"));
+		TestCase.assertNotNull(context.getBean("x2"));
+		TestCase.assertNotSame(context.getBean("x"), context.getBean("x1"));
+		TestCase.assertNotSame(context.getBean("x1"), context.getBean("x2"));
 	}
 }

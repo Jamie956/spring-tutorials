@@ -11,7 +11,4 @@ public class Y {
 	@Autowired
 	private X x;
 
-	public X getX() {
-		return x;
-	}
 }
