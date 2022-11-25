@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @ComponentScan("org.example.annotation_bean")
 //@Configuration
+//注解 @Configuration，class 变成代理对象
 public class AppConfig4 {
 
 	@Bean
@@ -15,8 +16,7 @@ public class AppConfig4 {
 
 	@Bean
 	public G g() {
-		//如果不加@Configuration，每次调c 方法都会新创建c实例
-		//如果加了@Configuration，c方法返回的都是同一个实例
+		//注解 @Configuration，c() 每次返回新实例c；否则不注解@Configuration，c()返回的都是同一个实例
 		System.out.println(c());
 		System.out.println(c());
 		return new G();

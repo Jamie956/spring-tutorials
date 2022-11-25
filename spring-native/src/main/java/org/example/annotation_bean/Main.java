@@ -34,11 +34,6 @@ public class Main {
 		System.out.println(context.getBean(A.class));
 	}
 
-	/**
-	 * 测试 @Configuration
-	 * 如果不加@Configuration，每次调c 方法都会新创建c实例
-	 * 如果加了@Configuration，c方法返回的都是同一个实例
-	 */
 	@Test
 	public void t4() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig4.class);
