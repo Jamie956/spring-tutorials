@@ -5,20 +5,28 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
 	/**
-	 *  ComponentScan 扫描自定义注解
-	 *  测试 @ComponentScan(value = "com.cat.annotation_scan", includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MyComponent.class))
+	 *  scan custom define annotation
 	 */
 	@Test
-	public void t0() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+	public void componentScanFilterTest() {
+		//create internal bean
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		//check bean definition before register annotated config class and refresh
+		String[] beanDefinitionNames1 = context.getBeanDefinitionNames();
+		//register annotated class
+		context.register(AppConfig.class);
+		context.refresh();
+		//check bean definition after register and refresh
+		String[] beanDefinitionNames2 = context.getBeanDefinitionNames();
+		AppConfig appConfig = context.getBean(AppConfig.class);
 		System.out.println(context.getBean(X.class));
 	}
 
 	/**
-	 * 测试 @ComponentScan(value = "com.cat.annotation_scan", excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MyComponent.class))
+	 * scan exclude
 	 */
 	@Test
-	public void t1() {
+	public void scanExcludeTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig2.class);
 		System.out.println(context.getBean(Y.class));
 	}
