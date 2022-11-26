@@ -6,14 +6,19 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
-public class Main {
+public class AnnotationAutowiredTest {
 
-    /**
-     * 测试多个bean 时，autowired注解 注入bean的优先度
-     */
     @Test
     public void t1() {
-        //registerAnnotationConfigProcessors(..): register internal bean definition
+        // AnnotatedBeanDefinitionReader
+        // -> AnnotationConfigUtils.registerAnnotationConfigProcessors(..): register post processor bean definition
+        // post processor bean definition class:
+        //      ConfigurationClassPostProcessor.class
+        //      AutowiredAnnotationBeanPostProcessor.class
+        //      CommonAnnotationBeanPostProcessor.class
+        //      EventListenerMethodProcessor.class
+        //      DefaultEventListenerFactory.class
+        // DefaultListableBeanFactory.registerBeanDefinition(..): register bean
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         //register candidate beans
         printBeanDefinition(context, "before scan");
@@ -24,6 +29,8 @@ public class Main {
         printBeanDefinition(context, "ending");
 
         TestCase.assertNotNull(context.getBean("x"));
+        TestCase.assertNotNull(context.getBean("y"));
+        TestCase.assertNotNull(context.getBean("z"));
         TestCase.assertNotNull(context.getBean("x1"));
         TestCase.assertNotNull(context.getBean("x2"));
         TestCase.assertNotSame(context.getBean("x"), context.getBean("x1"));

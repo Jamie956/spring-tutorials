@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 public class X {
     @Bean
     public X x1() {
+        //debug
         return new X();
     }
 
