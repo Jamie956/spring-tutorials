@@ -10,7 +10,7 @@ public class AnnotationAutowiredTest {
 
     @Test
     public void t1() {
-        // AnnotatedBeanDefinitionReader
+        // 1.AnnotatedBeanDefinitionReader
         // -> AnnotationConfigUtils.registerAnnotationConfigProcessors(..): register post processor bean definition
         // post processor bean definition class:
         //      ConfigurationClassPostProcessor.class
@@ -19,9 +19,13 @@ public class AnnotationAutowiredTest {
         //      EventListenerMethodProcessor.class
         //      DefaultEventListenerFactory.class
         // DefaultListableBeanFactory.registerBeanDefinition(..): register bean
+        // 2.new ClassPathBeanDefinitionScanner
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         //register candidate beans
         printBeanDefinition(context, "before scan");
+        // ClassPathScanningCandidateComponentProvider.findCandidateComponents(..): path resolve finding candidate bean definition
+        // post processor handle candidate bean definition
+        // DefaultListableBeanFactory.registerBeanDefinition(..): register bean definition, put into bean definition map
         context.scan("org.example.autowired");
         printBeanDefinition(context, "before refresh");
         //refresh -> invokeBeanFactoryPostProcessors -> put object annotated @Bean into bean definition names
