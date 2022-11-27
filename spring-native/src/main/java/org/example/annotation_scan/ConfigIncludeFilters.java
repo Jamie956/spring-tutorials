@@ -9,5 +9,5 @@ import org.springframework.context.annotation.FilterType;
 @ComponentScan(value = "org.example.annotation_scan",
         includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, value = MyComponent.class)
 )
-public class AppConfig {
+public class ConfigIncludeFilters {
 }

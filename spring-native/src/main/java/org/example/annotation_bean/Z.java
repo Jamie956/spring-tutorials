@@ -3,15 +3,15 @@ package org.example.annotation_bean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class Z {
-	@Autowired
-	private Y2 y123;
+	private Y y;
 
-	public void setY2(Y2 y) {
-		System.out.println("set");
-		this.y123 = y;
+	@Autowired
+	public void setY(Y y) {
+		//debug
+		this.y = y;
 	}
 
-	public Y2 getY2() {
-		return y123;
+	public Y getY() {
+		return y;
 	}
 }

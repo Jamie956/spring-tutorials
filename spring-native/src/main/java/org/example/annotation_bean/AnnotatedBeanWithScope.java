@@ -5,12 +5,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
 
-@ComponentScan("com.cat.annotation_bean")
-public class AppConfig3 {
+public class AnnotatedBeanWithScope {
 
 	@Bean
 	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 	public A a() {
+		// debug: invoke every time getBean(..)
 		return new A();
 	}
 }
