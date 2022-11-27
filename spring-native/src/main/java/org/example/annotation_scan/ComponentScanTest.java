@@ -1,36 +1,42 @@
 package org.example.annotation_scan;
 
+import junit.framework.TestCase;
+import org.example.utils.DebugUtils;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ComponentScanTest {
 	/**
-	 *  scan custom define annotation
+	 *  @ComponentScan include filters custom define annotation
 	 */
 	@Test
-	public void componentScanFilterTest() {
-		//create internal bean
+	public void componentScanIncludeFiltersTest() {
+		//register internal post processor bean definition
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		//check bean definition before register annotated config class and refresh
-		String[] beanDefinitionNames1 = context.getBeanDefinitionNames();
-		//register annotated class
+		DebugUtils.printBeanDefinition(context, "before register");
+		//register annotated config class
 		context.register(AppConfig.class);
+		DebugUtils.printBeanDefinition(context, "before refresh");
+		// invokeBeanFactoryPostProcessors()
+		// -> ConfigurationClassParser.doProcessConfigurationClass(..): parse @ComponentScan
+		// -> ComponentScanAnnotationParser.parse(..): parse @ComponentScan include filter and doScan()
 		context.refresh();
-		//check bean definition after register and refresh
-		String[] beanDefinitionNames2 = context.getBeanDefinitionNames();
-		AppConfig appConfig = context.getBean(AppConfig.class);
-		System.out.println(context.getBean(X.class));
+		DebugUtils.printBeanDefinition(context, "ending");
+
+		TestCase.assertNotNull(context.getBean(AppConfig.class));
+		TestCase.assertNotNull(context.getBean(X.class));
+		TestCase.assertNotNull(context.getBean(Y.class));
+		TestCase.assertNotNull(context.getBean(Z.class));
 	}
 
-	/**
-	 * scan exclude
-	 */
 	@Test
 	public void scanExcludeTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		DebugUtils.printBeanDefinition(context, "before register");
 		context.register(AppConfig2.class);
+		DebugUtils.printBeanDefinition(context, "before refresh");
 		context.refresh();
-		System.out.println(context.getBean(Y.class));
+		DebugUtils.printBeanDefinition(context, "ending");
 	}
 
 }

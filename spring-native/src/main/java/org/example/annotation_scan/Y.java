@@ -1,8 +1,9 @@
 package org.example.annotation_scan;
 
-import org.springframework.stereotype.Component;
-
-@Component
 @MyComponent
 public class Y {
+    public Y() {
+        //debug
+        int i = 0;
+    }
 }

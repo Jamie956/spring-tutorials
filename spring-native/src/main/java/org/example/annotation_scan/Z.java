@@ -3,5 +3,6 @@ package org.example.annotation_scan;
 import org.springframework.stereotype.Component;
 
 @Component
-public class X {
+@MyComponent
+public class Z {
 }

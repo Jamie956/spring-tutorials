@@ -1,6 +1,7 @@
 package org.example.autowired;
 
 import junit.framework.TestCase;
+import org.example.utils.DebugUtils;
 import org.junit.Test;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -22,12 +23,12 @@ public class AnnotationAutowiredTest {
         // 2.new ClassPathBeanDefinitionScanner
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         //register candidate beans
-        printBeanDefinition(context, "before scan");
+        DebugUtils.printBeanDefinition(context, "before scan");
         // ClassPathScanningCandidateComponentProvider.findCandidateComponents(..): path resolve finding candidate bean definition
         // post processor handle candidate bean definition
         // DefaultListableBeanFactory.registerBeanDefinition(..): register bean definition, put into bean definition map
         context.scan("org.example.autowired");
-        printBeanDefinition(context, "before refresh");
+        DebugUtils.printBeanDefinition(context, "before refresh");
         // prepareRefresh(): setup context fields startupDate, closed, active, earlyApplicationListeners ...
         // obtainFreshBeanFactory(): get parent class bean factory
         // prepareBeanFactory(..): setup factory bean var
@@ -37,7 +38,7 @@ public class AnnotationAutowiredTest {
         // initApplicationEventMulticaster():
         // finishBeanFactoryInitialization(): instantiate bean
         context.refresh();
-        printBeanDefinition(context, "ending");
+        DebugUtils.printBeanDefinition(context, "ending");
 
         TestCase.assertNotNull(context.getBean("x"));
         TestCase.assertNotNull(context.getBean("y"));
@@ -48,12 +49,5 @@ public class AnnotationAutowiredTest {
         TestCase.assertNotSame(context.getBean("x1"), context.getBean("x2"));
     }
 
-    public static void printBeanDefinition(GenericApplicationContext context, String step) {
-        System.out.println("----------------- " + step + " print bean definition -----------------");
-        String[] beanDefinitionNames2 = context.getBeanDefinitionNames();
-        for (String name : beanDefinitionNames2) {
-            BeanDefinition beanDefinition = context.getBeanDefinition(name);
-            System.out.println(beanDefinition);
-        }
-    }
+
 }
