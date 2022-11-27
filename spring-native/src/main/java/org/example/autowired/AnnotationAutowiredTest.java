@@ -28,7 +28,14 @@ public class AnnotationAutowiredTest {
         // DefaultListableBeanFactory.registerBeanDefinition(..): register bean definition, put into bean definition map
         context.scan("org.example.autowired");
         printBeanDefinition(context, "before refresh");
-        //refresh -> invokeBeanFactoryPostProcessors -> put object annotated @Bean into bean definition names
+        // prepareRefresh(): setup context fields startupDate, closed, active, earlyApplicationListeners ...
+        // obtainFreshBeanFactory(): get parent class bean factory
+        // prepareBeanFactory(..): setup factory bean var
+        // invokeBeanFactoryPostProcessors(..) -> PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(..): invoke post processor
+        //      put object annotated @Bean into bean definition names
+        // registerBeanPostProcessors(): bean post processor add to list in bean factory
+        // initApplicationEventMulticaster():
+        // finishBeanFactoryInitialization(): instantiate bean
         context.refresh();
         printBeanDefinition(context, "ending");
 
