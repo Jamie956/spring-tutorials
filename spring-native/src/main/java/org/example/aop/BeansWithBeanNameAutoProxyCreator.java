@@ -6,7 +6,7 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-public class AnnotatedBeanWithProxy {
+public class BeansWithBeanNameAutoProxyCreator {
 	@Bean
 	public MethodInterceptor myAroundAdvice() {
 		return new MethodInterceptor() {

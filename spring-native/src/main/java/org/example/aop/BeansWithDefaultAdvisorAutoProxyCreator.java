@@ -7,11 +7,9 @@ import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
 
 @ComponentScan("org.example.aop")
-@Import(DefaultAdvisorAutoProxyCreator.class)
-public class AppConfig4 {
+public class BeansWithDefaultAdvisorAutoProxyCreator {
 	@Bean
 	public DefaultPointcutAdvisor defaultPointcutAdvisor() {
 		NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
@@ -33,5 +31,10 @@ public class AppConfig4 {
 		});
 
 		return advisor;
+	}
+
+	@Bean
+	public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator() {
+		return new DefaultAdvisorAutoProxyCreator();
 	}
 }
