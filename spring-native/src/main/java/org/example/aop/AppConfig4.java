@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-@ComponentScan("com.cat.aop")
+@ComponentScan("org.example.aop")
 @Import(DefaultAdvisorAutoProxyCreator.class)
 public class AppConfig4 {
 	@Bean
@@ -25,9 +25,9 @@ public class AppConfig4 {
 		advisor.setAdvice(new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {
-				System.out.println("before...!");
+				System.out.println("before");
 				Object result = invocation.proceed();
-				System.out.println("after...!");
+				System.out.println("after");
 				return result;
 			}
 		});

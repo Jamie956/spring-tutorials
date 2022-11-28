@@ -72,17 +72,15 @@ public class Main {
 	 * 测试 DefaultAdvisorAutoProxyCreator aop 代理
 	 */
 	@Test
-	public void t5() {
+	public void defaultAdvisorAutoProxyCreatorTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig3.class);
 		context.getBean("a", A.class).greeting();
 		context.getBean("b", B.class).greeting();
 	}
 
-	/**
-	 * 测试 Import + DefaultAdvisorAutoProxyCreator aop 代理
-	 */
+
 	@Test
-	public void t6() {
+	public void importDefaultAdvisorAutoProxyCreatorTest() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig4.class);
 		context.getBean("a", A.class).greeting();
 		context.getBean("b", B.class).greeting();
