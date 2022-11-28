@@ -1,4 +1,4 @@
-package org.example.importing;
+package org.example.annotation_importing;
 
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
@@ -9,7 +9,7 @@ public class TestImportSelector implements ImportSelector {
 	 */
 	@Override
 	public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-		//断点
-		return new String[]{"com.cat.importing.Z"};
+		// debug
+		return new String[]{"org.example.importing.Z"};
 	}
 }

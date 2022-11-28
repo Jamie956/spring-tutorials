@@ -12,7 +12,7 @@ public class A {
 	}
 
 	public void setB(B b) {
-		//断点
+		// debug
 		System.out.println("set b in a");
 		this.b = b;
 	}

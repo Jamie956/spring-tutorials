@@ -1,11 +1,11 @@
-package org.example.lazy;
+package org.example.annotation_lazy;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Lazy;
 
-@ComponentScan("com.cat.lazy")
-public class AppConfig {
+@ComponentScan("org.example.annotation_lazy")
+public class AnnotationWithLazy {
 
 	@Bean
 	@Lazy

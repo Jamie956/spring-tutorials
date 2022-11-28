@@ -1,4 +1,4 @@
-package org.example.importing;
+package org.example.annotation_importing;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -109,9 +109,9 @@ import org.springframework.context.annotation.Import;
  */
 //@Import({X.class})
 //@Import({TestConfig.class})
-@Import({TestImportSelector.class})
+//@Import({TestImportSelector.class})
 //@Import({TestImportBeanDefinitionRegistrar.class})
-//@Import({X.class, TestConfig.class, TestImportSelector.class, TestImportBeanDefinitionRegistrar.class})
+@Import({X.class, TestConfig.class, TestImportSelector.class, TestImportBeanDefinitionRegistrar.class})
 @Configuration
 public class AppConfig {
 }

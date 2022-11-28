@@ -1,4 +1,4 @@
-package org.example.lazy;
+package org.example.annotation_lazy;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

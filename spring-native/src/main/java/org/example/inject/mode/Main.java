@@ -31,12 +31,11 @@ public class Main {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
-		//容器扫描指定的class
 		context.register(A.class, B.class);
-		DefaultListableBeanFactory beanFactory = (DefaultListableBeanFactory) context.getBeanFactory();
+		DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
 		AbstractBeanDefinition beanDefinitionA = (AbstractBeanDefinition) beanFactory.getBeanDefinition("a");
 		//修改 bean A的属性的注入模式
-//		beanDefinitionA.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+		beanDefinitionA.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
 		//所有自动注入的属性类型如果为B，则忽略注入
 //		beanFactory.ignoreDependencyType(B.class);
 

@@ -4,13 +4,13 @@
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="a" class="com.cat.inject.manually.A">
+	<bean id="a" class="org.example.inject.manually.A">
 		<!-- 手动装配：手动指定依赖关系 -->
 		<property name="b">
 			<ref bean="b"/>
 		</property>
 	</bean>
 
-	<bean id="b" class="com.cat.inject.manually.B">
+	<bean id="b" class="org.example.inject.manually.B">
 	</bean>
 </beans>

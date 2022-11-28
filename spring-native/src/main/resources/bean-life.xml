@@ -8,9 +8,9 @@
     <bean id="myz"
           destroy-method="myDestroy"
           init-method="myInit"
-          class="com.cat.lifecycle.Z">
+          class="org.example.lifecycle.Z">
     </bean>
 
     <!-- 配置自定义的后置处理器 -->
-    <bean id="processor" class="com.cat.lifecycle.CustomBeanPostProcessor"/>
+    <bean id="processor" class="org.example.lifecycle.CustomBeanPostProcessor"/>
 </beans>

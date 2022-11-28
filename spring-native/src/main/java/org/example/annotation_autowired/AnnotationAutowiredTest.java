@@ -1,11 +1,9 @@
-package org.example.autowired;
+package org.example.annotation_autowired;
 
 import junit.framework.TestCase;
 import org.example.utils.DebugUtils;
 import org.junit.Test;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 
 public class AnnotationAutowiredTest {
 

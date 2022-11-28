@@ -5,13 +5,14 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
 public class DebugUtils {
-    public static void printBeanDefinition(GenericApplicationContext context, String step) {
-        System.out.println("----------------- " + step + " list bean definition -----------------");
+    public static void printBeanDefinition(GenericApplicationContext context, String info) {
+        System.out.println("----------------- " + info + " start -----------------");
         String[] beanDefinitionNames = context.getBeanDefinitionNames();
         for (String name : beanDefinitionNames) {
             BeanDefinition beanDefinition = context.getBeanDefinition(name);
             System.out.println(beanDefinition);
         }
+        System.out.println("----------------- " + info + " end -----------------");
     }
 
     public static void printBeans(AbstractApplicationContext context, String info) {

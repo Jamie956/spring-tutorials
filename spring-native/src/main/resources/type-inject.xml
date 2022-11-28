@@ -5,13 +5,13 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd"
 	   default-autowire="byName">
 
-	<bean id="a" class="com.cat.inject.type.A">
+	<bean id="a" class="org.example.inject.type.A">
 	</bean>
 
-	<bean id="i1" class="com.cat.inject.type.I1">
+	<bean id="i1" class="org.example.inject.type.I1">
 	</bean>
 
-	<bean id="i2" class="com.cat.inject.type.I2">
+	<bean id="i2" class="org.example.inject.type.I2">
 	</bean>
 
 </beans>
