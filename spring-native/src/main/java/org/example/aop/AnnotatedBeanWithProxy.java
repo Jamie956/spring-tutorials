@@ -6,20 +6,15 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("com.cat.aop")
-public class AppConfig2 {
-
-	/**
-	 * aop增强逻辑
-	 */
+public class AnnotatedBeanWithProxy {
 	@Bean
 	public MethodInterceptor myAroundAdvice() {
 		return new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {
-				System.out.println("before...!");
+				System.out.println("before");
 				Object result = invocation.proceed();
-				System.out.println("after...!");
+				System.out.println("after");
 				return result;
 			}
 		};

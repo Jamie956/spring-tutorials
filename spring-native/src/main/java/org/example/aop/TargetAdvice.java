@@ -13,22 +13,20 @@ import java.lang.reflect.Method;
 public class TargetAdvice implements MethodBeforeAdvice, AfterReturningAdvice, MethodInterceptor {
     //后置增强
     @Override
-    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("after");
+    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) {
     }
 
     //前置增强
     @Override
-    public void before(Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("before");
+    public void before(Method method, Object[] args, Object target) {
     }
 
     //环绕增强
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         System.out.println("invoke before");
-        Object obj = invocation.proceed();
+        Object target = invocation.proceed();
         System.out.println("invoke after");
-        return obj;
+        return target;
     }
 }

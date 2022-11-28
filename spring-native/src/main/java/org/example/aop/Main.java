@@ -2,33 +2,36 @@ package org.example.aop;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.example.utils.DebugUtils;
 import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.framework.ProxyFactoryBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 	@Test
-	public void t1() {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+	public void xmlAopTest() {
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext();
+		context.setConfigLocation("spring-aop.xml");
+		context.refresh();
+		DebugUtils.printBeans(context, "after refresh");
+
 		ITarget halo = (ITarget) context.getBean("haloProxy");
 		halo.greeting();
 	}
 
-	/**
-	 * 测试 spring 的代理 ProxyFactory
-	 */
 	@Test
-	public void t2() {
+	public void proxyFactoryTest() {
 		A target = new A();
 		ProxyFactory proxyFactory = new ProxyFactory();
 		proxyFactory.setTarget(target);
 		proxyFactory.addAdvice(new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {
-				System.out.println("before...");
+				System.out.println("before");
 				Object result = invocation.proceed();
-				System.out.println("after...");
+				System.out.println("after");
 				return result;
 			}
 		});
@@ -36,22 +39,32 @@ public class Main {
 		a.greeting();
 	}
 
-	/**
-	 * 测试 ProxyFactoryBean，配置创建代理bean
-	 */
 	@Test
-	public void t3() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-//		context.getBean("a", A.class).greeting();
-		context.getBean("aServiceProxy", A.class).greeting();
+	public void ProxyFactoryBeanTest() {
+		A target = new A();
+		ProxyFactoryBean proxyFactoryBean = new ProxyFactoryBean();
+		proxyFactoryBean.setTarget(target);
+		proxyFactoryBean.addAdvice(new MethodInterceptor() {
+			@Override
+			public Object invoke(MethodInvocation invocation) throws Throwable {
+				System.out.println("before");
+				Object result = invocation.proceed();
+				System.out.println("after");
+				return result;
+			}
+		});
+
+		A a = (A) proxyFactoryBean.getObject();
+		a.greeting();
 	}
 
-	/**
-	 * 测试 BeanNameAutoProxyCreator aop 代理
-	 */
 	@Test
-	public void t4() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig2.class);
+	public void beanNameAutoProxyCreatorTest() {
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+		context.register(AnnotatedBeanWithProxy.class);
+		context.scan("org.example.aop");
+		context.refresh();
+
 		context.getBean("a", A.class).greeting();
 	}
 
