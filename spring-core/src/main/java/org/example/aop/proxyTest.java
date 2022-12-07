@@ -71,7 +71,7 @@ public class proxyTest {
 
 	@Test
 	public void defaultAdvisorAutoProxyCreatorTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DefaultAdvisorAutoProxyCreator.class);
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeansWithDefaultAdvisorAutoProxyCreator.class);
 		context.getBean("a", A.class).greeting();
 		context.getBean("b", B.class).greeting();
 	}
