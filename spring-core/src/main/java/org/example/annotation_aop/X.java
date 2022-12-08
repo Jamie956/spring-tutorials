@@ -1,4 +1,4 @@
-package com.example.annotation1;
+package org.example.annotation_aop;
 
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.example.annotation1;
+package org.example.annotation_aop;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class StartTest {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext cxt = new AnnotationConfigApplicationContext();
-        cxt.scan("com.example.annotation1");
+        cxt.scan("org.example.annotation_aop");
         cxt.refresh();
 
         X x = cxt.getBean(X.class);
