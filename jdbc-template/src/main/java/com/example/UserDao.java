@@ -9,9 +9,6 @@ import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
-import com.example.User;
-import com.example.UserRowMapper;
-
 @Service
 public class UserDao {
 	@Autowired
