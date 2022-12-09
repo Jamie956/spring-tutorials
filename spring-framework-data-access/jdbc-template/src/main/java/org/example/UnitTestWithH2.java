@@ -15,11 +15,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
-public class EmployeeDAOUnitTest {
-//    @Mock
-//    JdbcTemplate jdbcTemplate;
-
+//@RunWith(MockitoJUnitRunner.class)
+public class UnitTestWithH2 {
     DataSource dataSource;
 
     @Before
@@ -44,9 +41,8 @@ public class EmployeeDAOUnitTest {
         employeeDAO.setDataSource(dataSource);
 
         List<Employee> employees = employeeDAO.findAll();
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
+        assertEquals("James", employees.get(0).getFirstName());
         assertEquals(4, employees.size());
     }
+
 }
