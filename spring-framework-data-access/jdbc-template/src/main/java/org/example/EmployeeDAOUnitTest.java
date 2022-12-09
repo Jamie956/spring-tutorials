@@ -1,4 +1,4 @@
-package com.example;
+package org.example;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,12 +11,14 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeDAOUnitTest {
-    @Mock
-    JdbcTemplate jdbcTemplate;
+//    @Mock
+//    JdbcTemplate jdbcTemplate;
 
     DataSource dataSource;
 
@@ -24,18 +26,27 @@ public class EmployeeDAOUnitTest {
     public void setup() {
         dataSource = new EmbeddedDatabaseBuilder().setType(EmbeddedDatabaseType.H2)
                 .generateUniqueName(true)
-                .addScript("classpath:jdbc/schema.sql")
-                .addScript("classpath:jdbc/test-data.sql")
+                .addScript("classpath:schema.sql")
+                .addScript("classpath:test-data.sql")
                 .build();
     }
 
     @Test
-    public void whenInjectInMemoryDataSource_thenReturnCorrectEmployeeCount() {
+    public void testCount() {
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        employeeDAO.setDataSource(dataSource);
+        assertEquals(4, employeeDAO.count());
+    }
+
+    @Test
+    public void testFindAll() {
         EmployeeDAO employeeDAO = new EmployeeDAO();
         employeeDAO.setDataSource(dataSource);
 
-        assertEquals(4, employeeDAO.getCountOfEmployees());
+        List<Employee> employees = employeeDAO.findAll();
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+        assertEquals(4, employees.size());
     }
-
-
 }
