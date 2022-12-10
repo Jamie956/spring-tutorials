@@ -46,6 +46,11 @@ public class UserDao {
 		jdbcTemplate.update(sql, values);
 	}
 
+	public void cleanup() {
+		String sql = "DELETE FROM t_user";
+		jdbcTemplate.update(sql);
+	}
+
 	public void insertUsers(List<User> users) {
 		String sql = "INSERT INTO t_user (id, name, password) VALUES (?, ?, ?)";
 		try {
