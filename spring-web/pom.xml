@@ -4,14 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cat</groupId>
-	<artifactId>spring-web-demo</artifactId>
+	<artifactId>spring-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>servlet-filter</module>
 		<module>restful</module>
 		<module>filter</module>
 		<module>interceptor</module>
-	</modules>
+        <module>upload-download</module>
+    </modules>
     <packaging>pom</packaging>
 
 	<name>spring-web</name>
