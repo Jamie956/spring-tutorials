@@ -1,7 +1,4 @@
-package com.example;
-
-import java.util.List;
-import java.util.Optional;
+package org.example;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,6 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 
 @RunWith(SpringRunner.class)
@@ -32,7 +31,7 @@ public class StartTest {
 
     @Test
     public void saveTest() {
-        User user = userRepository.save(new User("cat", "cat@gmail.com"));
+        User user = userRepository.save(new User(3L, "cat", "cat@gmail.com"));
         Assert.assertEquals("cat", user.getName());
     }
 
