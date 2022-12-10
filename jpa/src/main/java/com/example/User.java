@@ -9,7 +9,7 @@ import javax.persistence.*;
 })
 public class User {
 	@Id
-	@GeneratedValue
+//	@GeneratedValue
 	private Long id;
 	private String name;
 	private String email;

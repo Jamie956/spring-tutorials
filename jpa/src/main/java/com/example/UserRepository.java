@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-	List<User> findByName(String name, Pageable pageable);
+	List<User> findByName(String name);
 
 	@Query(value = "SELECT * FROM t_user WHERE id = ?1", nativeQuery = true)
 	User nativeQueryById(int id);

@@ -1,7 +1,10 @@
 package com.example;
 
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,56 +18,61 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StartTest {
-	
-	@Autowired
-	private UserRepository userRepository;
 
-	@Test
-	public void save() {
-		for (int i = 1; i < 10; i++) {
-			User u = userRepository.save(new User("json", "json" +i+ "@gmail.com"));
-			System.out.println("u => " + u);
-		}
-	}
-	
-	@Test
-	public void findAll() {
-		Page<User> pu = userRepository.findAll(new PageRequest(1, 3, Direction.ASC, "email"));
-		for(User u : pu){
-			System.out.println("u => " + u);
-		}
-	}
-	
-	@Test
-	public void findByName() {
-		List<User> us = userRepository.findByName("json", new PageRequest(1, 2, Direction.ASC, "email"));
-		for(User u : us){
-			System.out.println("u => " + u);
-		}
-	}
+    @Autowired
+    private UserRepository userRepository;
 
-	@Test
-	public void nativeQueryById() {
-		User user = userRepository.nativeQueryById(5);
-		System.out.println(user);
-	}
+    @Before
+    public void init() {
+        userRepository.deleteAll();
+        for (int i = 1; i < 10; i++) {
+            User u = userRepository.save(new User((long) i, "json" + i, "json" + i + "@gmail.com"));
+        }
+    }
 
-	@Test
-	public void paramQueryById() {
-		User user = userRepository.paramQueryById(5L);
-		System.out.println(user);
-	}
+    @Test
+    public void saveTest() {
+        User user = userRepository.save(new User("cat", "cat@gmail.com"));
+        Assert.assertEquals("cat", user.getName());
+    }
 
-	@Test
-	public void notNativeQueryById() {
-		User user = userRepository.notNativeQueryById(5L);
-		System.out.println(user);
-	}
+    @Test
+    public void findAllTest() {
+        List<User> all = userRepository.findAll();
+        Assert.assertEquals(9, all.size());
 
-	@Test
-	public void nameNativeQueryById() {
-		User user = userRepository.nameNativeQueryById(5);
-		System.out.println(user);
-	}
+        Page<User> pages = userRepository.findAll(new PageRequest(1, 3, Direction.ASC, "email"));
+        Assert.assertEquals(3, pages.getSize());
+    }
+
+    @Test
+    public void findByNameTest() {
+        List<User> user = userRepository.findByName("json1");
+        Assert.assertEquals("json1", user.get(0).getName());
+    }
+
+    @Test
+    public void nativeQueryByIdTest() {
+        User user = userRepository.nativeQueryById(1);
+        Assert.assertEquals("json1", user.getName());
+    }
+
+    @Test
+    public void paramQueryByIdTest() {
+        User user = userRepository.paramQueryById(1L);
+        Assert.assertEquals("json1", user.getName());
+    }
+
+    @Test
+    public void notNativeQueryByIdTest() {
+        User user = userRepository.notNativeQueryById(1L);
+        Assert.assertEquals("json1", user.getName());
+    }
+
+    @Test
+    public void nameNativeQueryById() {
+        User user = userRepository.nameNativeQueryById(1);
+        Assert.assertEquals("json1", user.getName());
+    }
 
 }
