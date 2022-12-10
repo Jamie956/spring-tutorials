@@ -1,4 +1,4 @@
-package com.example;
+package org.example;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
