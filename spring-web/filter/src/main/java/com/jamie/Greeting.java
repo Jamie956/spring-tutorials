@@ -1,4 +1,4 @@
-package com.jamie.entity;
+package com.jamie;
 
 import lombok.Data;
 

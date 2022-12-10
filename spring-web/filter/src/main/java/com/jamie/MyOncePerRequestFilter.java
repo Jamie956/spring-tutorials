@@ -1,4 +1,4 @@
-package com.jamie.filter;
+package com.jamie;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
-public class MyFilter extends OncePerRequestFilter {
+public class MyOncePerRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -21,7 +22,7 @@ public class MyFilter extends OncePerRequestFilter {
         JSONObject json = requestWrapper.getRequestBody();
 
         //更改body，将json 转成 body byte[]
-        requestWrapper.setRequestBody(JSON.parseObject("{'id':2,'greet':'update'}"));
+        requestWrapper.setRequestBody(JSON.parseObject("{'id':2,'greet':'updated'}"));
 
         filterChain.doFilter(requestWrapper, response);
     }
@@ -30,11 +31,11 @@ public class MyFilter extends OncePerRequestFilter {
         private byte[] requestBody = null;
 
         public JSONObject getRequestBody() throws UnsupportedEncodingException {
-            return JSON.parseObject((new String(requestBody, "UTF-8")));
+            return JSON.parseObject((new String(requestBody, StandardCharsets.UTF_8)));
         }
 
         public void setRequestBody(JSONObject jsonObject) throws UnsupportedEncodingException {
-            this.requestBody = jsonObject.toJSONString().getBytes("UTF-8");
+            this.requestBody = jsonObject.toJSONString().getBytes(StandardCharsets.UTF_8);
         }
 
         public HttpBodyContentRequestWrapper(HttpServletRequest request) {

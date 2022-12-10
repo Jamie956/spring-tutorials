@@ -1,6 +1,6 @@
-package com.jamie.controller;
+package com.jamie;
 
-import com.jamie.entity.Greeting;
+import com.jamie.Greeting;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("halo")
-public class FilterController {
+public class Controller {
 
     /*
     post
     localhost:8085/halo/greet
     {
         "id": 1,
-        "greet": "hhhhalo"
+        "greet": "halo"
     }
      */
     @PostMapping("greet")
@@ -23,7 +23,7 @@ public class FilterController {
         System.out.println(greet);
     }
 
-    @PostMapping("hi")
+    @PostMapping("h2")
     public void sayHi2(@RequestBody Greeting greet) {
         System.out.println(greet);
     }

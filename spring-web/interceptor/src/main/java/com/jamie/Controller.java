@@ -1,11 +1,11 @@
-package com.jamie.controller;
+package com.jamie;
 
-import com.jamie.entity.Greeting;
+import com.jamie.Greeting;
 import org.springframework.web.bind.annotation.*;
 
 @RestController()
 @RequestMapping("/halo")
-public class HaloController {
+public class Controller {
 
     /*
     post
@@ -17,7 +17,7 @@ public class HaloController {
      */
     @PostMapping("/greet")
     public void sayHi(@RequestBody Greeting greet) {
-        System.out.println(greet);
+        System.out.println("return: " + greet);
     }
 
 }

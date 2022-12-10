@@ -1,4 +1,4 @@
-package com.jamie.interceptor;
+package com.jamie;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +23,10 @@ public class MyInterceptor implements HandlerInterceptor {
         String requestURI = request.getRequestURI();
         // 获取请求path variable参数
         Map<String, String[]> ParameterMap = request.getParameterMap();
-
         //获取类注解
         Annotation clazzAnnotation = ((HandlerMethod) handler).getMethod().getDeclaringClass().getAnnotation(RequestMapping.class);
         //获取方法注解
         Annotation methodAnnotation = ((HandlerMethod) handler).getMethod().getAnnotation(PostMapping.class);
-
         return true;
     }
 
