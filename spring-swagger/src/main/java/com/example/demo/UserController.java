@@ -1,4 +1,4 @@
-package com.example.demo.web.rest;
+package com.example.demo;
 
 import io.swagger.annotations.*;
 
@@ -7,11 +7,11 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.domain.User;
+import com.example.demo.User;
 
 @RestController
 @RequestMapping(value = "/user")
-public class UserRest {
+public class UserController {
 
 	@ApiOperation(value = "右边显示的内容", notes = "展开的实现说明")
 //	@RequestMapping(value = { "" }, method = RequestMethod.GET)
