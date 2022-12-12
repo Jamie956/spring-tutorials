@@ -1,4 +1,4 @@
-package com.jamie;
+package org.example;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -11,5 +11,5 @@ import java.util.List;
 public interface UserMapper extends BaseMapper<User> {
     @Select({"${sql}"})
     @ResultType(ArrayList.class)
-    List<User> executeQuery(@Param("sql") String sql);
+    List<User> customParamSql(@Param("sql") String sql);
 }
