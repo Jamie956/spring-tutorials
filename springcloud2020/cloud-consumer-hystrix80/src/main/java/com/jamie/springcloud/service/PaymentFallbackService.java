@@ -1,4 +1,4 @@
-package con.jamie.springcloud.service;
+package com.jamie.springcloud.service;
 
 import org.springframework.stereotype.Component;
 
