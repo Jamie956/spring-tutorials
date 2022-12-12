@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 public interface UserMapper {
-	@Insert("INSERT INTO users(user_name, user_sex, nick_name) VALUES(#{userName}, #{userSex}, #{nickName})")
+	@Insert("INSERT INTO users(id, user_name, user_sex, nick_name) VALUES(#{id}, #{userName}, #{userSex}, #{nickName})")
 	void insert(User user);
 	
 	@Select("SELECT * FROM users")
@@ -29,5 +29,8 @@ public interface UserMapper {
 
 	@Delete("DELETE FROM users WHERE id =#{id}")
 	void delete(Long id);
-	
+
+	@Delete("DELETE FROM users")
+	void deleteAll();
+
 }
