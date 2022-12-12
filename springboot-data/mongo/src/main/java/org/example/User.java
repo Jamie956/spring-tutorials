@@ -1,4 +1,4 @@
-package com.cat;
+package org.example;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

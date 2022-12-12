@@ -1,4 +1,4 @@
-package com.cat;
+package org.example;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 import org.apache.commons.io.IOUtils;

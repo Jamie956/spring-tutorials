@@ -1,4 +1,4 @@
-package com.cat;
+package org.example;
 
 import com.mongodb.client.result.DeleteResult;
 import org.junit.Assert;
