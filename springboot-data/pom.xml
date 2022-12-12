@@ -18,6 +18,8 @@
     <modules>
         <module>jpa</module>
         <module>mongo</module>
+        <module>jetcache</module>
+        <module>hive</module>
     </modules>
 
     <properties>
