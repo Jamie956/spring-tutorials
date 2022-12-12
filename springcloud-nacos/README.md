@@ -1,5 +1,5 @@
 
-测试表DDL
+
 ```sql
 CREATE TABLE `payment` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -8,6 +8,6 @@ CREATE TABLE `payment` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
 ```
 
-```shell script
-
-```
+https://github.com/alibaba/nacos/releases
+startup.cmd -m standalone
+shutdown.cmd
