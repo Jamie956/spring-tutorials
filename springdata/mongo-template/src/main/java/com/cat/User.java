@@ -20,17 +20,6 @@ public class User {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private Date created_time;
 
-	public User(String name, String password) {
-		super();
-		this.name = name;
-		this.password = password;
-	}
-	public User(Long id, String name, String password) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.password = password;
-	}
 	public User(Long id, String name, String password, Date created_time) {
 		super();
 		this.id = id;

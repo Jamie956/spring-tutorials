@@ -10,9 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>mongo-template</module>
-        <module>mysql-mybatisplus</module>
         <module>hive</module>
-        <module>elastic</module>
         <module>redis-jetcache</module>
         <module>mongo-excel</module>
         <module>hive-excel</module>
