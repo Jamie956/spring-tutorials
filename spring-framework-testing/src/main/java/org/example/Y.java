@@ -1,6 +1,6 @@
 package org.example;
 
-public class X {
+public class Y {
     public String foo () {
         return "foo";
     }
