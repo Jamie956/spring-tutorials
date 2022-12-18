@@ -11,6 +11,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AppConfig.class)
+// listen test class life cycle
 @TestExecutionListeners(value = {
         CustomTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class

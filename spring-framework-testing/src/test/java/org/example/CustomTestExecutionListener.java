@@ -4,6 +4,9 @@ import org.springframework.core.Ordered;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.TestExecutionListener;
 
+/**
+ * test class life cycle listener
+ */
 public class CustomTestExecutionListener implements TestExecutionListener, Ordered {
 
     @Override

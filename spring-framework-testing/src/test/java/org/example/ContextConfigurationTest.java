@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
+// container instance AppConfig
 @ContextConfiguration(classes = AppConfig.class)
 public class ContextConfigurationTest {
 
