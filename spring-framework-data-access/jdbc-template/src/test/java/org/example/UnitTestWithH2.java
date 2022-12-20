@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.sql.DataSource;
 
@@ -15,7 +16,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-//@RunWith(MockitoJUnitRunner.class)
 public class UnitTestWithH2 {
     DataSource dataSource;
 
