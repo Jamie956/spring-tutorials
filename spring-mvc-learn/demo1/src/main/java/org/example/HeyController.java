@@ -9,4 +9,10 @@ public class HeyController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping("/target")
+    public String toTarget() {
+        //mapping to html
+        return "target";
+    }
 }

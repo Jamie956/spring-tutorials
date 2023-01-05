@@ -4,7 +4,10 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- enable annotation scan -->
     <context:component-scan base-package="org.example"/>
+
+    <!-- instantiated view template resolver -->
     <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
         <property name="order" value="1"/>
         <property name="characterEncoding" value="UTF-8"/>
@@ -12,9 +15,7 @@
             <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
                 <property name="templateResolver">
                     <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
-                        <!-- 视图前缀 -->
                         <property name="prefix" value="/WEB-INF/templates/"/>
-                        <!-- 视图后缀 -->
                         <property name="suffix" value=".html"/>
                         <property name="templateMode" value="HTML5"/>
                         <property name="characterEncoding" value="UTF-8" />
