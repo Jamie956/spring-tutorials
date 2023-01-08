@@ -30,7 +30,7 @@
     </bean>
 
     <!-- test: http://localhost:8080/home/testvc -->
-    <!-- all other controller mapping disable once ssetting view controller, need to annotation driven -->
+    <!-- all other controller mapping disable once setting view controller, need to add mvc:annotation-driven -->
     <mvc:view-controller path="/testvc" view-name="view" />
     <mvc:annotation-driven />
 </beans>
