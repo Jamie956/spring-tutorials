@@ -10,7 +10,7 @@ java.util.logging.ConsoleHandler.encoding = UTF-8
 ->
 java.util.logging.ConsoleHandler.encoding = GBK
 
-(2)
+or (2)
 vm options: -Dfile.encoding=UTF-8
 
 # env
