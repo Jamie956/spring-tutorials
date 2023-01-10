@@ -38,6 +38,6 @@
         </property>
          <!-- value shared with request scope -->
         <!--    <p th:text="${ex}"></p>    -->
-        <property name="exceptionAttribute" value="ex"></property>
+        <property name="exceptionAttribute" value="ex" />
     </bean>
 </beans>
