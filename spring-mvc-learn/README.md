@@ -18,3 +18,12 @@ tomcat 8.5.84
 javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
 
 tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
+
+# importance class
+replace web.xml, request dispatcher
+AbstractAnnotationConfigDispatcherServletInitializer
+
+springMVC bean config, replace springMVC.xml
+WebMvcConfigurer
+
+
