@@ -1,4 +1,13 @@
-# spring mvc idea config
+# dev env
+tomcat 8.5.84
+javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
+
+tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
+
+# run in tomcat
+run/debug configurations -> application server (tomcat home) -> deployment -> + artifact -> xx:war exploded -> change application context
+
+# web config
 project structure -> modules -> add web 
 -> web resource directory: D:\dev\project\spring-tutorials\spring-mvc-learn\demo1\src\main\webapp
 -> development descriptor: D:\dev\project\spring-tutorials\spring-mvc-learn\demo1\src\main\webapp\WEB-INF\web.xml
@@ -13,13 +22,8 @@ java.util.logging.ConsoleHandler.encoding = GBK
 or (2)
 vm options: -Dfile.encoding=UTF-8
 
-# env
-tomcat 8.5.84
-javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
 
-tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
-
-# importance class
+# springMVC importance class
 replace web.xml, request dispatcher
 AbstractAnnotationConfigDispatcherServletInitializer
 
@@ -33,3 +37,4 @@ Handler: 开发者实现，处理用户具体请求
 HandlerAdapter: 
 ViewResolver: 视图解析，ThymeleafView, InternalResourceView, RedirectView
 View: 将模型数据通过页面展示给用户
+
