@@ -27,3 +27,9 @@ springMVC bean config, replace springMVC.xml
 WebMvcConfigurer
 
 
+DispatcherServlet: 统一处理请求和响应
+HandlerMapping: 根据请求url, method等信息查找Handler
+Handler: 开发者实现，处理用户具体请求
+HandlerAdapter: 
+ViewResolver: 视图解析，ThymeleafView, InternalResourceView, RedirectView
+View: 将模型数据通过页面展示给用户
