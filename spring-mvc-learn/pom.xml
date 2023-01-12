@@ -11,7 +11,7 @@
     <modules>
         <module>simple-demo</module>
         <module>param-convert</module>
-        <module>demo3</module>
+        <module>upload-download</module>
         <module>demo4</module>
         <module>demo5</module>
         <module>first-demo</module>

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo3</artifactId>
+    <artifactId>upload-download</artifactId>
     <packaging>war</packaging>
 
     <properties>
