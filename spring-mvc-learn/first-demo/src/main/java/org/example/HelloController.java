@@ -10,12 +10,11 @@ public class HelloController implements Controller {
     /**
      * test:
      *      get
-     *      http://localhost:8086/home/test
+     *      http://localhost:8080/test
      */
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView mav = new ModelAndView("index");
-        mav.addObject("message", "Hello Spring MVC");
         return mav;
     }
 }

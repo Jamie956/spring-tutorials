@@ -18,20 +18,20 @@
                         <property name="prefix" value="/WEB-INF/templates/"/>
                         <property name="suffix" value=".html"/>
                         <property name="templateMode" value="HTML5"/>
-                        <property name="characterEncoding" value="UTF-8" />
+                        <property name="characterEncoding" value="UTF-8"/>
                     </bean>
                 </property>
             </bean>
         </property>
     </bean>
 
-    <bean id="simpleUrlHandlerMapping"
-          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <!-- mapping to user custom defined controller -->
+    <bean id="indexController" class="org.example.HelloController"/>
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
                 <prop key="/test">indexController</prop>
             </props>
         </property>
     </bean>
-    <bean id="indexController" class="org.example.HelloController" />
 </beans>
