@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HomeController {
     /**
-     * test http:
+     * test:
      *      method: get
      *      url: http://localhost:8080/home/aa
      * DispatcherServlet#doDispatch -> mappedHandler.applyPreHandle(..)

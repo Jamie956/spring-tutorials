@@ -9,13 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo4</artifactId>
+    <artifactId>handle-exception</artifactId>
     <packaging>war</packaging>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -34,6 +29,11 @@
             <version>3.1.0</version>
             <!-- not include in package war, tomcat/lib/servlet-api -->
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring5</artifactId>
+            <version>3.0.12.RELEASE</version>
         </dependency>
     </dependencies>
 

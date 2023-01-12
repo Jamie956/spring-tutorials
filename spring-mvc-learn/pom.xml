@@ -12,8 +12,8 @@
         <module>simple-demo</module>
         <module>param-convert</module>
         <module>upload-download</module>
-        <module>demo4</module>
-        <module>demo5</module>
+        <module>interceptor</module>
+        <module>handle-exception</module>
         <module>first-demo</module>
         <module>filter</module>
         <module>view</module>
