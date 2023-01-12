@@ -7,16 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestControllerTest {
     /**
-     * RestController include ResponseBody to parse return value
+     * RestController include ResponseBody able to convert return value
      *
-     * http request test:
+     * test:
      *      method: get
-     *      url: http://localhost:8080/home/restc
+     *      url: http://localhost:8080/restc
      *
      */
     @RequestMapping("/restc")
     //@ResponseBody include ResponseBody
     public User restc() {
-        return new User("aa", "11");
+        return new User("aa", "11", "aq");
     }
 }
+

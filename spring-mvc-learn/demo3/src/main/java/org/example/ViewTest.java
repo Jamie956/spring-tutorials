@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewTest {
     /**
-     * http://localhost:8080/home/view1
+     * test
+     * http://localhost:8080/view1
      *
+     * debug
      * DispatcherServlet#render -> view = resolveViewName(..) -> create ThymeleafView
      */
     @RequestMapping("/view1")
@@ -16,9 +18,11 @@ public class ViewTest {
     }
 
     /**
-     * http://localhost:8080/home/view2
-     * forward to /view1, url -> http://localhost:8080/home/view2
+     * test
+     * http://localhost:8080/view2
+     * forward to /view1, url -> http://localhost:8080/view2
      *
+     * debug
      * DispatcherServlet#render -> view = resolveViewName(..) -> create internal resource view
      */
     @RequestMapping("/view2")
@@ -27,9 +31,11 @@ public class ViewTest {
     }
 
     /**
-     * http://localhost:8080/home/view3
-     * redirect to /view1, url -> http://localhost:8080/home/view1
+     * test
+     * http://localhost:8080/view3
+     * redirect to /view1, url -> http://localhost:8080/view1
      *
+     * debug
      * DispatcherServlet#render -> view = resolveViewName(..) -> create redirect view
      */
     @RequestMapping("/view3")

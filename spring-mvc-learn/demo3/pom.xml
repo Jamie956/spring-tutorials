@@ -46,7 +46,7 @@
             <version>1.18.12</version>
             <scope>provided</scope>
         </dependency>
-        <!-- ResponseBody able to parse object to json -->
+        <!-- spring convert able to parse object to json -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

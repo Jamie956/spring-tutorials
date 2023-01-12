@@ -1,13 +1,12 @@
 package org.example;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class HeyController {
+public class MappingTest {
     @RequestMapping("/")
     public String index() {
         return "index";
