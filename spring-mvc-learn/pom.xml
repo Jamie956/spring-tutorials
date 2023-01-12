@@ -18,6 +18,7 @@
         <module>filter</module>
         <module>view</module>
         <module>scope</module>
+        <module>restful</module>
     </modules>
 
     <properties>
