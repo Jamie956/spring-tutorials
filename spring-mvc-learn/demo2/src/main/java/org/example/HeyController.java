@@ -14,9 +14,13 @@ public class HeyController {
     }
 
     /**
-     * localhost:8080/home/test1 or localhost:8080/home/test2
-     * method get or post
-     * localhost:8080/home/test1?name=11&address=123&id=12
+     * test
+     * http://localhost:8080/test1?name=11&address=123&id=12
+     * method: get/post
+     *
+     * test
+     * http://localhost:8080/test1?name=11&address=123&id=12
+     * method: get/post
      */
     @RequestMapping(
             value = {"test1", "test2"},
@@ -33,9 +37,9 @@ public class HeyController {
     /**
      * ?: 任意单个字符
      * /a?a
-     * localhost:8080/home/aaa -> ok
-     * localhost:8080/home/a1a -> ok
-     * localhost:8080/home/aa -> 404
+     * http://localhost:8080/aaa -> ok
+     * http://localhost:8080/a1a -> ok
+     * http://localhost:8080/aa -> 404
      *
      * *: 任意0个或多个字符
      * /a*a
@@ -48,13 +52,18 @@ public class HeyController {
         return "index";
     }
 
+    /**
+     * PathVariable convert path var
+     * http://localhost:8080/user/11
+     */
     @RequestMapping("/user/{id}")
     public String test3(@PathVariable("id") String id) {
         return "index";
     }
 
     /**
-     * localhost:8080/home/test4?name=22
+     * http://localhost:8080/test4?name=22
+     * mapping http servlet request to method param
      */
     @RequestMapping("test4")
     public String test4(HttpServletRequest request) {
@@ -63,7 +72,8 @@ public class HeyController {
     }
 
     /**
-     * localhost:8080/home/test5?name=22&address=a&address=b
+     * mapping param to method param
+     * http://localhost:8080/test5?name=22&address=a&address=b
      */
     @RequestMapping("test5")
     public String test5(String name, String[] address) {
@@ -71,7 +81,8 @@ public class HeyController {
     }
 
     /**
-     * localhost:8080/home/test6?na_me=22
+     * mapping some of param to method param
+     * http://localhost:8080/test6?na_me=22
      *
      * RequestParam:
      * name
@@ -84,13 +95,17 @@ public class HeyController {
         return "index";
     }
 
+    /**
+     * mapping request header to method param
+     * http://localhost:8080/test6
+     */
     @RequestMapping("/test7")
     public String test7(@RequestHeader("Host") String host) {
         return "index";
     }
 
     /**
-     * mapping cookies from request
+     * mapping request cookies to method param
      */
     @RequestMapping("/test8")
     public String test8(@CookieValue("JESSIONID") String jessionid) {
@@ -98,7 +113,8 @@ public class HeyController {
     }
 
     /**
-     * mapping request param to object
+     * mapping request param to method param
+     * http://localhost:8080/test9?name=22&address=a&address=b
      */
     @RequestMapping("/test9")
     public String test9(User user) {

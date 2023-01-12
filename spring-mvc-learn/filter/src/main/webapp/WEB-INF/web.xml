@@ -14,7 +14,6 @@
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <!-- request entry, mapping url by dispatcher -->
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
@@ -26,7 +25,6 @@
         <filter-name>myOncePerRequestFilter</filter-name>
         <filter-class>org.example.MyOncePerRequestFilter</filter-class>
     </filter>
-
     <filter-mapping>
         <filter-name>myOncePerRequestFilter</filter-name>
         <url-pattern>/*</url-pattern>
