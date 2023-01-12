@@ -14,11 +14,11 @@ import java.io.IOException;
 public class UploadTest {
     /**
      * MultipartFile upload file, add dependencies commons-fileupload
-     * http request test:
+     * test:
      *      headers: Content-Type: multipart/form-data;
      *      Body: form-data file=[select file]
      *      method: post
-     *      url: http://localhost:8080/home/testUp
+     *      url: http://localhost:8080/testUp
      */
     @RequestMapping("/testUp")
     public String testUp(@RequestParam("file") MultipartFile multipartFile, HttpSession session) throws IOException {

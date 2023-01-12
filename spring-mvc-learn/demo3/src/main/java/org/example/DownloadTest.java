@@ -18,7 +18,8 @@ public class DownloadTest {
 
     /**
      * ResponseEntity set bytes to implement download
-     * http request test:
+     *
+     * test:
      *      method: get
      *      url: http://localhost:8080/home/testDown
      */

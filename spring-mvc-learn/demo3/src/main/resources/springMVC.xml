@@ -31,11 +31,6 @@
         </property>
     </bean>
 
-    <!-- test: http://localhost:8080/vc -->
-    <!-- all other controller mapping disable once setting view controller, need to add mvc:annotation-driven -->
-    <mvc:view-controller path="/vc" view-name="view" />
-    <mvc:annotation-driven />
-
     <!--必须通过文件解析器的解析才能将文件转换为MultipartFile对象-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 

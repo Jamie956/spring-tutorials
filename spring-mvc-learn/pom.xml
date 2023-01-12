@@ -17,6 +17,7 @@
         <module>first-demo</module>
         <module>filter</module>
         <module>view</module>
+        <module>scope</module>
     </modules>
 
     <properties>

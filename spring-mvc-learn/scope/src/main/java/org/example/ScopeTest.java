@@ -3,7 +3,7 @@ package org.example;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
@@ -24,8 +24,10 @@ import java.util.Map;
 public class ScopeTest {
 
     /**
-     * test: http://localhost:8080/home/scope1
      * set value in request scope via servlet api HttpServletRequest
+     *
+     * test
+     * http://localhost:8080/scope1
      */
     @RequestMapping("/scope1")
     public String scope1(HttpServletRequest request) {
@@ -34,8 +36,10 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope2
      * set value in ModelAndView and set in request scope via render model
+     *
+     * test:
+     * http://localhost:8080/scope2
      *
      * debug
      * DispatcherServlet#doDispatch -> DispatcherServlet#processDispatchResult
@@ -50,8 +54,10 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope3
      * set value in Model and set in request scope via render model
+     *
+     * test:
+     * http://localhost:8080/scope3
      */
     @RequestMapping("/scope3")
     public String scope3(Model model) {
@@ -60,8 +66,10 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope4
      * set value in Map and set in request scope via render model
+     *
+     * test:
+     * http://localhost:8080/scope4
      */
     @RequestMapping("/scope4")
     public String scope4(Map<String, Object> map) {
@@ -70,8 +78,9 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope5
      * set value in ModelMap and set in request scope via render model
+     *
+     * test: http://localhost:8080/scope5
      */
     @RequestMapping("/scope5")
     public String scope5(ModelMap model) {
@@ -80,8 +89,9 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope6
      * set value in session scope via HttpSession
+     *
+     * test: http://localhost:8080/scope6
      */
     @RequestMapping("/scope6")
     public String scope6(HttpSession session) {
@@ -90,8 +100,9 @@ public class ScopeTest {
     }
 
     /**
-     * test: http://localhost:8080/home/scope7
      * set value in application scope via HttpSession context
+     *
+     * test: http://localhost:8080/scope7
      */
     @RequestMapping("/scope7")
     public String scope7(HttpSession session) {

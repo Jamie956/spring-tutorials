@@ -30,10 +30,4 @@
             </bean>
         </property>
     </bean>
-
-    <!-- test: http://localhost:8080/vc -->
-    <!-- all other controller mapping disable once setting view controller, need to add mvc:annotation-driven -->
-    <mvc:view-controller path="/vc" view-name="view" />
-    <mvc:annotation-driven />
-
 </beans>
