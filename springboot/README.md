@@ -22,4 +22,46 @@ mvn package
 
 java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
+# anno
+return proxy bean if proxyBeanMethods true
+@Configuration(proxyBeanMethods = false)
+
+register beans
+@EnableConfigurationProperties(ServerProperties.class)
+
+assign prefix properties to bean properties
+@ConfigurationProperties(prefix="person")
+
+# auto config
+DispatcherServletAutoConfiguration
+
+true if OnWebApplicationCondition match and type match
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
+
+must exist class
+@ConditionalOnClass(CharacterEncodingFilter.class)
+
+@ConditionalOnProperty(prefix = "server.servlet.encoding", value = "enabled", matchIfMissing = true)
+
+true if missing bean
+@ConditionalOnMissingBean
+
+# debug mode
+application.properties
+debug=true
+
+# yml
+person:
+    单引号转义，双引号不转义
+    user: "tom \n tom"
+    list:
+        - a1
+        - a2
+    list2: [aa,bb]
+    obj: {k1:v1,k2:v2}
+
+# dependency
+yml配置提示
+spring-boot-configuration-processor
+
 
