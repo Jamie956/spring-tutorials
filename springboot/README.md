@@ -2,10 +2,11 @@
 jdk 8
 springboot 2.4.13
 
-# first demo
+# first demo document
 https://docs.spring.io/spring-boot/docs/2.4.13/reference/html/getting-started.html#getting-started-first-application
 
-# deploy springboot executable Jar
+# pom
+deploy springboot executable Jar
 add plugin
 ```xml
 <build>
@@ -17,12 +18,13 @@ add plugin
     </plugins>
 </build>
 ```
-
 mvn package
-
 java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
-# anno
+dependency yml配置提示
+spring-boot-configuration-processor
+
+# annotation
 return proxy bean if proxyBeanMethods true
 @Configuration(proxyBeanMethods = false)
 
@@ -50,7 +52,7 @@ true if missing bean
 application.properties
 debug=true
 
-# yml
+# yml properties defined
 person:
     单引号转义，双引号不转义
     user: "tom \n tom"
@@ -60,8 +62,6 @@ person:
     list2: [aa,bb]
     obj: {k1:v1,k2:v2}
 
-# dependency
-yml配置提示
-spring-boot-configuration-processor
+
 
 
