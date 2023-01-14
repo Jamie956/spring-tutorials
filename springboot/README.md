@@ -62,6 +62,11 @@ person:
     list2: [aa,bb]
     obj: {k1:v1,k2:v2}
 
+# mvc
+http request method (get, post, delete, put) filter
+HiddenHttpMethodFilter
 
+parse controller method param
+InvocableHandlerMethod
 
 
