@@ -107,11 +107,11 @@ import org.springframework.context.annotation.Import;
  * AbstractApplicationContext#refresh step finishBeanFactoryInitialization
  * 实例化 BeanDefinitionMap 的bean
  */
-//@Import({X.class})
+@Import({X.class})
 //@Import({TestConfig.class})
 //@Import({TestImportSelector.class})
 //@Import({TestImportBeanDefinitionRegistrar.class})
-@Import({X.class, TestConfig.class, TestImportSelector.class, TestImportBeanDefinitionRegistrar.class})
+//@Import({X.class, TestConfig.class, TestImportSelector.class, TestImportBeanDefinitionRegistrar.class})
 @Configuration
 public class AppConfig {
 }
