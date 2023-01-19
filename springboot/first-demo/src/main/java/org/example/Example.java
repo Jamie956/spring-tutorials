@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @EnableAutoConfiguration
  *      @AutoConfigurationPackage -> @Import(AutoConfigurationPackages.Registrar.class) -> AutoConfigurationPackages.Registrar: register package location as bean definition
- *      @Import(AutoConfigurationImportSelector.class) -> group selector -> selectImports -> spring internal beans
+ *      @Import(AutoConfigurationImportSelector.class) -> group selector -> selectImports -> import spring boot XXXAutoConfiguration beans
  */
 @EnableAutoConfiguration
 public class Example {
@@ -23,7 +23,15 @@ public class Example {
         //debug
         //1.construct SpringApplication
         //1.1 confirm which webApplicationType
+        //1.2 load Factories
+        //      spring-boot-2.4.13.jar!/META-INF/spring.factories
+        //      spring-boot-autoconfigure-2.4.13.jar!/META-INF/spring.factories
+        //      spring-beans-5.3.13.jar!/META-INF/spring.factories
+        //1.3 Instance beans
+        //      ApplicationContextInitializer
+        //      ApplicationListener
         //2.SpringApplication run
+        //todo
         SpringApplication.run(Example.class, args);
     }
 
