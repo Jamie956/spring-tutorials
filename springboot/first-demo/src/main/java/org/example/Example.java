@@ -20,6 +20,10 @@ public class Example {
     }
 
     public static void main(String[] args) {
+        //debug
+        //1.construct SpringApplication
+        //1.1 confirm which webApplicationType
+        //2.SpringApplication run
         SpringApplication.run(Example.class, args);
     }
 
