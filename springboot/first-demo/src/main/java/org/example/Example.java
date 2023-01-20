@@ -20,7 +20,6 @@ public class Example {
     }
 
     public static void main(String[] args) {
-        //debug
         //1.construct SpringApplication
         //1.1 confirm webApplicationType
         //1.2 load Factories
@@ -34,7 +33,7 @@ public class Example {
         //2.1 prepareEnvironment: load system properties and servlet properties
         //2.2 createApplicationContext -> AnnotationConfigServletWebServerApplicationContext
         //2.3 refreshContext: ServletWebServerApplicationContext#refresh
-        //2.3.1 invokeBeanFactoryPostProcessors: @Import todo
+        //2.3.1 invokeBeanFactoryPostProcessors: create @Import instances (debug AutoConfigurationImportSelector.AutoConfigurationGroup.selectImports)
         //2.3.2 registerBeanPostProcessors
         //2.3.3 onRefresh: -> createWebServer -> create tomcat (debug Tomcat Construct)
         SpringApplication.run(Example.class, args);
