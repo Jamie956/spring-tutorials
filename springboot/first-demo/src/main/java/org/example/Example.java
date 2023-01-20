@@ -22,7 +22,7 @@ public class Example {
     public static void main(String[] args) {
         //debug
         //1.construct SpringApplication
-        //1.1 confirm which webApplicationType
+        //1.1 confirm webApplicationType
         //1.2 load Factories
         //      spring-boot-2.4.13.jar!/META-INF/spring.factories
         //      spring-boot-autoconfigure-2.4.13.jar!/META-INF/spring.factories
@@ -31,7 +31,12 @@ public class Example {
         //      ApplicationContextInitializer
         //      ApplicationListener
         //2.SpringApplication run
-        //todo
+        //2.1 prepareEnvironment: load system properties and servlet properties
+        //2.2 createApplicationContext -> AnnotationConfigServletWebServerApplicationContext
+        //2.3 refreshContext: ServletWebServerApplicationContext#refresh
+        //2.3.1 invokeBeanFactoryPostProcessors: @Import todo
+        //2.3.2 registerBeanPostProcessors
+        //2.3.3 onRefresh: -> createWebServer -> create tomcat (debug Tomcat Construct)
         SpringApplication.run(Example.class, args);
     }
 
