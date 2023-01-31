@@ -13,6 +13,8 @@
         <module>config-properties</module>
         <module>config-properties2</module>
         <module>conditional</module>
+        <module>autoconfig</module>
+        <module>conditional2</module>
     </modules>
 
     <parent>
