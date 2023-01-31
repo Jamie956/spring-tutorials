@@ -5,13 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.util.Assert;
 
-//Component + ConfigurationProperties
+//ConfigurationProperties + EnableConfigurationProperties
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
 
-        User u1 = ctx.getBean(User.class);
+        Cat u1 = ctx.getBean(Cat.class);
         Assert.state("aa".equals(u1.getName()), "bean properties equal properties file config with prefix");
     }
 }

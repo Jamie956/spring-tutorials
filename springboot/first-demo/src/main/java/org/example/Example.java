@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 /**
  * @EnableAutoConfiguration
- *      @AutoConfigurationPackage -> @Import(AutoConfigurationPackages.Registrar.class) -> AutoConfigurationPackages.Registrar: register package location as bean definition
- *      @Import(AutoConfigurationImportSelector.class) -> group selector -> selectImports -> import spring boot XXXAutoConfiguration beans
+ *      @AutoConfigurationPackage
+ *          -> @Import(AutoConfigurationPackages.Registrar.class)
+ *          -> AutoConfigurationPackages.Registrar: register package location as bean definition
+ *      @Import(AutoConfigurationImportSelector.class)
+ *          -> group selector
+ *          -> selectImports
+ *          -> import spring boot XXXAutoConfiguration beans
  */
 @EnableAutoConfiguration
 public class Example {
