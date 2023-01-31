@@ -12,6 +12,7 @@
         <module>first-demo</module>
         <module>config-properties</module>
         <module>config-properties2</module>
+        <module>conditional</module>
     </modules>
 
     <parent>
