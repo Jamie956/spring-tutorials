@@ -1,18 +1,22 @@
 
-# quick start
-## dev env
+# Quickly start
+## Dev env - tomcat version
 tomcat 8.5.84
 javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
 
+do not use tomcat 10
 tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
+
+## pom setting
+<packaging>war</packaging>
+
+## idea setting - web config location
+project structure -> modules -> add web
+-> Web Resource Directory: path\to\project\src\main\webapp
+-> Development Descriptor: path\to\project\src\main\webapp\WEB-INF\web.xml
 
 ## idea setting - project run in tomcat
 run/debug configurations -> application server (tomcat home) -> deployment -> + artifact -> xx:war exploded -> change application context
-
-## idea setting - web config location
-project structure -> modules -> add web 
--> web resource directory: path\to\project\src\main\webapp
--> development descriptor: path\to\project\src\main\webapp\WEB-INF\web.xml
 
 # server logs 中文乱码
 (1)

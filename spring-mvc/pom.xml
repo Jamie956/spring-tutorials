@@ -19,6 +19,7 @@
         <module>view</module>
         <module>scope</module>
         <module>restful</module>
+        <module>first-demo</module>
     </modules>
 
     <properties>
