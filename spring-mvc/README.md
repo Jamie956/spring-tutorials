@@ -1,16 +1,18 @@
-# dev env
+
+# quick start
+## dev env
 tomcat 8.5.84
 javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
 
 tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
 
-# run in tomcat
+## idea setting - project run in tomcat
 run/debug configurations -> application server (tomcat home) -> deployment -> + artifact -> xx:war exploded -> change application context
 
-# web config
+## idea setting - web config location
 project structure -> modules -> add web 
--> web resource directory: D:\dev\project\spring-tutorials\spring-mvc-learn\demo1\src\main\webapp
--> development descriptor: D:\dev\project\spring-tutorials\spring-mvc-learn\demo1\src\main\webapp\WEB-INF\web.xml
+-> web resource directory: path\to\project\src\main\webapp
+-> development descriptor: path\to\project\src\main\webapp\WEB-INF\web.xml
 
 # server logs 中文乱码
 (1)

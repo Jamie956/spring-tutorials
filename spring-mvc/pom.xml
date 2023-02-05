@@ -14,7 +14,7 @@
         <module>upload-download</module>
         <module>interceptor</module>
         <module>handle-exception</module>
-        <module>first-demo</module>
+        <module>view-thymeleaf</module>
         <module>filter</module>
         <module>view</module>
         <module>scope</module>
