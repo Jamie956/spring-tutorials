@@ -2,10 +2,7 @@ package org.example;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -43,12 +40,11 @@ public class MyAspect {
         return proceed;
     }
 
-
     /**
      * 注解切点
      */
     @Pointcut("@annotation(CustomTest)")
-    public void hi2PointCut(){
+    public void hi2PointCut() {
 
     }
 
@@ -58,5 +54,10 @@ public class MyAspect {
     @Before("hi2PointCut()")
     public void hi2Before(JoinPoint joinPoint) {
         System.out.println("hi2 before");
+    }
+
+    @AfterReturning(value = "execution(* org.example.ProxyTarget.hi3(..))", returning = "returnVal")
+    public void AfterReturning(Object returnVal) {
+        System.out.println("AfterReturning: " + returnVal);
     }
 }

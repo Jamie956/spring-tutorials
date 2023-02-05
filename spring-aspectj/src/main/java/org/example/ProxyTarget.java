@@ -15,4 +15,9 @@ public class ProxyTarget {
     public void hi2() {
         System.out.println("hi2 invoke");
     }
+
+    public int hi3() {
+        System.out.println("hi3");
+        return 1;
+    }
 }
