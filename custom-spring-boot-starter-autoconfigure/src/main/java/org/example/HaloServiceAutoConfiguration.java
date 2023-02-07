@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnMissingBean(HaloService.class)
 @EnableConfigurationProperties(HaloProperties.class)
 public class HaloServiceAutoConfiguration {
-    @Bean
-    public HaloService haloService() {
-        return new HaloService();
-    }
+    // no need create new HaloService instance again if config in spring.factories
+//    @Bean
+//    public HaloService haloService() {
+//        return new HaloService();
+//    }
 }

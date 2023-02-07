@@ -6,8 +6,11 @@ public class HaloService {
     @Autowired
     private HaloProperties haloProperties;
 
-    public void hi() {
-        System.out.println(haloProperties.getPrefix());
-        System.out.println(haloProperties.getSuffix());
+    public HaloProperties getHaloProperties() {
+        return haloProperties;
+    }
+
+    public void setHaloProperties(HaloProperties haloProperties) {
+        this.haloProperties = haloProperties;
     }
 }
