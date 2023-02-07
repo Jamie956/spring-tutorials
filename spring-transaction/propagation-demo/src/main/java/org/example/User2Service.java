@@ -11,21 +11,36 @@ public class User2Service {
     private User2Dao userDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void add() {
+    public void addRequired() {
         User2 user = new User2();
         user.setName("1");
-        userDao.addUser2(user);
+        userDao.add(user);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void addWithException() {
+    public void addRequiredWithException() {
         User2 user = new User2();
         user.setName("1");
-        userDao.addUser2(user);
+        userDao.add(user);
         throw new RuntimeException();
     }
 
     public void deleteAll() {
         userDao.deleteAll();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void addRequiresNew(){
+        User2 user = new User2();
+        user.setName("1");
+        userDao.add(user);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void addRequiresNewWithException(){
+        User2 user = new User2();
+        user.setName("1");
+        userDao.add(user);
+        throw new RuntimeException();
     }
 }

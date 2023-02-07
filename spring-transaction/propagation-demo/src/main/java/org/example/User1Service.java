@@ -11,14 +11,20 @@ public class User1Service {
     private User1Dao userDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void add() {
+    public void addRequired() {
         User1 user = new User1();
         user.setName("1");
-        userDao.addUser1(user);
+        userDao.add(user);
     }
 
     public void deleteAll() {
         userDao.deleteAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void addRequiresNew(){
+        User1 user = new User1();
+        user.setName("1");
+        userDao.add(user);
+    }
 }

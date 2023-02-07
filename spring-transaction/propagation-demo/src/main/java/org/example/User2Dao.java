@@ -12,7 +12,7 @@ public class User2Dao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void addUser2(User2 user) {
+    public void add(User2 user) {
         String sql = "insert into user2(name) values(:name)";
         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(jdbcTemplate);
         SqlParameterSource paramSource = new BeanPropertySqlParameterSource(user);
