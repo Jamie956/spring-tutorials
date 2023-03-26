@@ -55,3 +55,14 @@ request again: http://localhost:8080/hi
 response message
 ```
 
+# spring security - filter
+spring security 本质上是一个过滤链
+- FilterSecurityInterceptor：方法级的权限过滤器，基本位于过滤链的最底部
+- ExceptionTranslationFilter: 异常过滤器，处理认证授权中抛出的异常
+- UsernamePasswordAuthenticationFilter: 对 login POST请求做拦截，校检表单中的用户名密码
+
+查看全部过滤链
+```text
+FilterChainProxy#doFilterInternal
+List<Filter> filters = getFilters(firewallRequest);
+```
