@@ -28,3 +28,30 @@
 - thmeleaf
 - updownload
 
+# springboot spring security - first demo
+add dependencies
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+</dependencies>
+```
+
+test step
+```text
+start web application
+request controller data: http://localhost:8080/hi
+redirect to login page: http://localhost:8080/login
+input login username and password:
+username: user
+password: print in console
+request again: http://localhost:8080/hi
+response message
+```
+
