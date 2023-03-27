@@ -8,6 +8,7 @@
         <module>first-demo</module>
         <module>set-user1</module>
         <module>set-user2</module>
+        <module>set-user3</module>
     </modules>
 
     <parent>

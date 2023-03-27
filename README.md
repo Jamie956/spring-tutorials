@@ -108,3 +108,54 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+
+
+- debug SecurityConfig#configure, on application startup, init username/password by ProviderManage
+- user inputting username&password and obtain by UsernamePasswordAuthenticationFilter#attemptAuthentication
+- auth get user from memory map by ProviderManage.authenticate -> InMemoryUserDetailsManager#loadUserByUsername
+
+
+
+3.自定义实现类设置 user
+
+配置使用 UserDetailsService 提供 username&password
+
+```java
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(getEncoder());
+    }
+
+    @Bean
+    public BCryptPasswordEncoder getEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
+
+
+
+重写 loadUserByUsername，设置 username&password
+
+```java
+@Service("userDetailsService")
+public class MyUserDetailsService implements UserDetailsService {
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("role");
+        return new User("jamie", encoder.encode("123"), auths);
+    }
+}
+```
+
+
+
+
+
