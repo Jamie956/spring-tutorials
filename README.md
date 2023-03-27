@@ -28,7 +28,7 @@
 - thmeleaf
 - updownload
 
-# springboot spring security - first demo
+# spring security - first demo
 add dependencies
 ```xml
 <dependencies>
@@ -66,3 +66,45 @@ spring security 本质上是一个过滤链
 FilterChainProxy#doFilterInternal
 List<Filter> filters = getFilters(firewallRequest);
 ```
+
+# spring security - interface
+- UserDetailsService：查询数据库用户和密码的过程
+- PasswordEncoder：数据加密接口，加密User密码
+
+
+
+# spring security - set user
+
+1.配置文件设置 user
+
+```
+spring.security.user.name=
+spring.security.user.password=
+```
+
+
+
+获取输入的登录用户和密码：UsernamePasswordAuthenticationFilter#attemptAuthentication
+
+
+
+2.重写类设置 user
+
+```java
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        auth.inMemoryAuthentication().withUser("jamie")
+                .password(passwordEncoder.encode("123"))
+                .roles("admin");
+    }
+
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
+

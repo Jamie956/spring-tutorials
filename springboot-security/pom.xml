@@ -6,6 +6,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>first-demo</module>
+        <module>set-user1</module>
+        <module>set-user2</module>
     </modules>
 
     <parent>
