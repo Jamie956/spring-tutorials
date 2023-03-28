@@ -252,6 +252,28 @@ override configure and defined url
 
 
 
+Controller
+
+```java
+@RestController
+public class Controller {
+    @GetMapping("/hi")
+    public String hi() {
+        return "hi";
+    }
+
+    @GetMapping("/test/index")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/test/hi")
+    public String testhi() {
+        return "testhi";
+    }
+}
+```
+
 
 
 
