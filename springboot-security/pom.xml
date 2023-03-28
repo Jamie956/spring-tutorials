@@ -9,6 +9,7 @@
         <module>set-user1</module>
         <module>set-user2</module>
         <module>set-user3</module>
+        <module>set-user4</module>
     </modules>
 
     <parent>

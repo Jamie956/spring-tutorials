@@ -1,3 +1,5 @@
+# Overview
+
 - aop: spring aspectj implement AOP
 - async: spring schedule async task
 - druid: sql admin platform
@@ -154,6 +156,109 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 }
 ```
+
+
+
+4.Database 查询用户密码
+
+过滤器使用自定义 UserDetailsService
+
+```java
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(getEncoder());
+    }
+
+    @Bean
+    public BCryptPasswordEncoder getEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+}
+```
+
+
+
+重写 UserDetailsService 方法 loadUserByUsername，查询数据库用户
+
+```java
+@Service("userDetailsService")
+public class MyUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 用户名查询数据库
+        QueryWrapper<Users> qw = new QueryWrapper<>();
+        qw.eq("username", username);
+        Users users = userMapper.selectOne(qw);
+        // 找不到用户认证失败
+        if (users == null) {
+            throw new UsernameNotFoundException("用户名不存在");
+        }
+
+        return new User(users.getUsername(), encoder.encode(users.getPassword()),
+                AuthorityUtils.commaSeparatedStringToAuthorityList("role"));
+    }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
