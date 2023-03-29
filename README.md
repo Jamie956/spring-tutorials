@@ -283,8 +283,11 @@ public class Controller {
 ```java
 @Override
 protected void configure(HttpSecurity http) throws Exception {
-    http.formLogin().and().authorizeRequests()
-            .antMatchers("/test/index").hasAuthority("admins")
+  http.formLogin().and().authorizeRequests()
+    // 将资源/test/index 标记为只有 admins 权限才能访问
+    //                .antMatchers("/test/index").hasAuthority("admins")
+    // 将资源/test/index 标记为只有 admins 或者manager 权限才能访问
+    .antMatchers("/test/index").hasAnyAuthority("admins", "manager")
     .anyRequest().authenticated();
 }
 ```
