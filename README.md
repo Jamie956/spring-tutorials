@@ -276,11 +276,28 @@ public class Controller {
 
 
 
+# spring security - authority
 
+标记访问指定资源路径所需要的权限
 
+```java
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http.formLogin().and().authorizeRequests()
+            .antMatchers("/test/index").hasAuthority("admins")
+    .anyRequest().authenticated();
+}
+```
 
+设置内存/数据库用户的权限
 
-
+```java
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("admins");
+    return new User("jamie", encoder.encode("123"), auths);
+}
+```
 
 
 
