@@ -443,3 +443,99 @@ public String hi() {
 }
 ```
 
+
+
+4.PostFilter
+
+
+
+```java
+@GetMapping("/hi1")
+@PreAuthorize("hasAnyAuthority('admins')")
+// only return filter result
+@PostFilter("filterObject.username == 'a1'")
+public List<User> hi1() {
+    List<User> us = new ArrayList<>();
+    List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("admins");
+    us.add(new User("a1", "bb", auths));
+    us.add(new User("b2", "bb", auths));
+    return us;
+}
+```
+
+
+
+5.PreFilter
+
+
+
+## Logout
+
+```java
+http.logout().logoutUrl("/logout").logoutSuccessUrl("/index").permitAll();
+```
+
+
+
+## Remember me
+
+
+
+security config
+
+```java
+// 注入数据源
+@Autowired
+private DataSource datasource;
+
+//
+@Bean
+public PersistentRepository persistentRepository() {
+  JdbcTokenRepositoryImpl repo = new JdbcTokenRepositoryImpl();
+  repo.setDataSource(dataSource);
+  return repo;
+}
+
+// http config
+config(http) {
+  ...
+    http.rememberMe().tokenRepository(persistentRepository())
+    .tokenValiditySeconds(60)
+    .userDetailsService(userDetailsService);
+}
+```
+
+
+
+logout button
+
+```html
+<input type="checkbox" name="remember-me" title="rm" />
+```
+
+
+
+## CSRF
+
+跨站请求伪造
+
+一般是表单带token 区分是否伪造
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
