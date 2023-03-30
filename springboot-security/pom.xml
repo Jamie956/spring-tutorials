@@ -13,6 +13,7 @@
         <module>login-page</module>
         <module>authority</module>
         <module>role</module>
+        <module>secured</module>
     </modules>
 
     <parent>

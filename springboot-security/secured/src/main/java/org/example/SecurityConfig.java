@@ -21,14 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // 指定 403 跳转的页面
-//        http.exceptionHandling().accessDeniedPage("/unauth.html");
         http.formLogin().and().authorizeRequests()
-                // 将资源/test/index 标记为只有 sale角色 才能访问
-                .antMatchers("/test/index").hasRole("sale")
-                // 只要用户角色是配置的其中一种角色就能访问
-//                .antMatchers("/test/index").hasAnyRole("sale", "employee")
-                .anyRequest().authenticated();
+        .anyRequest().authenticated();
     }
 
     @Bean

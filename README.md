@@ -30,7 +30,10 @@
 - thmeleaf
 - updownload
 
-# spring security - first demo
+# spring security
+
+## first demo
+
 add dependencies
 ```xml
 <dependencies>
@@ -57,7 +60,7 @@ request again: http://localhost:8080/hi
 response message
 ```
 
-# spring security - filter
+## filter
 spring security 本质上是一个过滤链
 - FilterSecurityInterceptor：方法级的权限过滤器，基本位于过滤链的最底部
 - ExceptionTranslationFilter: 异常过滤器，处理认证授权中抛出的异常
@@ -69,13 +72,13 @@ FilterChainProxy#doFilterInternal
 List<Filter> filters = getFilters(firewallRequest);
 ```
 
-# spring security - interface
+## interface
 - UserDetailsService：查询数据库用户和密码的过程
 - PasswordEncoder：数据加密接口，加密User密码
 
 
 
-# spring security - set user
+## set user
 
 1.配置文件设置 user
 
@@ -214,7 +217,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 
 
-# Spring security - login page
+## login page
 
 
 
@@ -276,7 +279,7 @@ public class Controller {
 
 
 
-# spring security - authority
+## authority
 
 标记访问指定资源路径所需要的权限
 
@@ -304,27 +307,89 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 
 
 
+## role
+
+资源标记角色
+
+```java
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.formLogin().and().authorizeRequests()
+                // 将资源/test/index 标记为只有 sale角色 才能访问
+                .antMatchers("/test/index").hasRole("sale")
+                // 只要用户角色是配置的其中一种角色就能访问
+//                .antMatchers("/test/index").hasAnyRole("sale", "employee")
+                .anyRequest().authenticated();
+    }
+```
+
+
+
+设置用户角色
+
+```java
+@Service("userDetailsService")
+public class MyUserDetailsService implements UserDetailsService {
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_sale");
+        return new User("jamie", encoder.encode("123"), auths);
+    }
+}
+```
 
 
 
 
 
+## 403 page
+
+```java
+// 指定 403 跳转的页面
+http.exceptionHandling().accessDeniedPage("/unauth.html");
+```
 
 
 
+# secured
 
 
 
+```java
+// 全局支持security 注解
+@EnableGlobalMethodSecurity(securedEnabled = true)
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
 
 
 
+```java
+@RestController
+public class Controller {
+    @GetMapping("/hi")
+    // 资源与角色绑定
+    @Secured({"ROLE_sale"})
+    public String hi() {
+        return "hi";
+    }
+}
+```
 
 
 
-
-
-
-
+```java
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_sale");
+    return new User("jamie", encoder.encode("123"), auths);
+}
+```
 
 
 
