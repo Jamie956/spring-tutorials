@@ -12,6 +12,7 @@
         <module>set-user4</module>
         <module>login-page</module>
         <module>authority</module>
+        <module>role</module>
     </modules>
 
     <parent>
