@@ -431,5 +431,15 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 
 
 
+3.PostAuthorize
 
+```java
+@GetMapping("/hi")
+// post 会执行方法体，即使没有权限
+@PostAuthorize("hasAnyAuthority('admins')")
+public String hi() {
+    System.out.println("执行方法体");
+    return "hi";
+}
+```
 
