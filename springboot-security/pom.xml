@@ -14,6 +14,7 @@
         <module>authority</module>
         <module>role</module>
         <module>secured</module>
+        <module>preauthorize</module>
     </modules>
 
     <parent>

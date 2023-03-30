@@ -353,9 +353,9 @@ http.exceptionHandling().accessDeniedPage("/unauth.html");
 
 
 
-# secured
+## Annotation
 
-
+1.Secured
 
 ```java
 // 全局支持security 注解
@@ -393,15 +393,41 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
 
 
 
+2.PreAuthorize
 
 
 
+```java
+// 全局支持security 注解
+// prePostEnabled 开启支持注解 PreAuthorize
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+```
 
 
 
+```java
+@GetMapping("/hi")
+@PreAuthorize("hasAnyAuthority('admins')")
+public String hi() {
+    return "hi";
+}
+```
 
 
 
+```java
+@Override
+public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    List<GrantedAuthority> auths = AuthorityUtils.commaSeparatedStringToAuthorityList("admins");
+    return new User("jamie", encoder.encode("123"), auths);
+}
+```
 
 
 
