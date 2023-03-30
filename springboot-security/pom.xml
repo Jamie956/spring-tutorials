@@ -15,6 +15,7 @@
         <module>role</module>
         <module>secured</module>
         <module>preauthorize</module>
+        <module>postauthorize</module>
     </modules>
 
     <parent>
