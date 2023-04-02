@@ -529,6 +529,105 @@ logout button
 
 
 
+idea format？？
+
+
+
+启动 nacos 和 redis：
+
+startup.cmd -m standalone
+
+redis-server.exe redis.windows.conf
+
+
+
+导入初始化 SQL
+
+
+
+token manager 生成测试 token
+
+
+
+测试API
+
+
+
+创建用户
+
+```
+POST
+http://localhost:8009/admin/acl/user/save
+
+Header
+token
+eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSykrMzUxV0lFKrShQsjI0szAwNTI1NrOoBQAt6LLjIAAAAA.LxeDQVIqg1T1Qv1ensTafgxHZG1yoL13wiKvUa-KqkJbmUMGqJJijTLrsCXLLvF4xEGUoJFSH0LoXg8ph9i32Q
+
+body
+{
+    "username": "jamie",
+    "password": "123"
+}
+```
+
+
+
+根据 token获取用户角色、权限等信息
+
+```
+GET
+http://localhost:8009/admin/acl/index/info
+
+header
+token
+eyJhbGciOiJIUzUxMiIsInppcCI6IkdaSVAifQ.H4sIAAAAAAAAAKtWKi5NUrJSSkzJzcxT0lFKrShQsjI0szAwNTKzsDSqBQDi_-6hIAAAAA.ctFT_dcNyo-6fUSGgIs3CenEpEKsw9fFOh3AK-KmcYZrytl5GJgderw6vuIobOnfTFOyxOvFCOLPNOAtJROFhQ
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
