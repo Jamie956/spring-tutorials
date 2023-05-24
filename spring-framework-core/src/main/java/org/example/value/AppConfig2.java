@@ -8,7 +8,7 @@ import java.beans.PropertyEditor;
 import java.util.HashMap;
 import java.util.Map;
 
-@ComponentScan("com.cat.value")
+@ComponentScan("org.example.value")
 public class AppConfig2 {
 
 	@Bean

@@ -6,7 +6,7 @@ import org.springframework.context.support.ConversionServiceFactoryBean;
 
 import java.util.Collections;
 
-@ComponentScan("com.cat.value")
+@ComponentScan("org.example.value")
 public class AppConfig3 {
 
 	@Bean

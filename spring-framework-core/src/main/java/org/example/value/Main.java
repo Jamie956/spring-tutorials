@@ -1,20 +1,20 @@
 package org.example.value;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-/**
- * value的作用：
- * 普通字符串：			@Value("name不从配置文件读")
- * 占位符：				@Value("${na}") 读取配置文件
- * SpringEL 表达式：		@Value("#{yy1}") 注入bean
- * 定义一个带@value的注解：@MyValue
- */
 public class Main {
 	@Test
-	public void readValue() {
+	public void readPropertiesValue() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		System.out.println(context.getBean(X.class).toString());
+		X bean = context.getBean(X.class);
+		Assert.assertEquals("aa", bean.getPropertiesFileValue());
+		Assert.assertEquals("${properties.file.not.found.value}", bean.getPropertiesFileValueNotFoundValue());
+		Assert.assertEquals("111", bean.getPropertiesFileValueNotFoundDefaultValue());
+		Assert.assertEquals("pureStringValue", bean.getPureString());
+		Assert.assertNotNull(bean.getY());
+		Assert.assertEquals("aa", bean.getCustomAnnotationValue());
 	}
 
 	/**

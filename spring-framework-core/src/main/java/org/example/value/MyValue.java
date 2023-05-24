@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Value("${na}")
+@Value("${properties.file.value}")
 public @interface MyValue {
 }
