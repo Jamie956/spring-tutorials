@@ -1,7 +1,9 @@
 package org.example.value;
 
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
+@Data
 @Component
 public class B {
 	private String name;
@@ -15,11 +17,4 @@ public class B {
 		this.name = name;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = "b:" + name;
-	}
 }

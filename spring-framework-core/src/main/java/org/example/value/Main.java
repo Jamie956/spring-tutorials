@@ -17,15 +17,12 @@ public class Main {
 		Assert.assertEquals("aa", bean.getCustomAnnotationValue());
 	}
 
-	/**
-	 * 测试 Editor
-	 */
 	@Test
-	public void t1() {
+	public void editorTest() {
 		MyEditor editor = new MyEditor();
-		editor.setAsText("122");
-		B value = (B) editor.getValue();
-		System.out.println(value.getName());
+		editor.setAsText("testValue");
+		B b = (B) editor.getValue();
+		Assert.assertEquals("testValue", b.getName());
 	}
 
 	/**
