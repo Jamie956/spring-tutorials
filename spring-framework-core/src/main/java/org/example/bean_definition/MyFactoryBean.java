@@ -1,19 +1,20 @@
-package org.example.bean;
+package org.example.bean_definition;
 
+import org.example.share.EmptyObject;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MyFactoryBean implements FactoryBean<X> {
+public class MyFactoryBean implements FactoryBean<EmptyObject> {
 	@Override
-	public X getObject() throws Exception {
+	public EmptyObject getObject() throws Exception {
 		//breakpoint here, enter this method only when getBean(), although container refresh()
-		X x = new X();
-		return x;
+		EmptyObject o = new EmptyObject();
+		return o;
 	}
 
 	@Override
 	public Class<?> getObjectType() {
-		return X.class;
+		return EmptyObject.class;
 	}
 }
