@@ -49,11 +49,13 @@ public class GenericApplicationContextTest {
     @Test
     public void supplierBeanDefinitionTest() {
 		GenericApplicationContext context = new GenericApplicationContext();
-        Supplier<EmptyObject> supplier = EmptyObject::new;
+        Supplier<EmptyObject> supplier = () -> {
+            // break point here
+            return new EmptyObject();
+        };
         //instanceSupplier: set abstract bean definition property
         context.registerBean(EmptyObject.class, supplier);
         //refresh() will do supplier get object and create bean instance and put into container
-		//createBeanInstance
         context.refresh();
 
         Assert.assertNotNull(context.getBean(EmptyObject.class));

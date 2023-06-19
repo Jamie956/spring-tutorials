@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class MyFactoryBean implements FactoryBean<EmptyObject> {
 	@Override
 	public EmptyObject getObject() throws Exception {
-		//breakpoint here, enter this method only when getBean(), although container refresh()
+		//breakpoint here
 		EmptyObject o = new EmptyObject();
 		return o;
 	}
