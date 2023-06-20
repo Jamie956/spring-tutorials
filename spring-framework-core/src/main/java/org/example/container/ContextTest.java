@@ -1,10 +1,9 @@
 package org.example.container;
 
-import org.example.utils.DebugUtils;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,19 +27,21 @@ public class ContextTest {
     @Test
     public void annotationConfigApplicationContextTest() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        DebugUtils.printBeanDefinition(context, "before scan");
+//        DebugUtils.printBeanDefinition(context, "before scan");
         //扫描包路径下的注解类, 将扫描的类 BeanDefinition 注册到 BeanDefinitionMap
         context.scan("org.example.container");
-        DebugUtils.printBeanDefinition(context, "before refresh");
+//        DebugUtils.printBeanDefinition(context, "before refresh");
         context.refresh();
-        DebugUtils.printBeanDefinition(context, "ending");
+//        DebugUtils.printBeanDefinition(context, "ending");
+        Assert.assertNotNull(context.getBean(X.class));
+        Assert.assertNotNull(context.getBean("getY"));
         context.close();
     }
 
     @Test
     public void classPathXmlApplicationContextTest() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc-bean.xml");
-        DebugUtils.printBeans(context, "after new context");
+        Assert.assertNotNull(context.getBean(X.class));
         context.close();
     }
 
@@ -48,20 +49,9 @@ public class ContextTest {
     public void defaultListableBeanFactoryTest() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         //singletonObjects: custom instance put into singleton objects pool
-        beanFactory.registerSingleton("z", new Z());
-
-        System.out.println(beanFactory.getBean(Z.class));
+        Z z = new Z();
+        beanFactory.registerSingleton("z", z);
+        Assert.assertEquals(z, beanFactory.getBean(Z.class));
     }
 
-    @Test
-    public void defaultListableBeanFactoryTest2() {
-        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
-        beanDefinition.setBeanClass(Z.class);
-
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        //custom bean definition put into bean definition map
-        beanFactory.registerBeanDefinition("z", beanDefinition);
-
-        System.out.println(beanFactory.getBean(Z.class));
-    }
 }
