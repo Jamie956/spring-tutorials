@@ -1,4 +1,4 @@
-package org.example.container;
+package org.example.context;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class ContextTest {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 //        DebugUtils.printBeanDefinition(context, "before scan");
         //扫描包路径下的注解类, 将扫描的类 BeanDefinition 注册到 BeanDefinitionMap
-        context.scan("org.example.container");
+        context.scan("org.example.context");
 //        DebugUtils.printBeanDefinition(context, "before refresh");
         context.refresh();
 //        DebugUtils.printBeanDefinition(context, "ending");
