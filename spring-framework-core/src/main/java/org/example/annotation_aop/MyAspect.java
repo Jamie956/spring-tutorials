@@ -16,7 +16,7 @@ public class MyAspect {
      * execution(public * com.example.annotation1..*.*(..)) && !execution(public * com.example.annotation1..*.bar*(..))
      * execution(public * com.example.annotation1..*(..))
      */
-    @Pointcut("execution(public void com.example.annotation1.X.foo(..))")
+    @Pointcut("execution(public void org.example.annotation_aop.X.foo(..))")
     public void pointcut() {}
 
     @Around("pointcut()")
