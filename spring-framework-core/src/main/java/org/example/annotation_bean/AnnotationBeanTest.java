@@ -5,6 +5,12 @@ import org.example.utils.DebugUtils;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+/*
+？？？？
+        // Debug ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForBeanMethod:
+        //      put @Bean method bean to bean definition map
+        context.refresh();
+ */
 public class AnnotationBeanTest {
 
 	@Test

@@ -13,6 +13,7 @@ public class DebugUtils {
             System.out.println(beanDefinition);
         }
         System.out.println("----------------- " + info + " end -----------------");
+        System.out.println();
     }
 
     public static void printBeans(AbstractApplicationContext context, String info) {
@@ -23,6 +24,7 @@ public class DebugUtils {
             System.out.println(bean);
         }
         System.out.println("----------------- " + info + " end -----------------");
+        System.out.println();
     }
 
 }

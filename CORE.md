@@ -1,6 +1,6 @@
 
 
-# org.springframework.beans.*
+# beans
 
 
 
@@ -14,7 +14,7 @@
 
 
 
-# org.springframework.context.*
+# context
 
 1.容器加载 Bean
 
@@ -58,3 +58,16 @@ Spring 整合 AspectJ 实现AOP 切面拦截编程
 * 并在子类中采用方法拦截的技术拦截父类所有的方法调用
 * 在底层实现上，CGLIB 使用字节码处理框架 ASM，该框架用于转换字节码并生成新的类
 ```
+
+
+
+# @Autowire
+
+带有注解的变量/方法会从容器中查找对应的实例对象给予装配
+
+
+
+
+
+
+
