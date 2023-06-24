@@ -1,4 +1,4 @@
-package org.example.annotation_bean2;
+package org.example.annotation_scope;
 
 import org.example.share.EmptyObject;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
