@@ -1,16 +1,16 @@
-package org.example.annotation_bean;
+package org.example.annotation_bean2;
 
+import org.example.share.EmptyObject;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Scope;
 
-public class AnnotatedBeanWithScope {
+public class X {
 
 	@Bean
 	@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-	public A a() {
-		// debug: invoke every time getBean(..)
-		return new A();
+	public EmptyObject emptyObject() {
+		// debug here
+		return new EmptyObject();
 	}
 }
