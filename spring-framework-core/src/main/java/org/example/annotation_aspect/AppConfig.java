@@ -1,9 +1,7 @@
-package org.example.annotation_aop;
+package org.example.annotation_aspect;
 
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.stereotype.Component;
 
-@Component
 @EnableAspectJAutoProxy
 public class AppConfig {
 }

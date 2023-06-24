@@ -1,5 +1,6 @@
-package org.example.annotation_aop;
+package org.example.annotation_aspect;
 
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -9,14 +10,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * 并在子类中采用方法拦截的技术拦截父类所有的方法调用
  * 在底层实现上，CGLIB 使用字节码处理框架 ASM，该框架用于转换字节码并生成新的类
  */
-public class StartTest {
-    public static void main(String[] args) {
-        AnnotationConfigApplicationContext cxt = new AnnotationConfigApplicationContext();
-        cxt.scan("org.example.annotation_aop");
-        cxt.refresh();
+public class AspectTest {
+    @Test
+    public void test() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(AppConfig.class, MyAspect.class, X.class);
+        context.refresh();
 
-        X x = cxt.getBean(X.class);
+        X x = context.getBean(X.class);
         x.foo();
-        cxt.close();
     }
 }

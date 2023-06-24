@@ -1,16 +1,14 @@
-package org.example.annotation_aop;
+package org.example.annotation_aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
 public class MyAspect {
 
-    @Pointcut("execution(public void org.example.annotation_aop.X.foo(..))")
+    @Pointcut("execution(public void org.example.annotation_aspect.X.foo(..))")
     public void pointcut() {}
 
     @Around("pointcut()")

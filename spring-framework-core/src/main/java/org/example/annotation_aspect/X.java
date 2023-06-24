@@ -1,8 +1,5 @@
-package org.example.annotation_aop;
+package org.example.annotation_aspect;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class X {
     public void foo() {
         // debug here
