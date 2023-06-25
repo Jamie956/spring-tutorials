@@ -1,4 +1,4 @@
-package org.example.annotation_bean1;
+package org.example.annotation_bean;
 
 import org.example.share.EmptyObject;
 import org.springframework.context.annotation.Bean;

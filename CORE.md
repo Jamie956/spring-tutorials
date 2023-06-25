@@ -1,6 +1,6 @@
 
 
-# beans
+# Bean Definition
 
 
 
@@ -14,7 +14,7 @@
 
 
 
-# context
+# Context
 
 1.容器加载 Bean
 
@@ -67,7 +67,10 @@ Spring 整合 AspectJ 实现AOP 切面拦截编程
 
 
 
+# @Bean
 
 
 
+@Bean：注解方法，方法返回值对象由容器管理
 
+@Bean(autowireCandidate = false)：Bean 不能注入到其他类，只能自己的类使用

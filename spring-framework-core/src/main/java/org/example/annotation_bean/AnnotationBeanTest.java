@@ -1,4 +1,4 @@
-package org.example.annotation_bean1;
+package org.example.annotation_bean;
 
 import org.junit.Test;
 import org.springframework.beans.factory.UnsatisfiedDependencyException;
