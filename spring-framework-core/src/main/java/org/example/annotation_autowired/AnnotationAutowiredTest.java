@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class AnnotationAutowiredTest {
-
     @Test
     public void test() {
         // Debug AnnotationConfigUtils.registerAnnotationConfigProcessors:
@@ -30,5 +29,4 @@ public class AnnotationAutowiredTest {
         Assert.assertNotNull(context.getBean("y"));
         Assert.assertNotNull(context.getBean("z"));
     }
-
 }
