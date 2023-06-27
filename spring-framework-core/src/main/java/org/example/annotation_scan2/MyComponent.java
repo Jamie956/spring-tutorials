@@ -1,4 +1,4 @@
-package org.example.annotation_scan;
+package org.example.annotation_scan2;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,7 +1,6 @@
-package org.example.annotation_scan;
+package org.example.annotation_scan2;
 
 import junit.framework.TestCase;
-import org.example.utils.DebugUtils;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,30 +12,13 @@ public class ComponentScanTest {
 	public void componentScanIncludeFiltersTest() {
 		//register internal post processor bean definition
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		DebugUtils.printBeanDefinition(context, "before register");
 		//register annotated config class
 		context.register(ConfigIncludeFilters.class);
-		DebugUtils.printBeanDefinition(context, "before refresh");
 		// invokeBeanFactoryPostProcessors()
 		// -> ConfigurationClassParser.doProcessConfigurationClass(..): parse @ComponentScan
 		// -> ComponentScanAnnotationParser.parse(..): parse @ComponentScan include filter and doScan()
 		context.refresh();
-		DebugUtils.printBeanDefinition(context, "ending");
 
-		TestCase.assertNotNull(context.getBean(ConfigIncludeFilters.class));
 		TestCase.assertNotNull(context.getBean(X.class));
-		TestCase.assertNotNull(context.getBean(Y.class));
-		TestCase.assertNotNull(context.getBean(Z.class));
 	}
-
-	@Test
-	public void scanExcludeTest() {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		DebugUtils.printBeanDefinition(context, "before register");
-		context.register(ConfigExcludeFilters.class);
-		DebugUtils.printBeanDefinition(context, "before refresh");
-		context.refresh();
-		DebugUtils.printBeanDefinition(context, "ending");
-	}
-
 }
