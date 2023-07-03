@@ -1,4 +1,4 @@
-package org.example.aop;
+package org.example.aop_annotation2;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -6,10 +6,8 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan("org.example.aop")
-public class BeansWithDefaultAdvisorAutoProxyCreator {
+public class AppConfig {
 	@Bean
 	public DefaultPointcutAdvisor defaultPointcutAdvisor() {
 		NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();

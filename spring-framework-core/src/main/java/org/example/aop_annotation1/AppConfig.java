@@ -1,12 +1,11 @@
-package org.example.aop;
+package org.example.aop_annotation1;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
-public class BeansWithBeanNameAutoProxyCreator {
+public class AppConfig {
 	@Bean
 	public MethodInterceptor myAroundAdvice() {
 		return new MethodInterceptor() {

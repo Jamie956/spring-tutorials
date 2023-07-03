@@ -1,8 +1,5 @@
-package org.example.aop;
+package org.example.aop_annotation3;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class B {
 	public void greeting(){
 		System.out.println("greet from b");
