@@ -12,7 +12,6 @@ public class ProxyTest {
 	public void proxyFactoryTest() {
 		A target = new A();
 		ProxyFactory proxyFactory = new ProxyFactory();
-		//切点
 		proxyFactory.setTarget(target);
 		//增强
 		proxyFactory.addAdvice(new MethodInterceptor() {
@@ -32,7 +31,6 @@ public class ProxyTest {
 	public void ProxyFactoryBeanTest() {
 		A target = new A();
 		ProxyFactoryBean proxyFactoryBean = new ProxyFactoryBean();
-		//切点
 		proxyFactoryBean.setTarget(target);
 		//增强
 		proxyFactoryBean.addAdvice(new MethodInterceptor() {
