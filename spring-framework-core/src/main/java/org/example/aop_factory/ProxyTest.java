@@ -6,13 +6,15 @@ import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 
-public class proxyTest {
+public class ProxyTest {
 
 	@Test
 	public void proxyFactoryTest() {
 		A target = new A();
 		ProxyFactory proxyFactory = new ProxyFactory();
+		//切点
 		proxyFactory.setTarget(target);
+		//增强
 		proxyFactory.addAdvice(new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {
@@ -30,7 +32,9 @@ public class proxyTest {
 	public void ProxyFactoryBeanTest() {
 		A target = new A();
 		ProxyFactoryBean proxyFactoryBean = new ProxyFactoryBean();
+		//切点
 		proxyFactoryBean.setTarget(target);
+		//增强
 		proxyFactoryBean.addAdvice(new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {

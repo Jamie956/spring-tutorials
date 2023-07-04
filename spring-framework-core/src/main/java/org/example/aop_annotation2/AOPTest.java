@@ -7,9 +7,8 @@ public class AOPTest {
     @Test
     public void defaultAdvisorAutoProxyCreatorTest() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(AppConfig.class, A.class, B.class);
+        context.register(AppConfig.class, A.class);
         context.refresh();
         context.getBean("a", A.class).greeting();
-        context.getBean("b", B.class).greeting();
     }
 }

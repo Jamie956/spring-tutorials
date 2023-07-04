@@ -6,6 +6,7 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 
 public class AppConfig {
+	//增强
 	@Bean
 	public MethodInterceptor myAroundAdvice() {
 		return new MethodInterceptor() {
@@ -22,7 +23,7 @@ public class AppConfig {
 	@Bean
 	public BeanNameAutoProxyCreator beanNameAutoProxyCreator() {
 		BeanNameAutoProxyCreator creator = new BeanNameAutoProxyCreator();
-		//匹配a开头的bean
+		//切点，匹配a开头的bean
 		creator.setBeanNames("a*");
 		creator.setInterceptorNames("myAroundAdvice");
 		creator.setProxyTargetClass(true);

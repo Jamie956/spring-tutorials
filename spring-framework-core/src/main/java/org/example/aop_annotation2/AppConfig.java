@@ -10,14 +10,13 @@ import org.springframework.context.annotation.Bean;
 public class AppConfig {
 	@Bean
 	public DefaultPointcutAdvisor defaultPointcutAdvisor() {
+		//切点
 		NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
-		//定义切点方法 greeting
 		pointcut.addMethodName("greeting");
 
-		//默认切点增强
+		//增强
 		DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
 		advisor.setPointcut(pointcut);
-
 		advisor.setAdvice(new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {
