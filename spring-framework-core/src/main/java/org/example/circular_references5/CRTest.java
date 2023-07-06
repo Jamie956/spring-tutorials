@@ -1,7 +1,7 @@
 package org.example.circular_references5;
 
 import org.junit.Test;
-import org.springframework.beans.factory.UnsatisfiedDependencyException;
+import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /*
@@ -10,7 +10,7 @@ bean初始化完成之后，后面还有一步去检查：第二级缓存 和 �
 懒加载可避免这种情况的循环依赖
  */
 public class CRTest {
-	@Test(expected = UnsatisfiedDependencyException.class)
+	@Test(expected = BeanCurrentlyInCreationException.class)
 	public void test() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.scan("org.example.circular_references5");

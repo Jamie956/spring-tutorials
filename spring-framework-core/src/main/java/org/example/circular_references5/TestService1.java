@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @EnableAsync
 public class TestService1 {
 
-    @Lazy
+//    @Lazy
     @Autowired
     private TestService2 testService2;
 
