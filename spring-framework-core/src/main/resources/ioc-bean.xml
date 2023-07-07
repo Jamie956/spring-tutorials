@@ -4,6 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-	<bean id="beanNameDefineByXml" class="org.example.context.X">
+	<bean id="eo" class="org.example.share.EmptyObject">
 	</bean>
 </beans>

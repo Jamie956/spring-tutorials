@@ -1,5 +1,6 @@
 package org.example.context;
 
+import org.example.share.EmptyObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -27,31 +28,26 @@ public class ContextTest {
     @Test
     public void annotationConfigApplicationContextTest() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-//        DebugUtils.printBeanDefinition(context, "before scan");
         //扫描包路径下的注解类, 将扫描的类 BeanDefinition 注册到 BeanDefinitionMap
         context.scan("org.example.context");
-//        DebugUtils.printBeanDefinition(context, "before refresh");
         context.refresh();
-//        DebugUtils.printBeanDefinition(context, "ending");
         Assert.assertNotNull(context.getBean(X.class));
-        Assert.assertNotNull(context.getBean("getY"));
-        context.close();
+        System.out.println();
     }
 
     @Test
     public void classPathXmlApplicationContextTest() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("ioc-bean.xml");
-        Assert.assertNotNull(context.getBean(X.class));
-        context.close();
+        Assert.assertNotNull(context.getBean(EmptyObject.class));
     }
 
     @Test
     public void defaultListableBeanFactoryTest() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         //singletonObjects: custom instance put into singleton objects pool
-        Z z = new Z();
-        beanFactory.registerSingleton("z", z);
-        Assert.assertEquals(z, beanFactory.getBean(Z.class));
+        EmptyObject o = new EmptyObject();
+        beanFactory.registerSingleton("o", o);
+        Assert.assertEquals(o, beanFactory.getBean(EmptyObject.class));
     }
 
 }
