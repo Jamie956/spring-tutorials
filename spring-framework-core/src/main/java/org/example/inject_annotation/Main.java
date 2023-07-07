@@ -1,6 +1,6 @@
-package org.example.inject.annotation;
+package org.example.inject_annotation;
 
-import org.example.utils.DebugUtils;
+import org.junit.Assert;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
@@ -24,6 +24,7 @@ public class Main {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(A.class, B.class);
 		context.refresh();
-		DebugUtils.printBeanDefinition(context, "after");
+		Assert.assertNotNull(context.getBean(A.class));
+		Assert.assertNotNull(context.getBean(B.class));
 	}
 }
