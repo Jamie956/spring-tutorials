@@ -1,16 +1,19 @@
-package org.example.construct;
+package org.example.construct1;
 
+import org.junit.Assert;
 import org.junit.Test;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+// 	public BeanWrapper autowireConstructor(String beanName, RootBeanDefinition mbd,
 public class InferConstructTest {
 	@Test
-	public void beanDefinitionTest() {
+	public void test() {
 		GenericApplicationContext context = new GenericApplicationContext();
 		context.registerBean(X.class);
 		context.registerBean(Y.class);
 		context.refresh();
-		String[] beans = context.getBeanDefinitionNames();
+
+		Assert.assertNotNull(context.getBean(X.class));
+		Assert.assertNotNull(context.getBean(Y.class));
 	}
 }
