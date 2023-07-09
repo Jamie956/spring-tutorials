@@ -23,8 +23,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
 	 */
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        // TODO Auto-generated method stub
-        System.out.println("CustomBeanPostProcessor.postProcessBeforeInitialization");
+        System.out.println("BeanPostProcessor.postProcessBeforeInitialization");
         return bean;
     }
 
@@ -46,8 +45,7 @@ public class CustomBeanPostProcessor implements BeanPostProcessor {
 	 */
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        // TODO Auto-generated method stub
-        System.out.println("CustomBeanPostProcessor.after");
+        System.out.println("BeanPostProcessor.postProcessAfterInitialization");
         return bean;
     }
 
