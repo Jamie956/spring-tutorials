@@ -6,7 +6,7 @@
 	   default-autowire="byType">
 	<!-- default-autowire="byType" 不指定装配的具体参数，容器自动查询后装配 -->
 	<!-- 表示所在配置在当前xml当中的bean都以bytype这种模式自动装配 -->
-	<bean id="a" class="org.example.inject_autotype.A">
+	<bean id="a" class="org.example.inject_autotype1.A">
 	</bean>
 
 	<bean id="b" class="org.example.inject.auto.B">

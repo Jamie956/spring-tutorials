@@ -1,4 +1,4 @@
-package org.example.inject_autotype;
+package org.example.inject_autotype1;
 
 import org.example.share.EmptyObject;
 
