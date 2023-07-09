@@ -1,14 +1,12 @@
-package org.example.lookup;
+package org.example.annotation_lookup;
 
+import org.example.share.EmptyObject;
 import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.stereotype.Component;
 
-@Component
 public abstract class A {
 	//给方法注入，代理类返回的注入bean，而不是null
-	@Lookup("b")
-	public B test(){
-		System.out.println("tttt");
+	@Lookup("emptyObject")
+	public EmptyObject lookupEmptyObject(){
 		return null;
 	}
 }
