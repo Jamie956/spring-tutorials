@@ -1,14 +1,11 @@
-package org.example.value;
+package org.example.annotation_value3;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ConversionServiceFactoryBean;
 
 import java.util.Collections;
 
-@ComponentScan("org.example.value")
-public class AppConfig3 {
-
+public class AppConfig {
 	@Bean
 	public ConversionServiceFactoryBean conversionService() {
 		ConversionServiceFactoryBean convert = new ConversionServiceFactoryBean();

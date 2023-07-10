@@ -1,4 +1,4 @@
-package org.example.value;
+package org.example.annotation_value3;
 
 import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.ConditionalGenericConverter;
@@ -23,7 +23,7 @@ public class SpringConvert implements ConditionalGenericConverter {
 	@Override
 	public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
 		B b = new B();
-		b.setName((String) source);
+		b.name = ((String) source);
 		return b;
 	}
 }

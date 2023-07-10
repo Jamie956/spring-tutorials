@@ -1,16 +1,13 @@
-package org.example.value;
+package org.example.annotation_value2;
 
 import org.springframework.beans.factory.config.CustomEditorConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.beans.PropertyEditor;
 import java.util.HashMap;
 import java.util.Map;
 
-@ComponentScan("org.example.value")
-public class AppConfig2 {
-
+public class AppConfig {
 	@Bean
 	public CustomEditorConfigurer myEditor() {
 		CustomEditorConfigurer customEditorConfigurer = new CustomEditorConfigurer();
