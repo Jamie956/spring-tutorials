@@ -5,15 +5,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AnnotationBeanTest {
+public class Main {
     @Test
-    public void annotationScopeTest() {
+    public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(X.class);
+        context.register(Config.class);
         context.refresh();
-
-        EmptyObject o1 = context.getBean(EmptyObject.class);
-        EmptyObject o2 = context.getBean(EmptyObject.class);
-        Assert.assertNotEquals(o1, o2);
+        Assert.assertNotEquals(context.getBean(EmptyObject.class), context.getBean(EmptyObject.class));
     }
 }

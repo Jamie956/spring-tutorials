@@ -1,11 +1,11 @@
-package org.example.construct3;
+package org.example.construct2;
 
 import org.example.share.EmptyObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.support.GenericApplicationContext;
 
-public class InferConstructTest {
+public class Main {
 	@Test
 	public void test() {
 		GenericApplicationContext context = new GenericApplicationContext();

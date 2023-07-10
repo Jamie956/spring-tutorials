@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyFactoryBean;
 
-public class ProxyTest {
+public class Main {
 
 	@Test
 	public void proxyFactoryTest() {

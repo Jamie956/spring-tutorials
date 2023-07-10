@@ -9,7 +9,7 @@ public class Main {
 	//没有 Primary 注解时，同时存在两个bean，spring 不知道取哪个
 	//加了 Primary 注解，当同时存在多个bean 时，取有Primary 注解的bean
 	@Test
-	public void t1() {
+	public void test() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(AppConfig.class);
 		context.refresh();

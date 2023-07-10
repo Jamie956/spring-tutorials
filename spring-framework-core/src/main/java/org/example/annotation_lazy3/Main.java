@@ -3,7 +3,7 @@ package org.example.annotation_lazy3;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class LazyTest {
+public class Main {
 	/**
 	 * 测试 lazy 注解构造方法
 	 */

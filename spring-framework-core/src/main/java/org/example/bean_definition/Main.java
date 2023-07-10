@@ -9,7 +9,7 @@ import org.springframework.context.support.GenericApplicationContext;
 
 import java.util.function.Supplier;
 
-public class BeanTest {
+public class Main {
     @Test
     public void registerBeanDefinitionTest() {
         //create container(new factory bean)

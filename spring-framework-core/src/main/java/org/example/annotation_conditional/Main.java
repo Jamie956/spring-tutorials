@@ -5,9 +5,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AnnotationConditionalTest {
+public class Main {
     @Test(expected = NoSuchBeanDefinitionException.class)
-    public void t1() {
+    public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(X.class);
         context.refresh();

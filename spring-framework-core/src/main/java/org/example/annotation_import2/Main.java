@@ -1,11 +1,11 @@
-package org.example.annotation_import1;
+package org.example.annotation_import2;
 
 import org.example.share.EmptyObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class ImportTest {
+public class Main {
     @Test
     public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();

@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class ImportTest {
+public class Main {
 	@Test
 	public void test() {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();

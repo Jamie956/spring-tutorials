@@ -4,10 +4,9 @@ import org.junit.Test;
 import org.springframework.beans.factory.BeanCurrentlyInCreationException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class LazyTest {
+public class Main {
     /**
-     * 测试 lazy 注解bean方法
-     * 测试 lazy 解决循环依赖
+     * lazy 解决循环依赖
      */
     @Test(expected = BeanCurrentlyInCreationException.class)
     public void test() {

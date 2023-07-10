@@ -4,12 +4,12 @@ import junit.framework.TestCase;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class ComponentScanTest {
+public class Main {
 	/**
 	 *  @ComponentScan include filters custom define annotation
 	 */
 	@Test
-	public void componentScanIncludeFiltersTest() {
+	public void test() {
 		//register internal post processor bean definition
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		//register annotated config class
@@ -18,7 +18,6 @@ public class ComponentScanTest {
 		// -> ConfigurationClassParser.doProcessConfigurationClass(..): parse @ComponentScan
 		// -> ComponentScanAnnotationParser.parse(..): parse @ComponentScan include filter and doScan()
 		context.refresh();
-
 		TestCase.assertNotNull(context.getBean(X.class));
 	}
 }

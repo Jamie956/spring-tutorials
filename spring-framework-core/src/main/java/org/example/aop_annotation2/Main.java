@@ -3,9 +3,9 @@ package org.example.aop_annotation2;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class AOPTest {
+public class Main {
     @Test
-    public void defaultAdvisorAutoProxyCreatorTest() {
+    public void test() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.register(AppConfig.class, A.class);
         context.refresh();
