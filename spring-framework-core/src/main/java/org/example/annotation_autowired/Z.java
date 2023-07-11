@@ -1,15 +1,12 @@
 package org.example.annotation_autowired;
 
+import org.example.share.EmptyObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
 public class Z {
-	private X x;
-
+	private EmptyObject emptyObject;
 	@Autowired
-	public void setX(X x) {
-		this.x = x;
+	public void setEmptyObject(EmptyObject emptyObject) {
+		this.emptyObject = emptyObject;
 	}
-
 }

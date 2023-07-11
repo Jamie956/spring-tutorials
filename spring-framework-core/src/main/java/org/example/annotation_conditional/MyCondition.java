@@ -5,12 +5,10 @@ import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 public class MyCondition implements Condition {
-
 	@Override
 	public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-		// return false will not instance bean
-//		return false;
 		// debug
-		return true;
+		// return false will not instance bean
+		return false;
 	}
 }
