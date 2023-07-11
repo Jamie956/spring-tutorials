@@ -2,8 +2,6 @@
 
 # Bean Definition
 
-
-
 1.将BeanDefinition 注册到容器 Context
 
 关键方法 registerBeanDefinition：容器 GenericApplicationContext 提供注册方法 registerBeanDefinition，把自定义 BeanDefinition 加入到 BeanFactory DefaultListableBeanFactory 的 beanDefinitionMap中。
@@ -29,48 +27,71 @@ Bean 实例上是放在 DefaultListableBeanFactory，由容器使用
 
 
 
-# Spring AspectJ
+# Spring AOP
 
 Spring 整合 AspectJ 实现AOP 切面拦截编程
 
 
 
-1.注解实现方式
+1.注解实现
 
-切面类@Aspect 标识，因为由Spring 管理切面，也要标识@Component
+@Aspect: 切面类
 
-切点：@Pointcut 定义拦截的范围
+@Pointcut: 切点定义拦截的范围
 
-拦截：@Around/@Before/@After 拦截增强，就是拦截了做些什么
+@Around/@Before/@After: 拦截增强，就是拦截了做些什么
 
-
-
-需要开启Spring 支持 AspectJ：@EnableAspectJAutoProxy，注意这个注解没有标识Componet 作用，还需要加能被 Spring 识别为 Bean的注解比如 @Component
-
-
-
-2.CGLIB
-
-```
-* Code Generation Library
-* CGLIB 通过动态生成一个需要被代理类的子类（即被代理类作为父类），
-* 该子类重写被代理类的所有不是 final 修饰的方法，
-* 并在子类中采用方法拦截的技术拦截父类所有的方法调用
-* 在底层实现上，CGLIB 使用字节码处理框架 ASM，该框架用于转换字节码并生成新的类
-```
+@EnableAspectJAutoProxy: 需要开启Spring 支持 AspectJ
 
 
 
 # @Autowire
 
-带有注解的变量/方法会从容器中查找对应的实例对象给予装配
+注解变量：变量装配从容器查找并注入
+
+注解方法：方法参数从容器查找并注入
 
 
 
 # @Bean
 
-
-
 @Bean：注解方法，方法返回值对象由容器管理
 
 @Bean(autowireCandidate = false)：Bean 不能注入到其他类，只能自己的类使用
+
+
+
+# @Condition
+
+判断是由加入容器
+
+
+
+# @Import
+
+类加入容器
+
+
+
+# @Lazy
+
+容器对象懒加载，只有使用的时候才去实例化
+
+
+
+# @Lookup
+
+注解方法，返回指定的容器实例，而不是方法的返回值
+
+
+
+# @Primary
+
+注解方法，有多个同类型Bean时，优先选择带有@Primary 注解的Bean
+
+
+
+# @ComponentScan
+
+扫描包下的Spring注解类
+
