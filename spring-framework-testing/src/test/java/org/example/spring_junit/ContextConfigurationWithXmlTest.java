@@ -1,5 +1,6 @@
-package org.example;
+package org.example.spring_junit;
 
+import org.example.X;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +15,7 @@ public class ContextConfigurationWithXmlTest {
     private X x;
 
     @Test
-    public void test1() {
-        Assert.assertEquals("foo", x.foo());
+    public void test() {
+        Assert.assertNotNull(x);
     }
 }

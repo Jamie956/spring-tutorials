@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Sql({"drop_schema.sql", "create_schema.sql"})
-@Sql(scripts = "insert_data1.sql", statements = "insert into student(id, name) values (100, 'Shiva')")
+@Sql(scripts = "insert_data.sql", statements = "insert into student(id, name) values (100, 'Shiva')")
 @SpringJUnitConfig
 public class SqlTest {
 
@@ -36,9 +36,10 @@ public class SqlTest {
     private JdbcTemplate jdbcTemplate;
 
     @Test
-    public void test1() {
+    public void test() {
         List<Map<String, Object>> students = jdbcTemplate.queryForList("SELECT * FROM student");
-        Assert.assertEquals(3, students.size());
+        Assert.assertEquals("Shiva", students.get(0).get("name"));
+        Assert.assertEquals("Mohan", students.get(1).get("name"));
+        Assert.assertEquals("Krishna", students.get(2).get("name"));
     }
-
 }

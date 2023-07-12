@@ -8,7 +8,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringJUnitConfig(Z.class)
 @TestPropertySource(properties = {"Timezone = GMT", "port = 4242"})
-public class TestPropertySourceTest {
+public class PropertySourceTest {
 
     @Autowired
     private Z z;

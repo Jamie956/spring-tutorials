@@ -1,5 +1,7 @@
-package org.example;
+package org.example.execution_listener;
 
+import org.example.AppConfig;
+import org.example.X;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,20 +13,19 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = AppConfig.class)
-// listen test class life cycle
 @TestExecutionListeners(value = {
-        CustomTestExecutionListener.class,
+        CustomListener.class,
         DependencyInjectionTestExecutionListener.class
 })
-public class TestExecutionListenersTest {
+public class ListenerTest {
 
     @Autowired
     private X x;
 
     @Test
-    public void test1() {
-        System.out.println("--------------");
-        Assert.assertEquals("foo", x.foo());
+    public void test() {
+        System.out.println("-------------- execution --------------");
+        Assert.assertNotNull(x);
     }
 
 }

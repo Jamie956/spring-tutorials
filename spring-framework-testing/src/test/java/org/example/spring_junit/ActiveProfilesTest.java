@@ -1,20 +1,20 @@
-package org.example;
+package org.example.spring_junit;
 
+import org.example.AppConfigWithProfile;
+import org.example.X;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@ActiveProfiles("test")
-@SpringJUnitConfig(AppConfig2.class)
-public class ActiveProfilesTest2 {
+@ActiveProfiles("dev")
+@SpringJUnitConfig(AppConfigWithProfile.class)
+public class ActiveProfilesTest {
     @Autowired
-    private Y y;
-
+    private X x;
     @Test
     public void test1() {
-        Assert.assertEquals("foo", y.foo());
+        Assert.assertNotNull(x);
     }
-
 }

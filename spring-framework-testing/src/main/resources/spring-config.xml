@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-    <bean id="randomName" class="org.example.X">
+    <bean id="xname" class="org.example.X">
     </bean>
 </beans>

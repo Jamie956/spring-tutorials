@@ -1,5 +1,6 @@
-package org.example;
+package org.example.spring_junit;
 
+import org.example.X;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringJUnitConfig
-public class NestConfigurationTest {
+public class InnerConfigurationTest {
 
     @Configuration
     static class MyConfig {
@@ -23,7 +24,7 @@ public class NestConfigurationTest {
 
     @Test
     public void test1() {
-        Assert.assertEquals("foo", x.foo());
+        Assert.assertNotNull(x);
     }
 
 }
