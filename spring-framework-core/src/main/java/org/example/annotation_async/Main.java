@@ -1,15 +1,18 @@
-package com.example;
+package org.example.annotation_async;
 
+import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.Future;
 
-@EnableAsync
-public class StartTest {
-    public static void main(String[] args) throws Exception {
-        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext("com.example");
-        AsyncTask task = ctx.getBean(AsyncTask.class);
+public class Main {
+    @Test
+    public void test() throws Exception {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(AsyncTask.class);
+        context.refresh();
+
+        AsyncTask task = context.getBean(AsyncTask.class);
 
         long start = System.currentTimeMillis();
 
