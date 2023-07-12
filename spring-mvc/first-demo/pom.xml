@@ -35,5 +35,19 @@
             <!-- not include in package war, tomcat/lib/servlet-api -->
             <scope>provided</scope>
         </dependency>
+        <!-- test start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- test end -->
     </dependencies>
 </project>

@@ -9,7 +9,6 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- mapping to user custom defined controller -->
     <bean id="indexController" class="org.example.HelloController"/>
     <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">

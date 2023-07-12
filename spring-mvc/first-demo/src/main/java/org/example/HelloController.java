@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class HelloController implements Controller {
     /**
-     * test:
-     *      get
-     *      http://localhost:8080/test
+     * get http://localhost:8080/test
      */
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {

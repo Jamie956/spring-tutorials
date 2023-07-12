@@ -1,6 +1,8 @@
-
 # Quickly start
-## Dev env - tomcat version
+
+
+
+## tomcat version
 tomcat 8.5.84
 javax.servlet-api scope is provided, servlet-api.jar already provide by tomcat lib
 
@@ -8,7 +10,10 @@ do not use tomcat 10
 tomcat 10 return 404 error, servlet-api.jar no longer provide by tomcat lib
 
 ## pom setting
-<packaging>war</packaging>
+
+`<packaging>war</packaging>`
+
+
 
 ## idea setting - web config location
 project structure -> modules -> add web
@@ -18,7 +23,10 @@ project structure -> modules -> add web
 ## idea setting - project run in tomcat
 run/debug configurations -> application server (tomcat home) -> deployment -> + artifact -> xx:war exploded -> change application context
 
+
+
 # server logs 中文乱码
+
 (1)
 apache-tomcat-8.5.84\conf\logging.properties
 java.util.logging.ConsoleHandler.encoding = UTF-8
@@ -27,6 +35,8 @@ java.util.logging.ConsoleHandler.encoding = GBK
 
 or (2)
 vm options: -Dfile.encoding=UTF-8
+
+
 
 
 # springMVC importance class
