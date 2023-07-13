@@ -12,43 +12,33 @@ import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
- * debug
- *
- * handle request and response and view
- * DispatcherServlet#doDispatch -> mv = ha.handle(..)
+ * handle request and response and view:
+ * debug DispatcherServlet#doDispatch step mv = ha.handle(
  *
  * resolve view template:
- * DispatcherServlet#render -> view = resolveViewName(..)
+ * debug DispatcherServlet#render step view = resolveViewName(
  */
 @Controller
-public class ScopeTest {
+public class MyController {
 
     /**
      * set value in request scope via servlet api HttpServletRequest
-     *
-     * test
-     * http://localhost:8080/scope1
      */
-    @RequestMapping("/scope1")
-    public String scope1(HttpServletRequest request) {
-        request.setAttribute("kk", "scope1");
+    @RequestMapping("/requestAttr")
+    public String requestAttr(HttpServletRequest request) {
+        request.setAttribute("kk", "request Attr");
         return "success";
     }
 
     /**
      * set value in ModelAndView and set in request scope via render model
-     *
-     * test:
-     * http://localhost:8080/scope2
-     *
-     * debug
-     * DispatcherServlet#doDispatch -> DispatcherServlet#processDispatchResult
-     * -> DispatcherServlet#render -> view.render(..)
+     * set ModelAndView value:
+     * debug MockHttpServletRequest#setAttribute
      */
-    @RequestMapping("/scope2")
-    public ModelAndView scope2() {
+    @RequestMapping("/modelValue")
+    public ModelAndView modelValue() {
         ModelAndView mav = new ModelAndView();
-        mav.addObject("kk", "scope2");
+        mav.addObject("kk", "model Value");
         mav.setViewName("success");
         return mav;
     }
