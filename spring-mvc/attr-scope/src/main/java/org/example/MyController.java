@@ -20,20 +20,16 @@ import java.util.Map;
  */
 @Controller
 public class MyController {
-
     /**
-     * set value in request scope via servlet api HttpServletRequest
+     * Attribute set to http
      */
     @RequestMapping("/requestAttr")
     public String requestAttr(HttpServletRequest request) {
         request.setAttribute("kk", "request Attr");
         return "success";
     }
-
     /**
-     * set value in ModelAndView and set in request scope via render model
-     * set ModelAndView value:
-     * debug MockHttpServletRequest#setAttribute
+     * Attribute set to new ModelAndView, to http
      */
     @RequestMapping("/modelValue")
     public ModelAndView modelValue() {
@@ -42,62 +38,45 @@ public class MyController {
         mav.setViewName("success");
         return mav;
     }
-
     /**
-     * set value in Model and set in request scope via render model
-     *
-     * test:
-     * http://localhost:8080/scope3
+     * Attribute set to param model, to http
      */
-    @RequestMapping("/scope3")
-    public String scope3(Model model) {
-        model.addAttribute("kk", "scope3");
+    @RequestMapping("/modelParam")
+    public String modelParam(Model model) {
+        model.addAttribute("kk", "model Param");
         return "success";
     }
-
     /**
-     * set value in Map and set in request scope via render model
-     *
-     * test:
-     * http://localhost:8080/scope4
+     * Attribute set to param map, to http
      */
-    @RequestMapping("/scope4")
-    public String scope4(Map<String, Object> map) {
-        map.put("kk", "scope4");
+    @RequestMapping("/paramMap")
+    public String paramMap(Map<String, Object> map) {
+        map.put("kk", "param Map");
         return "success";
     }
-
     /**
-     * set value in ModelMap and set in request scope via render model
-     *
-     * test: http://localhost:8080/scope5
+     * Attribute set to param modelMap, to http
      */
-    @RequestMapping("/scope5")
+    @RequestMapping("/paramModelMap")
     public String scope5(ModelMap model) {
-        model.addAttribute("kk", "scope5");
+        model.addAttribute("kk", "param ModelMap");
         return "success";
     }
-
     /**
-     * set value in session scope via HttpSession
-     *
-     * test: http://localhost:8080/scope6
+     * Attribute set to session
      */
-    @RequestMapping("/scope6")
-    public String scope6(HttpSession session) {
-        session.setAttribute("kk", "scope6");
+    @RequestMapping("/sessionAttr")
+    public String sessionAttr(HttpSession session) {
+        session.setAttribute("kk", "session Attr");
         return "success";
     }
-
     /**
-     * set value in application scope via HttpSession context
-     *
-     * test: http://localhost:8080/scope7
+     * Attribute set to app
      */
-    @RequestMapping("/scope7")
-    public String scope7(HttpSession session) {
+    @RequestMapping("/appAttr")
+    public String appAttr(HttpSession session) {
         ServletContext context = session.getServletContext();
-        context.setAttribute("kk", "scope7");
+        context.setAttribute("kk", "app Attr");
         return "success";
     }
 }

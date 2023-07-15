@@ -17,7 +17,7 @@
         <module>view-thymeleaf</module>
         <module>filter</module>
         <module>view</module>
-        <module>scope</module>
+        <module>attr-scope</module>
         <module>restful</module>
         <module>first-demo</module>
     </modules>
