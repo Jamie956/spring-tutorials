@@ -15,19 +15,4 @@
     <mvc:interceptors>
         <bean class="org.example.MyInterceptor" />
     </mvc:interceptors>
-
-    <!-- using annotation component create interceptor, get myInterceptor2 from container -->
-<!--    <mvc:interceptors>-->
-<!--        <ref bean="myInterceptor2"/>-->
-<!--    </mvc:interceptors>-->
-
-<!--    <mvc:interceptors>-->
-<!--        <mvc:interceptor>-->
-<!--            <mvc:mapping path="/**"/>-->
-<!--            &lt;!&ndash; exclude home &ndash;&gt;-->
-<!--            <mvc:exclude-mapping path="/"/>-->
-<!--            <ref bean="myInterceptor2" />-->
-<!--        </mvc:interceptor>-->
-<!--    </mvc:interceptors>-->
-
 </beans>

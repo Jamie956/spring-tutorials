@@ -5,18 +5,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 //all method under this class able to parse return value as response body
 @RestController
-public class RestControllerTest {
+public class RestController_ {
     /**
      * RestController include ResponseBody able to convert return value
-     *
-     * test:
-     *      method: get
-     *      url: http://localhost:8080/restc
-     *
+     * method: get
+     * url: http://localhost:8080/rest
      */
-    @RequestMapping("/restc")
+    @RequestMapping("/rest")
     //@ResponseBody include ResponseBody
-    public User restc() {
+    public User rest() {
         return new User("aa", "11", "aq");
     }
 }

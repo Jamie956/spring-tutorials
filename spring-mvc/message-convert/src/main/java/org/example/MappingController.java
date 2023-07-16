@@ -6,30 +6,25 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class MappingTest {
+public class MappingController {
     @RequestMapping("/")
     public String index() {
         return "index";
     }
 
     /**
-     * test
-     * http://localhost:8080/test1?name=11&address=123&id=12
-     * method: get/post
-     *
-     * test
      * http://localhost:8080/test1?name=11&address=123&id=12
      * method: get/post
      */
     @RequestMapping(
-            value = {"test1", "test2"},
+            value = {"mapping1", "mapping2"},
             method = {RequestMethod.GET, RequestMethod.POST},
             //exist name, not exist password, address equal 123, id not equal 11
             params = {"name", "!password", "address=123", "id!=11"},
             //host equal localhost:8080
             headers = {"Host=localhost:8080"}
     )
-    public String test() {
+    public String mapping() {
         return "index";
     }
 
@@ -47,7 +42,7 @@ public class MappingTest {
      * /**
      */
     @RequestMapping("/a?a")
-    public String test2() {
+    public String expressionMatch() {
         return "index";
     }
 
@@ -56,32 +51,32 @@ public class MappingTest {
      * http://localhost:8080/user/11
      */
     @RequestMapping("/user/{id}")
-    public String test3(@PathVariable("id") String id) {
+    public String pathVarTest(@PathVariable("id") String id) {
         return "index";
     }
 
     /**
-     * http://localhost:8080/test4?name=22
+     * http://localhost:8080/paramTest?name=22
      * mapping http servlet request to method param
      */
-    @RequestMapping("test4")
-    public String test4(HttpServletRequest request) {
+    @RequestMapping("paramTest")
+    public String paramTest(HttpServletRequest request) {
         String name = request.getParameter("name");
         return "index";
     }
 
     /**
      * mapping param to method param
-     * http://localhost:8080/test5?name=22&address=a&address=b
+     * http://localhost:8080/paramStr?name=22&address=a&address=b
      */
-    @RequestMapping("test5")
-    public String test5(String name, String[] address) {
+    @RequestMapping("paramStr")
+    public String paramStr(String name, String[] address) {
         return "index";
     }
 
     /**
      * mapping some of param to method param
-     * http://localhost:8080/test6?na_me=22
+     * http://localhost:8080/requestParam?na_me=22
      *
      * RequestParam:
      * name
@@ -89,34 +84,34 @@ public class MappingTest {
      * required
      * defaultValue
      */
-    @RequestMapping("test6")
-    public String test6(@RequestParam("na_me") String name) {
+    @RequestMapping("requestParam")
+    public String requestParam(@RequestParam("na_me") String name) {
         return "index";
     }
 
     /**
      * mapping request header to method param
-     * http://localhost:8080/test6
+     * http://localhost:8080/header
      */
-    @RequestMapping("/test7")
-    public String test7(@RequestHeader("Host") String host) {
+    @RequestMapping("/header")
+    public String header(@RequestHeader("Host") String host) {
         return "index";
     }
 
     /**
      * mapping request cookies to method param
      */
-    @RequestMapping("/test8")
-    public String test8(@CookieValue("JESSIONID") String jessionid) {
+    @RequestMapping("/cookie")
+    public String cookie(@CookieValue("JESSIONID") String jessionid) {
         return "index";
     }
 
     /**
      * mapping request param to method param
-     * http://localhost:8080/test9?name=22&address=a&address=b
+     * http://localhost:8080/objParam?name=22&address=a&address=b
      */
-    @RequestMapping("/test9")
-    public String test9(User user) {
+    @RequestMapping("/objParam")
+    public String objParam(User user) {
         return "index";
     }
 }

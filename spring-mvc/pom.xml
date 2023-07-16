@@ -18,7 +18,6 @@
         <module>filter</module>
         <module>view</module>
         <module>attr-scope</module>
-        <module>restful</module>
         <module>first-demo</module>
     </modules>
 
