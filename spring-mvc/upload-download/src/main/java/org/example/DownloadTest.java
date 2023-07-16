@@ -18,10 +18,8 @@ public class DownloadTest {
 
     /**
      * ResponseEntity set bytes to implement download
-     *
-     * test:
-     *      method: get
-     *      url: http://localhost:8080/home/testDown
+     * method: get
+     * url: http://localhost:8080/home/testDown
      */
     @RequestMapping("/testDown")
     public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws IOException {

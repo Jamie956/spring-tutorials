@@ -14,20 +14,19 @@ import java.io.IOException;
 public class UploadTest {
     /**
      * MultipartFile upload file, add dependencies commons-fileupload
-     * test:
-     *      headers: Content-Type: multipart/form-data;
-     *      Body: form-data file=[select file]
-     *      method: post
-     *      url: http://localhost:8080/testUp
+     * headers: Content-Type: multipart/form-data;
+     * Body: form-data file=[select file]
+     * method: post
+     * url: http://localhost:8080/testUp
      */
-    @RequestMapping("/testUp")
-    public String testUp(@RequestParam("file") MultipartFile multipartFile, HttpSession session) throws IOException {
+    @RequestMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile multipartFile, HttpSession session) throws IOException {
         String fileName = multipartFile.getOriginalFilename();
 
         ServletContext servletContext = session.getServletContext();
         String path = servletContext.getRealPath("up");
         File file = new File(path);
-        if(!file.exists()){
+        if (!file.exists()) {
             file.mkdir();
         }
         String finalPath = path + File.separator + fileName;
