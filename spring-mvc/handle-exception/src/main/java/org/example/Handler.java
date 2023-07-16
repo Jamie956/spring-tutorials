@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class ExceptionController {
+public class Handler {
     @ExceptionHandler(ArithmeticException.class)
-    public String test(Exception ex, Model model) {
+    public String arithmeticExceptionHandler(Exception ex, Model model) {
         model.addAttribute("ex", ex);
         return "error";
     }

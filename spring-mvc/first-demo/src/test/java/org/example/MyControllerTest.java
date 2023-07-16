@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(locations = {"classpath:springMVC.xml"})
-public class HelloControllerTest {
+public class MyControllerTest {
     @Autowired
     private WebApplicationContext context;
     @Test
