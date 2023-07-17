@@ -29,5 +29,8 @@ public class ViewControllerTest {
                 .andExpect(view().name("forward:/toView"));
         mvc.perform(MockMvcRequestBuilders.get("/redView"))
                 .andExpect(status().isFound());
+        mvc.perform(MockMvcRequestBuilders.get("/mv"))
+                .andExpect(status().isOk());
     }
+
 }

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>view</artifactId>
+    <artifactId>view-jsp</artifactId>
     <packaging>war</packaging>
 
     <properties>
@@ -35,17 +35,6 @@
             <!-- not include in package war, tomcat/lib/servlet-api -->
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
-            <version>3.0.12.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
-            <scope>provided</scope>
-        </dependency>
         <!-- test start -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -61,5 +50,4 @@
         </dependency>
         <!-- test end -->
     </dependencies>
-
 </project>
