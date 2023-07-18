@@ -22,18 +22,26 @@
             <artifactId>service-base</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- Spring start -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <!-- Spring end -->
+        <!-- tools start -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
         </dependency>
+        <!-- tools end -->
+        <!-- Test start -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Test end -->
+
     </dependencies>
 </project>

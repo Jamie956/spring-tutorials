@@ -19,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
+// 注解的作用？
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -36,9 +37,7 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
         this.redisTemplate = redisTemplate;
     }
 
-    /**
-     * Security 配置
-     */
+    // Security 配置
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.exceptionHandling()

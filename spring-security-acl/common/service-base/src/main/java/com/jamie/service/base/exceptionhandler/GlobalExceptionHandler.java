@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@ControllerAdvice
 @Slf4j
+@ControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public R error(Exception e) {
@@ -17,6 +16,7 @@ public class GlobalExceptionHandler {
         return R.error().message("Throw Exception...");
     }
 
+    // 捕捉全局出现的异常 ArithmeticException，并返回自定义错误信息
     @ExceptionHandler(ArithmeticException.class)
     @ResponseBody
     public R error(ArithmeticException e) {

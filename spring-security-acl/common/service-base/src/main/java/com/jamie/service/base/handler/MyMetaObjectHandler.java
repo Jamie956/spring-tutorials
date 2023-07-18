@@ -6,15 +6,16 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-// 实现公共字段自动写入
+
 @Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
+    // 每插入一条记录都会带上字段 gmtCreate 和 gmtModified
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("gmtCreate", new Date(), metaObject);
         this.setFieldValByName("gmtModified", new Date(), metaObject);
     }
-
+    // 每更新一条记录都会带上字段 gmtModified
     @Override
     public void updateFill(MetaObject metaObject) {
         this.setFieldValByName("gmtModified", new Date(), metaObject);
