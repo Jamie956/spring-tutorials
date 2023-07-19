@@ -1,7 +1,5 @@
-package org.example.spring_junit;
+package org.example;
 
-import org.example.AppConfigWithProfile;
-import org.example.X;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
