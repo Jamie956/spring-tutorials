@@ -12,6 +12,7 @@ import java.util.List;
 
 @Data
 public class SecurityUser implements UserDetails {
+    // 被transient关键字修饰的成员属性变量不被序列化
     private transient User currentUserInfo;
     private List<String> permissionValueList;
 
