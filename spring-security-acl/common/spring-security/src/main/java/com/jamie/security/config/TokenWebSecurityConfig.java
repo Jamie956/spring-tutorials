@@ -54,12 +54,13 @@ public class TokenWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // 配置解密器
         auth.userDetailsService(userDetailsService).passwordEncoder(defaultPasswordEncoder);
     }
 
-    // 不需要认证可以直接访问的路径
     @Override
     public void configure(WebSecurity web) throws Exception {
+        // 不需要认证可以直接访问的路径
         web.ignoring().antMatchers("/api/**");
     }
 }
