@@ -1,5 +1,6 @@
 package org.example.annotation_lazy3;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -12,6 +13,6 @@ public class Main {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.register(AppConfig.class, X.class);
 		context.refresh();
-		context.getBean(X.class);
+		Assert.assertNotNull(context.getBean(X.class).emptyObject);
 	}
 }

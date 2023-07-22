@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
- * @Lookup 方法注入
+ * @Lookup 方法返回值注入
  */
 public class Main {
 	@Test
