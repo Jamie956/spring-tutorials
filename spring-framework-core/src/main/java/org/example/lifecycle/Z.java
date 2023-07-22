@@ -40,7 +40,7 @@ public class Z implements BeanNameAware, BeanFactoryAware, ApplicationContextAwa
 
 	@Override
     public void setBeanName(String beanName) {
-        System.out.println("BeanNameAware.setBeanName ");
+        System.out.println("BeanNameAware.setBeanName");
     }
 
 	@Override

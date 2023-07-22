@@ -6,9 +6,9 @@ import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 
 public class AppConfig {
-	//增强
 	@Bean
 	public MethodInterceptor myAroundAdvice() {
+		//环绕增强
 		return new MethodInterceptor() {
 			@Override
 			public Object invoke(MethodInvocation invocation) throws Throwable {

@@ -62,6 +62,13 @@ public void setEmptyObject(EmptyObject emptyObject) {
 
 
 
+注入方式
+
+- byname：按 name 查找容器中的Bean
+- bytype：按 type 查找容器中的Bean，比如容器中同时有两个同类型的实例，只是他们的 name 不一样，如果此时 bytype注入，就不知道要取哪一个实例
+
+
+
 # @Bean
 
 @Bean注解方法，被注解方法的返回值加入Spring容器
@@ -120,48 +127,74 @@ Lazy 注解的类直到get使用时，才回去实例化，也就是在 Spring r
 
 # @Scope
 
+定义 Spring Bean 是单例还是原型
+
+原型：每次获取 Bean 都会创建一个新的 Bean
 
 
 
+# @Value
+
+Value 注解变量时，为变量赋值，值可以来源于配置文件、默认值、Hard code 字符串
+
+一般用表达式获取值
 
 
 
+# Spring AOP
+
+编程式实现：
+
+- 方式一：容器加入关键 Bean MethodInterceptor增强和 切点BeanNameAutoProxyCreator
+- 方式二：容器加入 Bean DefaultPointcutAdvisor，可以同时配置切点和增强
 
 
 
-
-
+XML声明式：Spring Bean 配置切点关键类 JdkRegexpMethodPointcut、增强关键类 DefaultPointcutAdvisor、切面关键类 ProxyFactoryBean
 
 
 
 # Bean Definition
 
-1.将BeanDefinition 注册到容器 Context
-
-关键方法 registerBeanDefinition：容器 GenericApplicationContext 提供注册方法 registerBeanDefinition，把自定义 BeanDefinition 加入到 BeanFactory DefaultListableBeanFactory 的 beanDefinitionMap中。
+Bean Definition 是 Spring 对对象再进行多一层的定义和描述，从而有利于 Spring 管理容器的 Beans，比如控制容器实例的生命周期、实现依赖注入、扫描Spring Bean等等
 
 
 
-如果注册的 BeanDefinition 是 FactoryBean，在 getBean 时会从 FactoryBean 查找 Bean
+将BeanDefinition 注册到容器，关键方法 GenericApplicationContext#registerBeanDefinition 把BeanDefinition 加入到 BeanFactory DefaultListableBeanFactory 的 beanDefinitionMap中
 
 
 
 # Context
 
-1.容器加载 Bean
 
-容器大类：
 
-- AnnotationConfigApplicationContext：扫描解析标注解类和方法，创建管理 Bean
-- ClassPathXmlApplicationContext：XML 定义 Bean
+- AnnotationConfigApplicationContext：通过扫描注解类、方法和变量，管理容器Beans
+- ClassPathXmlApplicationContext：通过XML 定义容器Beans
 
 
 
-Bean 实例上是放在 DefaultListableBeanFactory，由容器使用
+# Lifecycle
+
+Spring 提供各种接口和注解给用户控制生命周期各个阶段的Beans：
+
+- Bean实例化
+
+- BeanNameAware：入参 Bean name，可修改
+- BeanFactoryAware：入参 Bean Factory
+- ApplicationContextAware：入参容器
+- BeanPostProcessor：入参 Bean
+- PostConstruct：无入参
+- InitializingBean：无入参
+- PreDestroy：无入参
+- DisposableBean：无入参
 
 
 
+# Listener
 
+监听发布的事件：实现接口即可 `ApplicationListener<ApplicationEvent>`
+
+发布事件：继承类 ApplicationEvent
 
 
 
